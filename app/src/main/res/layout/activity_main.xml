@@ -4,16 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_image"
+    android:padding="16dp"
     tools:context=".MainActivity"
-    android:background="@drawable/background_image">
+    android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/weather_update"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textAlignment="center"
+        android:text="@string/weather_update"
+        android:textColor="@android:color/white"
+        android:textSize="40sp"
+        android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/enter_country_code_optional"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textColorHint="#F3E5F5"
+            android:autofillHints="no" />
+
+        <EditText
+            android:id="@+id/city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:hint="@string/enter_city_name"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textColorHint="#FFFF00"
+            android:importantForAutofill="no" />
+    </LinearLayout>
+
 
 </LinearLayout>
