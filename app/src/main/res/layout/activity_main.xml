@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_image"
+
     android:padding="16dp"
     tools:context=".MainActivity"
     android:orientation="vertical">
@@ -22,29 +22,6 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/country"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:hint="@string/enter_country_code_optional"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textColorHint="#FFFF00"
-            android:autofillHints="no" />
-
-        <EditText
-            android:id="@+id/city"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:ems="10"
-            android:hint="@string/enter_city_name"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textColorHint="#FFFF00"
-            android:importantForAutofill="no" />
 
         <Button
             android:id="@+id/getBt"
