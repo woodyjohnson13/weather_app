@@ -10,6 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -59,7 +63,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
-                showme.setText(result);
+                String output = "";
+                try {
+                    JSONObject json = new JSONObject(result);
+                    JSONArray weather_array_block= json.getJSONArray("weather");
+                    JSONObject weather_array_dict_0=weather_array_block.getJSONObject(0);
+                    String description=weather_array_dict_0.getString("description");
+                    JSONObject main_dict=json.getJSONObject("main");
+                    double current_temperature=main_dict.getDouble("temp");
+
+                    output+="Clouds:"+description+
+                            "\nCurrent temperature:" + current_temperature +" Celcium";
+                    showme.setText(output);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -68,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(MainActivity.this,"Pressed",Toast.LENGTH_LONG).show();
 
-                String url ="http://api.openweathermap.org/data/2.5/weather?id=501175&appid=32879a100afc9b16435463591d9e99c9";
+                String url ="http://api.openweathermap.org/data/2.5/weather?q=Rostov-on-Don&units=metric&appid=32879a100afc9b16435463591d9e99c9";
                 GetWeather get_weather=new GetWeather();
                 get_weather.execute(url);
             }
