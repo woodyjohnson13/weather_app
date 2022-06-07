@@ -23,9 +23,14 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class WeatherAct extends AppCompatActivity {
-    TextView show_forecast;
+    TextView main_weather;
     private TextView city_name;
-    private TextView dateTimeDisplay;
+    private TextView main_humidity;
+    private TextView main_wind_speed;
+    private TextView main_clouds;
+    private TextView air_pressure;
+
+
 
     class GetWeather extends AsyncTask<String,Void,String>
     {
@@ -39,7 +44,7 @@ public class WeatherAct extends AppCompatActivity {
                 urlConnection.connect();
                 InputStream inputStream =urlConnection.getInputStream();
                 BufferedReader reader =new BufferedReader(new InputStreamReader(inputStream));
-                String line="";
+                String line;
                 while ((line=reader.readLine())!=null)
                 {
                     result.append(line).append("\n");
@@ -54,7 +59,13 @@ public class WeatherAct extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            String output = "";
+            String output="";
+            String main_temperature="";
+            String humidity="";
+            String wind="";
+            String pressure="";
+
+
             try {
                 JSONObject json = new JSONObject(result);
                 JSONArray weather_array_block= json.getJSONArray("weather");
@@ -63,17 +74,20 @@ public class WeatherAct extends AppCompatActivity {
                 JSONObject main_dict=json.getJSONObject("main");
                 JSONObject wind_dict=json.getJSONObject("wind");
                 double current_temperature=main_dict.getDouble("temp");
+                int current_temp_int=(int)current_temperature;
                 int current_humidity=main_dict.getInt("humidity");
                 double current_wind_speed=wind_dict.getDouble("speed");
-
+                main_temperature+=current_temp_int + "°C";
+                wind+=current_wind_speed + " m/s";
+                humidity+=current_humidity + " mm";
                 output+="Clouds:"+description+
                         "\nCurrent temperature:" + current_temperature +" Celcium"+
                         "\nCurrent wind speed:" + current_wind_speed +"m/s"+
                         "\nCurrent humidity:" + current_humidity +" %";
 
-
-                show_forecast.setText(output);
-
+                main_humidity.setText(humidity);
+                main_wind_speed.setText(wind);
+                main_weather.setText(main_temperature);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -83,22 +97,29 @@ public class WeatherAct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.weather_layout);
+        setContentView(R.layout.new_weather_layout);
 
         Date current_time=Calendar.getInstance().getTime();
         String date_from_calendar = DateFormat.getDateInstance(DateFormat.FULL).format(current_time.getTime());
-        dateTimeDisplay = findViewById(R.id.current_date);
-        city_name=findViewById(R.id.city_name);
-        show_forecast=findViewById(R.id.forecast);
+        city_name=findViewById(R.id.main_city_name);
+        main_weather=findViewById(R.id.main_temp);
+        main_humidity=findViewById(R.id.humidity_level);
+        main_wind_speed=findViewById(R.id.wind_speed);
+        main_clouds=findViewById(R.id.main_clouds);
 
         GetWeather get_weather=new GetWeather();
+
+
+        Intent back_to_city_list=new Intent(WeatherAct.this,MainActivity.class);
 
         Intent start_this_activity = getIntent();
         String my_api_call = start_this_activity.getStringExtra("call");
         String my_city_name=start_this_activity.getStringExtra("name");
+
         city_name.setText(my_city_name);
-        dateTimeDisplay.setText(date_from_calendar);
 
         get_weather.execute(my_api_call);
+
+
     }
 }

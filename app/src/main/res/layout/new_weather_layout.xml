@@ -8,9 +8,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/back_to_citys"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Back to city list"
+            android:textColor="@color/white" />
         <TextView
             android:id="@+id/main_date"
             android:layout_width="wrap_content"
@@ -20,7 +27,7 @@
             android:text="Tuesday,15"
             android:textSize="20sp"
             android:textColor="@color/white"
-            android:fontFamily="@font/roboto_thin"
+            android:fontFamily="@font/roboto_regular"
             />
 
         <TextView
@@ -31,7 +38,7 @@
             android:text="Rostov"
             android:textSize="25sp"
             android:textColor="@color/white"
-            android:fontFamily="@font/roboto_thin"
+            android:fontFamily="@font/roboto_regular"
             />
 
         <LinearLayout
@@ -40,21 +47,23 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/main_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/roboto_regular"
                 android:text="+19"
-                android:textSize="45sp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/roboto_thin"
-                />
+                android:textSize="45sp" />
+
             <TextView
+                android:id="@+id/main_clouds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/roboto_regular"
                 android:text="Clouds:"
-                android:textColor="@color/white"
-                android:fontFamily="@font/roboto_thin"
-                android:layout_gravity="center_horizontal"/>
+                android:textColor="@color/white" />
 
 
 
@@ -67,232 +76,233 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_margin="10dp"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/hourly_time_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="Now"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/roboto_thin">
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
-                        android:fontFamily="@font/roboto_thin"
-                        android:textColor="@color/white"
-                        >
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/hourly_time_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="Now"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/roboto_thin">
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
-                        android:fontFamily="@font/roboto_thin"
-                        android:textColor="@color/white"
-                        >
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/hourly_time_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="Now"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/roboto_thin">
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
-                        android:fontFamily="@font/roboto_thin"
-                        android:textColor="@color/white"
-                        >
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/hourly_time_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="Now"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/roboto_thin">
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
-                        android:fontFamily="@font/roboto_thin"
-                        android:textColor="@color/white"
-                        >
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/hourly_time_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="Now"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/roboto_thin">
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
-                        android:fontFamily="@font/roboto_thin"
-                        android:textColor="@color/white"
-                        >
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/hourly_time_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="Now"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/roboto_thin">
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
-                        android:fontFamily="@font/roboto_thin"
-                        android:textColor="@color/white"
-                        >
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/hourly_time_7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="Now"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/roboto_thin">
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
-                        android:fontFamily="@font/roboto_thin"
-                        android:textColor="@color/white"
-                        >
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/hourly_time_8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="Now"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/roboto_thin">
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
-                        android:fontFamily="@font/roboto_thin"
-                        android:textColor="@color/white"
-                        >
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/hourly_time_9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="Now"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/roboto_thin">
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
-                        android:fontFamily="@font/roboto_thin"
-                        android:textColor="@color/white"
-                        >
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
                 </LinearLayout>
             </LinearLayout>
 
@@ -301,9 +311,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="4"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -316,15 +327,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="Humidity"
-                    android:fontFamily="@font/roboto_thin"
+                    android:fontFamily="@font/roboto_regular"
                     android:textColor="@color/white"></TextView>
 
                 <TextView
+                    android:id="@+id/humidity_level"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="69%"
-                    android:fontFamily="@font/roboto_thin"
                     android:textColor="@color/white"></TextView>
             </LinearLayout>
             <LinearLayout
@@ -339,15 +351,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="Wind"
-                    android:fontFamily="@font/roboto_thin"
+                    android:fontFamily="@font/roboto_regular"
                     android:textColor="@color/white"></TextView>
 
                 <TextView
+                    android:id="@+id/wind_speed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="10m/s"
-                    android:fontFamily="@font/roboto_thin"
                     android:textColor="@color/white"></TextView>
             </LinearLayout>
             <LinearLayout
@@ -362,23 +375,25 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="Air pressure"
-                    android:fontFamily="@font/roboto_thin"
+                    android:fontFamily="@font/roboto_regular"
                     android:textColor="@color/white"></TextView>
 
                 <TextView
+                    android:id="@+id/air_pressure"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="740mm"
-                    android:fontFamily="@font/roboto_thin"
                     android:textColor="@color/white"></TextView>
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:orientation="vertical">
+            android:layout_height="300dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp">
             <LinearLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
@@ -391,7 +406,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Monday 14"
-                    android:fontFamily="casual"
+                    android:fontFamily="@font/roboto_regular"
                     android:textColor="@color/white"
                     android:layout_marginTop="10dp"
                     android:gravity="left"/>
@@ -403,7 +418,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="40dp"
                     android:textColor="@color/white"
-                    android:fontFamily="casual"/>
+                    android:fontFamily="@font/roboto_regular"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -412,7 +427,7 @@
                     android:layout_marginLeft="40dp"
                     android:textColor="@color/white"
                     android:gravity="right"
-                    android:fontFamily="casual"/>
+                    android:fontFamily="@font/roboto_regular"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="300dp"
@@ -426,7 +441,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tuesday 15"
-                    android:fontFamily="casual"
+                    android:fontFamily="@font/roboto_regular"
                     android:textColor="@color/white"
                     android:layout_marginTop="10dp"
                     android:gravity="left"/>
@@ -438,7 +453,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="40dp"
                     android:textColor="@color/white"
-                    android:fontFamily="casual"/>
+                    android:fontFamily="@font/roboto_regular"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -447,7 +462,7 @@
                     android:layout_marginLeft="40dp"
                     android:textColor="@color/white"
                     android:gravity="right"
-                    android:fontFamily="casual"/>
+                    android:fontFamily="@font/roboto_regular"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="300dp"
@@ -464,7 +479,7 @@
                     android:textColor="@color/white"
                     android:layout_marginTop="10dp"
                     android:gravity="left"
-                    android:fontFamily="casual"/>
+                    android:fontFamily="@font/roboto_regular"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -473,7 +488,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="40dp"
                     android:textColor="@color/white"
-                    android:fontFamily="casual"/>
+                    android:fontFamily="@font/roboto_regular"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -482,7 +497,7 @@
                     android:layout_marginLeft="40dp"
                     android:textColor="@color/white"
                     android:gravity="right"
-                    android:fontFamily="casual"/>
+                    android:fontFamily="@font/roboto_regular"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="300dp"
@@ -499,13 +514,13 @@
                     android:textColor="@color/white"
                     android:layout_marginTop="10dp"
                     android:gravity="left"
-                    android:fontFamily="casual"/>
+                    android:fontFamily="@font/roboto_regular"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="12°"
-                    android:fontFamily="casual"
+                    android:fontFamily="@font/roboto_regular"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="40dp"
                     android:textColor="@color/white"/>
@@ -513,7 +528,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="12°"
-                    android:fontFamily="casual"
+                    android:fontFamily="@font/roboto_regular"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="40dp"
                     android:textColor="@color/white"
@@ -534,13 +549,13 @@
                     android:textColor="@color/white"
                     android:layout_marginTop="10dp"
                     android:gravity="left"
-                    android:fontFamily="casual"/>
+                    android:fontFamily="@font/roboto_regular"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="12°"
-                    android:fontFamily="casual"
+                    android:fontFamily="@font/roboto_regular"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="40dp"
                     android:textColor="@color/white"/>
@@ -551,7 +566,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="40dp"
                     android:textColor="@color/white"
-                    android:fontFamily="casual"
+                    android:fontFamily="@font/roboto_regular"
                     android:gravity="right"/>
             </LinearLayout>
 
