@@ -75,7 +75,7 @@ public class WeatherAct extends AppCompatActivity {
                 //String description=weather_array_dict_0.getString("description");
                 String time=weather_array_dict_0.getString("dt_txt");
                 Calendar cal = Calendar.getInstance();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CANADA);
+                DateFormat sdf = new DateFormat("yyyy-MM-dd HH:mm:ss");
                 String my_date=sdf.parse("2022-06-08 15:00:00");
                 JSONObject main_dict=weather_array_dict_0.getJSONObject("main");
                 //JSONObject wind_dict=json.getJSONObject("wind");
