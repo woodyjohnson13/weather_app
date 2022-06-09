@@ -19,6 +19,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -31,6 +32,7 @@ public class WeatherAct extends AppCompatActivity {
     private TextView main_wind_speed;
     private TextView main_clouds;
     private TextView air_pressure;
+    private TextView main_date;
 
 
 
@@ -66,36 +68,30 @@ public class WeatherAct extends AppCompatActivity {
             String humidity="";
             String wind="";
             String pressure="";
-
+            String current_date;
 
             try {
+                //get whole object
                 JSONObject json = new JSONObject(result);
+                //get list with ourly forecast
                 JSONArray weather_array_block= json.getJSONArray("list");
+                //get first element
                 JSONObject weather_array_dict_0=weather_array_block.getJSONObject(0);
-                //String description=weather_array_dict_0.getString("description");
                 String time=weather_array_dict_0.getString("dt_txt");
                 Calendar cal = Calendar.getInstance();
-                DateFormat sdf = new DateFormat("yyyy-MM-dd HH:mm:ss");
-                String my_date=sdf.parse("2022-06-08 15:00:00");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                cal.setTime(sdf.parse("2022-06-08 15:00:00"));
+                current_date=cal.getTime().toString();
                 JSONObject main_dict=weather_array_dict_0.getJSONObject("main");
-                //JSONObject wind_dict=json.getJSONObject("wind");
                 double current_temperature=main_dict.getDouble("temp");
                 int current_temp_int=(int)current_temperature;
-
-                //int current_humidity=main_dict.getInt("humidity");
-                //double current_wind_speed=wind_dict.getDouble("speed");
                 main_temperature+=current_temp_int + "°C";
-//                wind+=current_wind_speed + " m/s";
-//                humidity+=current_humidity + " mm";
-//                output+="Clouds:"+description+
-//                        "\nCurrent temperature:" + current_temperature +" Celcium"+
-//                        "\nCurrent wind speed:" + current_wind_speed +"m/s"+
-//                        "\nCurrent humidity:" + current_humidity +" %";
 
-//                main_humidity.setText(humidity);
+
+                main_date.setText(current_date);
                 main_wind_speed.setText(time);
                 main_weather.setText(main_temperature);
-            } catch (JSONException e) {
+            } catch (JSONException | ParseException e) {
                 e.printStackTrace();
             }
         }
@@ -113,6 +109,7 @@ public class WeatherAct extends AppCompatActivity {
         main_humidity=findViewById(R.id.humidity_level);
         main_wind_speed=findViewById(R.id.wind_speed);
         main_clouds=findViewById(R.id.main_clouds);
+        main_date=findViewById(R.id.main_date);
 
         GetWeather get_weather=new GetWeather();
 
