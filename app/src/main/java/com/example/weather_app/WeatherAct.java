@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -33,7 +37,14 @@ public class WeatherAct extends AppCompatActivity {
     private TextView main_clouds;
     private TextView air_pressure;
     private TextView main_date;
+    private Button back_to_cites;
 
+    public void clear_preferences() {
+            MainActivity.sha
+
+
+
+    }
 
 
     class GetWeather extends AsyncTask<String,Void,String>
@@ -80,9 +91,11 @@ public class WeatherAct extends AppCompatActivity {
                 String time=weather_array_dict_0.getString("dt_txt");
                 Calendar cal = Calendar.getInstance();
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
                 cal.setTime(sdf.parse("2022-06-08 15:00:00"));
                 current_date=cal.getTime().toString();
                 JSONObject main_dict=weather_array_dict_0.getJSONObject("main");
+
                 double current_temperature=main_dict.getDouble("temp");
                 int current_temp_int=(int)current_temperature;
                 main_temperature+=current_temp_int + "°C";
@@ -110,15 +123,24 @@ public class WeatherAct extends AppCompatActivity {
         main_wind_speed=findViewById(R.id.wind_speed);
         main_clouds=findViewById(R.id.main_clouds);
         main_date=findViewById(R.id.main_date);
+        back_to_cites=findViewById(R.id.back_to_cities);
+
 
         GetWeather get_weather=new GetWeather();
-
 
         Intent back_to_city_list=new Intent(WeatherAct.this,MainActivity.class);
 
         Intent start_this_activity = getIntent();
         String my_api_call = start_this_activity.getStringExtra("call");
         String my_city_name=start_this_activity.getStringExtra("name");
+
+        back_to_cites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clear_preferences();
+                startActivity(back_to_city_list);
+            }
+        });
 
         city_name.setText(my_city_name);
 

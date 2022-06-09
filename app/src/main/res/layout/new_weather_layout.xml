@@ -10,14 +10,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/back_to_citys"
+        <Button
+            android:id="@+id/back_to_cities"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="Back to city list"
-            android:textColor="@color/white" />
+            android:textSize="10sp"
+            android:text="@string/back_to_cites"
+            />
+
         <TextView
             android:id="@+id/main_date"
             android:layout_width="wrap_content"
@@ -572,6 +574,7 @@
 
 
         </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
