@@ -6,5 +6,6 @@
     <string name="get">Get weather in Rostov</string>
     <string name="get_2">Get weather in Moscow</string>
     <string name="back_to_cites">Cities list</string>
+    <string name="refresh">Refresh weather</string>
 
 </resources>

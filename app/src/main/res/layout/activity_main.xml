@@ -54,28 +54,6 @@
             tools:ignore="TextContrastCheck"
             tools:layout_editor_absoluteX="0dp" />
 
-        <TextView
-            android:id="@+id/fuckyoutextview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="158dp"
-            android:text="TextView"
-            android:textSize="8sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/getBtRnd" />
-
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="68dp"
-            android:layout_marginEnd="156dp"
-            android:text="TextView"
-            android:textSize="8sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fuckyoutextview" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

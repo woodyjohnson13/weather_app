@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,7 +26,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class WeatherAct extends AppCompatActivity {
     TextView main_weather;
@@ -38,12 +36,16 @@ public class WeatherAct extends AppCompatActivity {
     private TextView air_pressure;
     private TextView main_date;
     private Button back_to_cites;
+    private Button refresh_weather;
 
+
+    //Cleared shared preferense ot avoid looping back to weather activity,method for "back to cities"
+    //button
     public void clear_preferences() {
-            MainActivity.sha
-
-
-
+        SharedPreferences prefs;
+        prefs = getSharedPreferences("SHARED_PREFS", this.MODE_PRIVATE);
+        prefs.getBoolean("choice", false);
+        prefs.edit().putBoolean("choice", false).apply();
     }
 
 
@@ -117,6 +119,7 @@ public class WeatherAct extends AppCompatActivity {
 
         Date current_time=Calendar.getInstance().getTime();
         String date_from_calendar = DateFormat.getDateInstance(DateFormat.FULL).format(current_time.getTime());
+
         city_name=findViewById(R.id.main_city_name);
         main_weather=findViewById(R.id.main_temp);
         main_humidity=findViewById(R.id.humidity_level);
@@ -124,6 +127,7 @@ public class WeatherAct extends AppCompatActivity {
         main_clouds=findViewById(R.id.main_clouds);
         main_date=findViewById(R.id.main_date);
         back_to_cites=findViewById(R.id.back_to_cities);
+        refresh_weather=findViewById(R.id.refresh_button);
 
 
         GetWeather get_weather=new GetWeather();
@@ -139,6 +143,13 @@ public class WeatherAct extends AppCompatActivity {
             public void onClick(View v) {
                 clear_preferences();
                 startActivity(back_to_city_list);
+            }
+        });
+
+        refresh_weather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                get_weather.execute(my_api_call);
             }
         });
 
