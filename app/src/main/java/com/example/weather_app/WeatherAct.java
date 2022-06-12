@@ -33,7 +33,7 @@ public class WeatherAct extends AppCompatActivity {
     private TextView main_humidity;
     private TextView main_wind_speed;
     private TextView main_clouds;
-    private TextView air_pressure;
+    private TextView main_air_pressure;
     private TextView main_date;
     private Button back_to_cites;
     private Button refresh_weather;
@@ -76,12 +76,8 @@ public class WeatherAct extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            String output="";
             String main_temperature="";
-            String humidity="";
-            String wind="";
-            String pressure="";
-            String current_date;
+            String main_hudity="";
 
             try {
                 //get whole object
@@ -90,22 +86,24 @@ public class WeatherAct extends AppCompatActivity {
                 JSONArray weather_array_block= json.getJSONArray("list");
                 //get first element
                 JSONObject weather_array_dict_0=weather_array_block.getJSONObject(0);
+                //get date
                 String time=weather_array_dict_0.getString("dt_txt");
-                Calendar cal = Calendar.getInstance();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(time);
+                String main_time=new SimpleDateFormat("HH:mm").format(sdf);
+                //getting temperature,wind and humidity
+                JSONObject temp_dict=weather_array_dict_0.getJSONObject("main");
+                double current_temperature=temp_dict.getDouble("temp");
+                int integer_temp=(int)current_temperature;
+                JSONObject wind_dict=weather_array_dict_0.getJSONObject("wind");
 
-                cal.setTime(sdf.parse("2022-06-08 15:00:00"));
-                current_date=cal.getTime().toString();
-                JSONObject main_dict=weather_array_dict_0.getJSONObject("main");
-
-                double current_temperature=main_dict.getDouble("temp");
-                int current_temp_int=(int)current_temperature;
-                main_temperature+=current_temp_int + "°C";
+                main_temperature+=integer_temp + "°C";
 
 
-                main_date.setText(current_date);
-                main_wind_speed.setText(time);
+                main_date.setText(main_time);
+                main_air_pressure.setText(temp_dict.getDouble("pressure")+"mm");
+                main_wind_speed.setText(wind_dict.getDouble("speed")+"m/s");
                 main_weather.setText(main_temperature);
+                main_humidity.setText((temp_dict.getDouble("humidity"))+"%");
             } catch (JSONException | ParseException e) {
                 e.printStackTrace();
             }
@@ -126,8 +124,10 @@ public class WeatherAct extends AppCompatActivity {
         main_wind_speed=findViewById(R.id.wind_speed);
         main_clouds=findViewById(R.id.main_clouds);
         main_date=findViewById(R.id.main_date);
+        main_air_pressure=findViewById(R.id.air_pressure);
         back_to_cites=findViewById(R.id.back_to_cities);
         refresh_weather=findViewById(R.id.refresh_button);
+
 
 
         GetWeather get_weather=new GetWeather();

@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (v.getId()) {
                     case R.id.getBtRnd:
-                        city_api_call="https://api.openweathermap.org/data/2.5/forecast?q=Rostov&appid=32879a100afc9b16435463591d9e99c9";
+                        city_api_call="https://api.openweathermap.org/data/2.5/forecast?q=Rostov&units=metric&appid=32879a100afc9b16435463591d9e99c9";
                         city_name="Rostov";
                         get_pref();
                         break;
