@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     Button get_info_rnd;
     Button get_info_msc;
     String city_api_call="";
+    String city_current_weather_call="";
     String city_name="";
     TextView preference_city_name;
     TextView prefernece_city_api;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (v.getId()) {
                     case R.id.getBtRnd:
                         city_api_call="https://api.openweathermap.org/data/2.5/forecast?q=Rostov&units=metric&appid=32879a100afc9b16435463591d9e99c9";
+                        city_current_weather_call="http://api.openweathermap.org/data/2.5/weather?q=Rostov-on-Don&units=metric&appid=32879a100afc9b16435463591d9e99c9";
                         city_name="Rostov";
                         get_pref();
                         break;
@@ -80,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 go_to_weather.putExtra("call",city_api_call);
+                go_to_weather.putExtra("call_current",city_current_weather_call);
                 go_to_weather.putExtra("name",city_name);
                 startActivity(go_to_weather);
 

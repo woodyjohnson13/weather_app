@@ -116,6 +116,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -141,6 +142,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -166,6 +168,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -191,6 +194,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -216,6 +220,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -241,6 +246,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -267,6 +273,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -292,6 +299,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -317,6 +325,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"

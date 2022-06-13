@@ -28,15 +28,37 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class WeatherAct extends AppCompatActivity {
-    TextView main_weather;
+    //main weather textviews
+    private TextView main_weather;
     private TextView city_name;
     private TextView main_humidity;
     private TextView main_wind_speed;
     private TextView main_clouds;
     private TextView main_air_pressure;
     private TextView main_date;
+    //refresh and back to cities vuttons
     private Button back_to_cites;
     private Button refresh_weather;
+    ///hourly weather and time textviews
+    private TextView hourly_time_1;
+    private TextView hourly_time_2;
+    private TextView hourly_time_3;
+    private TextView hourly_time_4;
+    private TextView hourly_time_5;
+    private TextView hourly_time_6;
+    private TextView hourly_time_7;
+    private TextView hourly_time_8;
+    private TextView hourly_time_9;
+    private TextView hourly_weather_1;
+    private TextView hourly_weather_2;
+    private TextView hourly_weather_3;
+    private TextView hourly_weather_4;
+    private TextView hourly_weather_5;
+    private TextView hourly_weather_6;
+    private TextView hourly_weather_7;
+    private TextView hourly_weather_8;
+    private TextView hourly_weather_9;
+
 
 
     //Cleared shared preferense ot avoid looping back to weather activity,method for "back to cities"
@@ -71,13 +93,13 @@ public class WeatherAct extends AppCompatActivity {
                 e.printStackTrace();
                 return null;
             }
+
+
         }
 
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            String main_temperature="";
-            String main_hudity="";
 
             try {
                 //get whole object
@@ -96,28 +118,25 @@ public class WeatherAct extends AppCompatActivity {
                 int integer_temp=(int)current_temperature;
                 JSONObject wind_dict=weather_array_dict_0.getJSONObject("wind");
 
-                main_temperature+=integer_temp + "°C";
-
-
                 main_date.setText(main_time);
                 main_air_pressure.setText(temp_dict.getDouble("pressure")+"mm");
                 main_wind_speed.setText(wind_dict.getDouble("speed")+"m/s");
-                main_weather.setText(main_temperature);
+                main_weather.setText(integer_temp+"°C");
                 main_humidity.setText((temp_dict.getDouble("humidity"))+"%");
             } catch (JSONException | ParseException e) {
                 e.printStackTrace();
             }
+
         }
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_weather_layout);
 
-        Date current_time=Calendar.getInstance().getTime();
-        String date_from_calendar = DateFormat.getDateInstance(DateFormat.FULL).format(current_time.getTime());
-
+        //main weather textviews info connecting
         city_name=findViewById(R.id.main_city_name);
         main_weather=findViewById(R.id.main_temp);
         main_humidity=findViewById(R.id.humidity_level);
@@ -125,6 +144,26 @@ public class WeatherAct extends AppCompatActivity {
         main_clouds=findViewById(R.id.main_clouds);
         main_date=findViewById(R.id.main_date);
         main_air_pressure=findViewById(R.id.air_pressure);
+        //hourly textviews connecting
+        hourly_weather_1=findViewById(R.id.hourly_weather_1);
+        hourly_weather_2=findViewById(R.id.hourly_weather_2);
+        hourly_weather_3=findViewById(R.id.hourly_weather_3);
+        hourly_weather_4=findViewById(R.id.hourly_weather_4);
+        hourly_weather_5=findViewById(R.id.hourly_weather_5);
+        hourly_weather_6=findViewById(R.id.hourly_weather_6);
+        hourly_weather_7=findViewById(R.id.hourly_weather_7);
+        hourly_weather_8=findViewById(R.id.hourly_weather_8);
+        hourly_weather_9=findViewById(R.id.hourly_weather_9);
+        hourly_time_1=findViewById(R.id.hourly_time_1);
+        hourly_time_2=findViewById(R.id.hourly_time_2);
+        hourly_time_3=findViewById(R.id.hourly_time_3);
+        hourly_time_4=findViewById(R.id.hourly_time_4);
+        hourly_time_5=findViewById(R.id.hourly_time_5);
+        hourly_time_6=findViewById(R.id.hourly_time_6);
+        hourly_time_7=findViewById(R.id.hourly_time_7);
+        hourly_time_8=findViewById(R.id.hourly_time_8);
+        hourly_time_9=findViewById(R.id.hourly_time_9);
+        //butons connecting
         back_to_cites=findViewById(R.id.back_to_cities);
         refresh_weather=findViewById(R.id.refresh_button);
 
@@ -136,8 +175,11 @@ public class WeatherAct extends AppCompatActivity {
 
         Intent start_this_activity = getIntent();
         String my_api_call = start_this_activity.getStringExtra("call");
+        String my_api_call_current = start_this_activity.getStringExtra("call_current");
         String my_city_name=start_this_activity.getStringExtra("name");
 
+
+        //back to cities list vutton,works
         back_to_cites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,6 +188,8 @@ public class WeatherAct extends AppCompatActivity {
             }
         });
 
+
+        //refresh weather button, still doesnt work
         refresh_weather.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
