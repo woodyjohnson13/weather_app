@@ -15,11 +15,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     Button get_info_rnd;
     Button get_info_msc;
-    String city_api_call="";
+    String city_api_call_hourly="";
     String city_current_weather_call="";
     String city_name="";
-    TextView preference_city_name;
-    TextView prefernece_city_api;
     public Boolean weather_activity_trigger ;
 
 
@@ -28,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences weather_cativity_shared=getSharedPreferences("SHARED_PREFS",MODE_PRIVATE);
         SharedPreferences.Editor editor = weather_cativity_shared.edit();
         editor.putString("city_name",city_name);
-        editor.putString("city_api_call",city_api_call);
+        editor.putString("city_cuurent_weater_pref",city_current_weather_call);
+        editor.putString("city_hourly_weater_pref",city_api_call_hourly);
         weather_activity_trigger=true;
         editor.putBoolean("choice",weather_activity_trigger);
         editor.apply();
@@ -37,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadData () {
         SharedPreferences my_shared_prefs=getSharedPreferences("SHARED_PREFS",MODE_PRIVATE);
-        city_api_call=my_shared_prefs.getString("city_api_call","");
+        city_current_weather_call=my_shared_prefs.getString("city_api_call","");
+        city_api_call_hourly=my_shared_prefs.getString("city_hourly_weater_pref","");
         city_name=my_shared_prefs.getString("city_name","");
         weather_activity_trigger= my_shared_prefs.getBoolean("choice", false);
         Toast.makeText(this,"Data loaded " + weather_activity_trigger.toString(),Toast.LENGTH_LONG).show();
@@ -55,8 +55,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         if(weather_activity_trigger) {
-            go_to_weather.putExtra("call",city_api_call);
+            //go_to_weather.putExtra("call",city_api_call);
             go_to_weather.putExtra("name",city_name);
+            go_to_weather.putExtra("current_weather_call_extra",city_current_weather_call);
+            go_to_weather.putExtra("call_current_hourly",city_api_call_hourly);
+
             startActivity(go_to_weather);
            }
 
@@ -67,13 +70,13 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (v.getId()) {
                     case R.id.getBtRnd:
-                        city_api_call="https://api.openweathermap.org/data/2.5/forecast?q=Rostov&units=metric&appid=32879a100afc9b16435463591d9e99c9";
+                        city_api_call_hourly="https://api.openweathermap.org/data/2.5/forecast?q=Rostov&units=metric&appid=32879a100afc9b16435463591d9e99c9";
                         city_current_weather_call="http://api.openweathermap.org/data/2.5/weather?q=Rostov-on-Don&units=metric&appid=32879a100afc9b16435463591d9e99c9";
                         city_name="Rostov";
                         get_pref();
                         break;
                     case R.id.getBtMoscow:
-                        city_api_call="http://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=32879a100afc9b16435463591d9e99c9";
+                        city_api_call_hourly="http://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=32879a100afc9b16435463591d9e99c9";
                         city_name="Moscow";
                         get_pref();
                         break;
@@ -81,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
 
-                go_to_weather.putExtra("call",city_api_call);
-                go_to_weather.putExtra("call_current",city_current_weather_call);
+                go_to_weather.putExtra("current_weather_call_extra",city_current_weather_call);
+                go_to_weather.putExtra("call_current_hourly",city_api_call_hourly);
                 go_to_weather.putExtra("name",city_name);
                 startActivity(go_to_weather);
 
