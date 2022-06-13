@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -22,18 +22,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.sql.Array;
-import java.text.DateFormat;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -181,64 +173,6 @@ public class WeatherAct extends AppCompatActivity {
         mRequestQueue.add(request);
     }
 
-//    class GetWeather extends AsyncTask<String,Void,String>
-//    {
-//        protected String doInBackground(String... urls){
-//            StringBuilder result=new StringBuilder();
-//            try {
-//                //Вот весь этот блок мне вообще непонятен, как оно взаимодействует,хуй знает.
-//                //Похоже весь этот блок читает json в бэкграунде и присваивает его переменной result.
-//                URL url=new URL(urls[0]);
-//                HttpURLConnection urlConnection =(HttpURLConnection) url.openConnection();
-//                urlConnection.connect();
-//                InputStream inputStream =urlConnection.getInputStream();
-//                BufferedReader reader =new BufferedReader(new InputStreamReader(inputStream));
-//                String line;
-//                while ((line=reader.readLine())!=null)
-//                {
-//                    result.append(line).append("\n");
-//                } return result.toString();
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                return null;
-//            }
-//
-//
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String result) {
-//            super.onPostExecute(result);
-//
-//            try {
-//                //get whole object
-//                JSONObject json = new JSONObject(result);
-//                //get list with ourly forecast
-//                JSONArray weather_array_block= json.getJSONArray("list");
-//                //get first element
-//                JSONObject weather_array_dict_0=weather_array_block.getJSONObject(0);
-//                //get date
-//                String time=weather_array_dict_0.getString("dt_txt");
-//                Date sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(time);
-//                String main_time=new SimpleDateFormat("HH:mm").format(sdf);
-//                //getting temperature,wind and humidity
-//                JSONObject temp_dict=weather_array_dict_0.getJSONObject("main");
-//                double current_temperature=temp_dict.getDouble("temp");
-//                int integer_temp=(int)current_temperature;
-//                JSONObject wind_dict=weather_array_dict_0.getJSONObject("wind");
-//
-//                main_date.setText(main_time);
-//                main_air_pressure.setText(temp_dict.getDouble("pressure")+"mm");
-//                main_wind_speed.setText(wind_dict.getDouble("speed")+"m/s");
-//                main_weather.setText(integer_temp+"°C");
-//                main_humidity.setText((temp_dict.getDouble("humidity"))+"%");
-//            } catch (JSONException | ParseException e) {
-//                e.printStackTrace();
-//            }
-//
-//        }
-//    }
 
 
     @Override
@@ -293,7 +227,7 @@ public class WeatherAct extends AppCompatActivity {
         mRequestQueue= Volley.newRequestQueue(this);
 
 
-        //back to cities list vutton,works
+        //back to cities list button and it works
         back_to_cites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -304,12 +238,14 @@ public class WeatherAct extends AppCompatActivity {
 
 
         //refresh weather button, still doesnt work
-//        refresh_weather.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                get_weather.execute(my_api_call);
-//            }
-//        });
+        refresh_weather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getWeather(my_api_call_current);
+                getWeather_hourly_first_day(my_api_call_hourly);
+                Toast.makeText(WeatherAct.this,"Weather refreshed",Toast.LENGTH_LONG).show();
+            }
+        });
 
 
         getWeather(my_api_call_current);
