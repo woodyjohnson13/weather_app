@@ -10,36 +10,56 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/back_to_citys"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="Back to city list"
-            android:textColor="@color/white" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/back_to_cities"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/back_to_cites"
+                android:textSize="11sp"
+                android:layout_alignParentLeft="true"/>
+
+            <Button
+                android:id="@+id/refresh_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/refresh"
+                android:textSize="11sp" />
+
+        </RelativeLayout>
+
         <TextView
             android:id="@+id/main_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_gravity="center"
-            android:text="Tuesday,15"
-            android:textSize="20sp"
-            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_regular"
-            />
+            android:text="Tuesday,15"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/main_city_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Rostov"
-            android:textSize="25sp"
-            android:textColor="@color/white"
             android:fontFamily="@font/roboto_regular"
-            />
+            android:text="Rostov"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,7 +86,6 @@
                 android:textColor="@color/white" />
 
 
-
         </LinearLayout>
 
         <HorizontalScrollView
@@ -76,8 +95,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -97,6 +116,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -122,6 +142,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -147,6 +168,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -172,6 +194,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -197,6 +220,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -222,6 +246,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -248,6 +273,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -273,6 +299,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -298,6 +325,7 @@
                         android:textColor="@color/white"></TextView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -313,21 +341,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_weight="4"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="Humidity"
                     android:fontFamily="@font/roboto_regular"
+                    android:text="Humidity"
                     android:textColor="@color/white"></TextView>
 
                 <TextView
@@ -339,19 +367,20 @@
                     android:text="69%"
                     android:textColor="@color/white"></TextView>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="Wind"
                     android:fontFamily="@font/roboto_regular"
+                    android:text="Wind"
                     android:textColor="@color/white"></TextView>
 
                 <TextView
@@ -363,19 +392,20 @@
                     android:text="10m/s"
                     android:textColor="@color/white"></TextView>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="Air pressure"
                     android:fontFamily="@font/roboto_regular"
+                    android:text="Air pressure"
                     android:textColor="@color/white"></TextView>
 
                 <TextView
@@ -392,186 +422,197 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:orientation="vertical"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                >
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="left"
                     android:text="Monday 14"
-                    android:fontFamily="@font/roboto_regular"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="10dp"
-                    android:gravity="left"/>
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12°"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="40dp"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/roboto_regular"/>
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="12°"
+                    android:textColor="@color/white" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12°"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="40dp"
-                    android:textColor="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
                     android:gravity="right"
-                    android:fontFamily="@font/roboto_regular"/>
+                    android:text="12°"
+                    android:textColor="@color/white" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                >
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="left"
                     android:text="Tuesday 15"
-                    android:fontFamily="@font/roboto_regular"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="10dp"
-                    android:gravity="left"/>
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12°"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="40dp"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/roboto_regular"/>
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="12°"
+                    android:textColor="@color/white" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12°"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="40dp"
-                    android:textColor="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
                     android:gravity="right"
-                    android:fontFamily="@font/roboto_regular"/>
+                    android:text="12°"
+                    android:textColor="@color/white" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                >
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="left"
                     android:text="Wednesday 16 "
-                    android:textColor="@color/white"
-                    android:layout_marginTop="10dp"
-                    android:gravity="left"
-                    android:fontFamily="@font/roboto_regular"/>
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12°"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="40dp"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/roboto_regular"/>
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="12°"
+                    android:textColor="@color/white" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12°"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="40dp"
-                    android:textColor="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
                     android:gravity="right"
-                    android:fontFamily="@font/roboto_regular"/>
+                    android:text="12°"
+                    android:textColor="@color/white" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                >
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="left"
                     android:text="Thursday 17"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="10dp"
-                    android:gravity="left"
-                    android:fontFamily="@font/roboto_regular"/>
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12°"
-                    android:fontFamily="@font/roboto_regular"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="40dp"
-                    android:textColor="@color/white"/>
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="12°"
+                    android:textColor="@color/white" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12°"
-                    android:fontFamily="@font/roboto_regular"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="40dp"
-                    android:textColor="@color/white"
-                    android:gravity="right"/>
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="right"
+                    android:text="12°"
+                    android:textColor="@color/white" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Friday 17"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="10dp"
-                    android:gravity="left"
-                    android:fontFamily="@font/roboto_regular"/>
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12°"
-                    android:fontFamily="@font/roboto_regular"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="40dp"
-                    android:textColor="@color/white"/>
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="left"
+                    android:text="Friday 17"
+                    android:textColor="@color/white" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12°"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="40dp"
-                    android:textColor="@color/white"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_regular"
-                    android:gravity="right"/>
+                    android:text="12°"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="right"
+                    android:text="12°"
+                    android:textColor="@color/white" />
             </LinearLayout>
 
 
         </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
