@@ -320,8 +320,8 @@ public class WeatherAct extends AppCompatActivity {
         weekly_weahter_max_0=findViewById(R.id.weekly_weahter_max_0);
         weekly_weahter_max_1=findViewById(R.id.weekly_weahter_max_1);
         weekly_weahter_max_2=findViewById(R.id.weekly_weahter_max_2);
-        weekly_weahter_max_3=findViewById(R.id.weekly_weahter_max_2);
-        weekly_weahter_max_4=findViewById(R.id.weekly_weahter_max_3);
+        weekly_weahter_max_3=findViewById(R.id.weekly_weahter_max_3);
+        weekly_weahter_max_4=findViewById(R.id.weekly_weahter_max_4);
         weekly_weahter_min_0=findViewById(R.id.weekly_weahter_min_0);
         weekly_weahter_min_1=findViewById(R.id.weekly_weahter_min_1);
         weekly_weahter_min_2=findViewById(R.id.weekly_weahter_min_2);
