@@ -197,6 +197,8 @@ public class WeatherAct extends AppCompatActivity {
                     JSONObject first_object=days_array.getJSONObject(0);
                     String  date_1=first_object.getString("dt_txt");
                     Date full_date=full.parse(date_1);
+                    String first_day_in_forecast_final=day_of_the_week.format(full_date);
+                    days_of_the_week.add(first_day_in_forecast_final);
                     String reference_date=date_without_time.format(full_date);
 
                     int z;
@@ -206,30 +208,34 @@ public class WeatherAct extends AppCompatActivity {
                         JSONObject main=current_object.getJSONObject("main");
                         Date full_date_to_check=full.parse(date_2);
                         String need_to_chek_date=date_without_time.format(full_date_to_check);
-                        Toast.makeText(WeatherAct.this,need_to_chek_date.toString(),Toast.LENGTH_LONG).show();
                         if(need_to_chek_date.equals(reference_date)) {
                             daily_max.add(main.getDouble("temp_max"));
                             daily_min.add(main.getDouble("temp_min"));
                         } else if (!need_to_chek_date.equals(reference_date)){
+
                             String day_of_the_week_json=current_object.getString("dt_txt");
                             Date day_of_the_week_full=full.parse(day_of_the_week_json);
                             String day_of_the_week_final=day_of_the_week.format(day_of_the_week_full);
                             days_of_the_week.add(day_of_the_week_final);
-                            daily_max.add(main.getDouble("temp_max"));
-                            daily_min.add(main.getDouble("temp_min"));
+
+
                             reference_date=need_to_chek_date;
-                            int sum_max = 0;
-                            int sum_min = 0;
+
+                            double sum_max = 0;
+                            double sum_min = 0;
                             for (int x=0;x<daily_max.size();x++){
                                 sum_max+=daily_max.get(x);
                             }
                             for (int x=0;x<daily_min.size();x++){
                                 sum_min+=daily_min.get(x);
                             }
-                            max_day_temperatures.add((sum_max/daily_max.size()));
-                            min_day_temperatures.add((sum_min/daily_min.size()));
+                            max_day_temperatures.add((int)(sum_max/daily_max.size()));
+                            min_day_temperatures.add((int)(sum_min/daily_min.size()));
                             daily_max.clear();
                             daily_min.clear();
+                            daily_max.add(main.getDouble("temp_max"));
+                            daily_min.add(main.getDouble("temp_min"));
+
 
                         }
 
