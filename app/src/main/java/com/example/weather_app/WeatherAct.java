@@ -189,16 +189,22 @@ public class WeatherAct extends AppCompatActivity {
                     JSONArray days_array = response.getJSONArray("list");
                     JSONObject first_object=days_array.getJSONObject(0);
                     String  date_1=first_object.getString("dt_txt");
+                    Date full_date=full.parse(date_1);
+                    String reference_date=date_without_time.format(full_date);
 
-                    for(int i=0;i<=39;i++){
-                        JSONObject current_object=days_array.getJSONObject(i);
-                        String date_to_be_checked=current_object.getString("dt_txt");
-                        if(date_to_be_checked.toString()==date_1) {
+                    int z;
+                    for(z=0;z<=39;z++){
+                        JSONObject current_object=days_array.getJSONObject(z);
+                        String date_2=current_object.getString("dt_txt");
+                        Date full_date_to_check=full.parse(date_2);
+                        String need_to_chek_date=date_without_time.format(full_date_to_check);
+                        Toast.makeText(WeatherAct.this,need_to_chek_date.toString(),Toast.LENGTH_LONG).show();
+                        if(need_to_chek_date.toString().equals(reference_date)) {
                             JSONObject main=current_object.getJSONObject("main");
-                            daily_max.add((int)main.getDouble("temp.max"));
-                            daily_min.add((int)main.getDouble("temp.min"));
-                        } else if (!date_to_be_checked.toString().equals(date_1.toString())){
-                            date_1=date_to_be_checked;
+                            daily_max.add((int)main.getDouble("temp_max"));
+                            daily_min.add((int)main.getDouble("temp_min"));
+                        } else if (!need_to_chek_date.equals(reference_date)){
+                            reference_date=need_to_chek_date;
                             int sum_max = 0;
                             int sum_min = 0;
                             for (int x=0;x<daily_max.size();x++){
@@ -213,14 +219,14 @@ public class WeatherAct extends AppCompatActivity {
                             daily_min.clear();
 
                         }
-                        weekly_weahter_max_0.setText(max_day_temperatures.get(0));
-                        weekly_weahter_max_1.setText(max_day_temperatures.get(1));
-                        weekly_weahter_max_2.setText(max_day_temperatures.get(2));
-                        weekly_weahter_max_3.setText(max_day_temperatures.get(3));
-                        weekly_weahter_max_4.setText(max_day_temperatures.get(4));
-                    }
 
-                } catch (JSONException  e) {
+                    }
+                    weekly_weahter_max_0.setText(max_day_temperatures.get(0).toString());
+                    weekly_weahter_max_1.setText(max_day_temperatures.get(1).toString());
+                    weekly_weahter_max_2.setText(max_day_temperatures.get(2).toString());
+                    weekly_weahter_max_3.setText(max_day_temperatures.get(3).toString());
+                    weekly_weahter_max_4.setText(max_day_temperatures.get(4).toString());
+                } catch (JSONException | ParseException e) {
                     e.printStackTrace();
                 }
 
