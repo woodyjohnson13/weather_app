@@ -188,12 +188,12 @@ public class WeatherAct extends AppCompatActivity {
 
                     JSONArray days_array = response.getJSONArray("list");
                     JSONObject first_object=days_array.getJSONObject(0);
-                    String  date_1=date_without_time.parse(first_object.getString("dt_txt"));
+                    String  date_1=first_object.getString("dt_txt");
 
                     for(int i=0;i<=39;i++){
                         JSONObject current_object=days_array.getJSONObject(i);
-                        Date date_to_be_checked=date_without_time.parse(current_object.getString("dt_txt"));
-                        if(date_to_be_checked.toString()==date_1.toString()) {
+                        String date_to_be_checked=current_object.getString("dt_txt");
+                        if(date_to_be_checked.toString()==date_1) {
                             JSONObject main=current_object.getJSONObject("main");
                             daily_max.add((int)main.getDouble("temp.max"));
                             daily_min.add((int)main.getDouble("temp.min"));
@@ -220,7 +220,7 @@ public class WeatherAct extends AppCompatActivity {
                         weekly_weahter_max_4.setText(max_day_temperatures.get(4));
                     }
 
-                } catch (JSONException | ParseException e) {
+                } catch (JSONException  e) {
                     e.printStackTrace();
                 }
 

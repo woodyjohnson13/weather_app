@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences weather_cativity_shared=getSharedPreferences("SHARED_PREFS",MODE_PRIVATE);
         SharedPreferences.Editor editor = weather_cativity_shared.edit();
         editor.putString("city_name",city_name);
-        editor.putString("city_cuurent_weater_pref",city_current_weather_call);
-        editor.putString("city_hourly_weater_pref",city_api_call_hourly);
+        editor.putString("city_current_weather_pref",city_current_weather_call);
+        editor.putString("city_hourly_weather_pref",city_api_call_hourly);
         weather_activity_trigger=true;
         editor.putBoolean("choice",weather_activity_trigger);
         editor.apply();
@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadData () {
         SharedPreferences my_shared_prefs=getSharedPreferences("SHARED_PREFS",MODE_PRIVATE);
-        city_current_weather_call=my_shared_prefs.getString("city_api_call","");
-        city_api_call_hourly=my_shared_prefs.getString("city_hourly_weater_pref","");
+        city_current_weather_call=my_shared_prefs.getString("city_current_weather_pref","");
+        city_api_call_hourly=my_shared_prefs.getString("city_hourly_weather_pref","");
         city_name=my_shared_prefs.getString("city_name","");
         weather_activity_trigger= my_shared_prefs.getBoolean("choice", false);
         Toast.makeText(this,"Data loaded " + weather_activity_trigger.toString(),Toast.LENGTH_LONG).show();
