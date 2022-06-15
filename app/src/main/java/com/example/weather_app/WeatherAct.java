@@ -63,7 +63,19 @@ public class WeatherAct extends AppCompatActivity {
     private TextView hourly_weather_7;
     private TextView hourly_weather_8;
     private TextView hourly_weather_9;
+    private TextView weekly_weahter_max_0;
+    private TextView weekly_weahter_max_1;
+    private TextView weekly_weahter_max_2;
+    private TextView weekly_weahter_max_3;
+    private TextView weekly_weahter_max_4;
+    private TextView weekly_weahter_min_0;
+    private TextView weekly_weahter_min_1;
+    private TextView weekly_weahter_min_2;
+    private TextView weekly_weahter_min_3;
+    private TextView weekly_weahter_min_4;
+
     SimpleDateFormat full = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    SimpleDateFormat date_without_time = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat day = new SimpleDateFormat("dd");
     SimpleDateFormat time = new SimpleDateFormat("HH:mm");
     SimpleDateFormat day_of_the_week = new SimpleDateFormat("EEEE");
@@ -116,6 +128,11 @@ public class WeatherAct extends AppCompatActivity {
         mRequestQueue.add(request);
     }
 
+
+
+
+
+
     private void getWeather_hourly_first_day(String url) {
         final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, //GET - API-запрос для получение данных
                 url, null, new Response.Listener<JSONObject>() {
@@ -124,7 +141,7 @@ public class WeatherAct extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    int i=0;
+                    int i;
 
                     JSONArray days_array = response.getJSONArray("list");
                     for(i=0;i<=8;i++){
@@ -162,6 +179,51 @@ public class WeatherAct extends AppCompatActivity {
                 } catch (JSONException | ParseException e) {
                     e.printStackTrace();
                 }
+
+                try {
+                    List<Integer> daily_max = new ArrayList<>();
+                    List<Integer> daily_min = new ArrayList<>();
+                    List<Integer> max_day_temperatures = new ArrayList<>();
+                    List<Integer> min_day_temperatures = new ArrayList<>();
+
+                    JSONArray days_array = response.getJSONArray("list");
+                    JSONObject first_object=days_array.getJSONObject(0);
+                    String  date_1=date_without_time.parse(first_object.getString("dt_txt"));
+
+                    for(int i=0;i<=39;i++){
+                        JSONObject current_object=days_array.getJSONObject(i);
+                        Date date_to_be_checked=date_without_time.parse(current_object.getString("dt_txt"));
+                        if(date_to_be_checked.toString()==date_1.toString()) {
+                            JSONObject main=current_object.getJSONObject("main");
+                            daily_max.add((int)main.getDouble("temp.max"));
+                            daily_min.add((int)main.getDouble("temp.min"));
+                        } else if (!date_to_be_checked.toString().equals(date_1.toString())){
+                            date_1=date_to_be_checked;
+                            int sum_max = 0;
+                            int sum_min = 0;
+                            for (int x=0;x<daily_max.size();x++){
+                                sum_max+=daily_max.get(x);
+                            }
+                            for (int x=0;x<daily_min.size();x++){
+                                sum_min+=daily_min.get(x);
+                            }
+                            max_day_temperatures.add((sum_max/daily_max.size()));
+                            min_day_temperatures.add((sum_min/daily_min.size()));
+                            daily_max.clear();
+                            daily_min.clear();
+
+                        }
+                        weekly_weahter_max_0.setText(max_day_temperatures.get(0));
+                        weekly_weahter_max_1.setText(max_day_temperatures.get(1));
+                        weekly_weahter_max_2.setText(max_day_temperatures.get(2));
+                        weekly_weahter_max_3.setText(max_day_temperatures.get(3));
+                        weekly_weahter_max_4.setText(max_day_temperatures.get(4));
+                    }
+
+                } catch (JSONException | ParseException e) {
+                    e.printStackTrace();
+                }
+
             }
         }, new Response.ErrorListener() { // в случае возникновеня ошибки
             @Override
@@ -172,6 +234,18 @@ public class WeatherAct extends AppCompatActivity {
 
         mRequestQueue.add(request);
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -207,14 +281,22 @@ public class WeatherAct extends AppCompatActivity {
         hourly_time_7=findViewById(R.id.hourly_time_7);
         hourly_time_8=findViewById(R.id.hourly_time_8);
         hourly_time_9=findViewById(R.id.hourly_time_9);
-
+        //weekly max/min temp connecting
+        weekly_weahter_max_0=findViewById(R.id.weekly_weahter_max_0);
+        weekly_weahter_max_1=findViewById(R.id.weekly_weahter_max_1);
+        weekly_weahter_max_2=findViewById(R.id.weekly_weahter_max_2);
+        weekly_weahter_max_3=findViewById(R.id.weekly_weahter_max_2);
+        weekly_weahter_max_4=findViewById(R.id.weekly_weahter_max_3);
+        weekly_weahter_min_0=findViewById(R.id.weekly_weahter_min_0);
+        weekly_weahter_min_1=findViewById(R.id.weekly_weahter_min_1);
+        weekly_weahter_min_2=findViewById(R.id.weekly_weahter_min_2);
+        weekly_weahter_min_3=findViewById(R.id.weekly_weahter_min_3);
+        weekly_weahter_min_4=findViewById(R.id.weekly_weahter_min_4);
         //butons connecting
         back_to_cites=findViewById(R.id.back_to_cities);
         refresh_weather=findViewById(R.id.refresh_button);
 
 
-
-        //GetWeather get_weather=new GetWeather();
 
         Intent back_to_city_list=new Intent(WeatherAct.this,MainActivity.class);
 
@@ -237,7 +319,7 @@ public class WeatherAct extends AppCompatActivity {
         });
 
 
-        //refresh weather button, still doesnt work
+        //refresh weather button
         refresh_weather.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
