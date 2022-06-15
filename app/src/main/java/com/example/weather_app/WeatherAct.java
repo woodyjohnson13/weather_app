@@ -73,6 +73,14 @@ public class WeatherAct extends AppCompatActivity {
     private TextView weekly_weahter_min_2;
     private TextView weekly_weahter_min_3;
     private TextView weekly_weahter_min_4;
+    private TextView day_of_the_week_0;
+    private TextView day_of_the_week_1;
+    private TextView day_of_the_week_2;
+    private TextView day_of_the_week_3;
+    private TextView day_of_the_week_4;
+
+
+
 
     SimpleDateFormat full = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     SimpleDateFormat date_without_time = new SimpleDateFormat("yyyy-MM-dd");
@@ -81,8 +89,6 @@ public class WeatherAct extends AppCompatActivity {
     SimpleDateFormat day_of_the_week = new SimpleDateFormat("EEEE");
 
     RequestQueue mRequestQueue;
-
-    private static final String testUrl = ""; //url, из которого мы будем брать JSON-объект
 
 
 
@@ -181,10 +187,11 @@ public class WeatherAct extends AppCompatActivity {
                 }
 
                 try {
-                    List<Integer> daily_max = new ArrayList<>();
-                    List<Integer> daily_min = new ArrayList<>();
+                    List<Double> daily_max = new ArrayList<>();
+                    List<Double> daily_min = new ArrayList<>();
                     List<Integer> max_day_temperatures = new ArrayList<>();
                     List<Integer> min_day_temperatures = new ArrayList<>();
+                    List<String> days_of_the_week = new ArrayList<>();
 
                     JSONArray days_array = response.getJSONArray("list");
                     JSONObject first_object=days_array.getJSONObject(0);
@@ -196,14 +203,20 @@ public class WeatherAct extends AppCompatActivity {
                     for(z=0;z<=39;z++){
                         JSONObject current_object=days_array.getJSONObject(z);
                         String date_2=current_object.getString("dt_txt");
+                        JSONObject main=current_object.getJSONObject("main");
                         Date full_date_to_check=full.parse(date_2);
                         String need_to_chek_date=date_without_time.format(full_date_to_check);
                         Toast.makeText(WeatherAct.this,need_to_chek_date.toString(),Toast.LENGTH_LONG).show();
-                        if(need_to_chek_date.toString().equals(reference_date)) {
-                            JSONObject main=current_object.getJSONObject("main");
-                            daily_max.add((int)main.getDouble("temp_max"));
-                            daily_min.add((int)main.getDouble("temp_min"));
+                        if(need_to_chek_date.equals(reference_date)) {
+                            daily_max.add(main.getDouble("temp_max"));
+                            daily_min.add(main.getDouble("temp_min"));
                         } else if (!need_to_chek_date.equals(reference_date)){
+                            String day_of_the_week_json=current_object.getString("dt_txt");
+                            Date day_of_the_week_full=full.parse(day_of_the_week_json);
+                            String day_of_the_week_final=day_of_the_week.format(day_of_the_week_full);
+                            days_of_the_week.add(day_of_the_week_final);
+                            daily_max.add(main.getDouble("temp_max"));
+                            daily_min.add(main.getDouble("temp_min"));
                             reference_date=need_to_chek_date;
                             int sum_max = 0;
                             int sum_min = 0;
@@ -221,11 +234,21 @@ public class WeatherAct extends AppCompatActivity {
                         }
 
                     }
-                    weekly_weahter_max_0.setText(max_day_temperatures.get(0).toString());
-                    weekly_weahter_max_1.setText(max_day_temperatures.get(1).toString());
-                    weekly_weahter_max_2.setText(max_day_temperatures.get(2).toString());
-                    weekly_weahter_max_3.setText(max_day_temperatures.get(3).toString());
-                    weekly_weahter_max_4.setText(max_day_temperatures.get(4).toString());
+                    weekly_weahter_max_0.setText(max_day_temperatures.get(0).toString()+"°C");
+                    weekly_weahter_max_1.setText(max_day_temperatures.get(1).toString()+"°C");
+                    weekly_weahter_max_2.setText(max_day_temperatures.get(2).toString()+"°C");
+                    weekly_weahter_max_3.setText(max_day_temperatures.get(3).toString()+"°C");
+                    weekly_weahter_max_4.setText(max_day_temperatures.get(4).toString()+"°C");
+                    weekly_weahter_min_0.setText(min_day_temperatures.get(0).toString()+"°C");
+                    weekly_weahter_min_1.setText(min_day_temperatures.get(1).toString()+"°C");
+                    weekly_weahter_min_2.setText(min_day_temperatures.get(2).toString()+"°C");
+                    weekly_weahter_min_3.setText(min_day_temperatures.get(3).toString()+"°C");
+                    weekly_weahter_min_4.setText(min_day_temperatures.get(4).toString()+"°C");
+                    day_of_the_week_0.setText(days_of_the_week.get(0));
+                    day_of_the_week_1.setText(days_of_the_week.get(1));
+                    day_of_the_week_2.setText(days_of_the_week.get(2));
+                    day_of_the_week_3.setText(days_of_the_week.get(3));
+                    day_of_the_week_4.setText(days_of_the_week.get(4));
                 } catch (JSONException | ParseException e) {
                     e.printStackTrace();
                 }
@@ -298,6 +321,12 @@ public class WeatherAct extends AppCompatActivity {
         weekly_weahter_min_2=findViewById(R.id.weekly_weahter_min_2);
         weekly_weahter_min_3=findViewById(R.id.weekly_weahter_min_3);
         weekly_weahter_min_4=findViewById(R.id.weekly_weahter_min_4);
+        //days of the week connecting
+        day_of_the_week_0=findViewById(R.id.day_of_the_week_0);
+        day_of_the_week_1=findViewById(R.id.day_of_the_week_1);
+        day_of_the_week_2=findViewById(R.id.day_of_the_week_2);
+        day_of_the_week_3=findViewById(R.id.day_of_the_week_3);
+        day_of_the_week_4=findViewById(R.id.day_of_the_week_4);
         //butons connecting
         back_to_cites=findViewById(R.id.back_to_cities);
         refresh_weather=findViewById(R.id.refresh_button);

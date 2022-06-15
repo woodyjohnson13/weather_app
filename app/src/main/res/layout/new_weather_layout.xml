@@ -435,7 +435,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/weekly"
+                    android:id="@+id/day_of_the_week_0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -475,7 +475,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/weekly_2"
+                    android:id="@+id/day_of_the_week_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -516,7 +516,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/weekly_3"
+                    android:id="@+id/day_of_the_week_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -556,7 +556,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/weekly_4"
+                    android:id="@+id/day_of_the_week_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -597,7 +597,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/weekly_5"
+                    android:id="@+id/day_of_the_week_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
