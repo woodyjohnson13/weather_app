@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     public void get_pref () {
         SharedPreferences weather_cativity_shared=getSharedPreferences("SHARED_PREFS",MODE_PRIVATE);
         SharedPreferences.Editor editor = weather_cativity_shared.edit();
-        editor.putString("city_name",city_name);
         editor.putString("city_current_weather_pref",city_current_weather_call);
         editor.putString("city_hourly_weather_pref",city_api_call_hourly);
         weather_activity_trigger=true;
@@ -70,14 +69,13 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (v.getId()) {
                     case R.id.getBtRnd:
-                        city_api_call_hourly="https://api.openweathermap.org/data/2.5/forecast?q=Rostov&units=metric&appid=32879a100afc9b16435463591d9e99c9";
+                        city_api_call_hourly="https://api.openweathermap.org/data/2.5/forecast?q=Rostov-on-Don&units=metric&appid=32879a100afc9b16435463591d9e99c9";
                         city_current_weather_call="http://api.openweathermap.org/data/2.5/weather?q=Rostov-on-Don&units=metric&appid=32879a100afc9b16435463591d9e99c9";
-                        city_name="Rostov";
                         get_pref();
                         break;
                     case R.id.getBtMoscow:
-                        city_api_call_hourly="http://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=32879a100afc9b16435463591d9e99c9";
-                        city_name="Moscow";
+                        city_api_call_hourly="https://api.openweathermap.org/data/2.5/forecast?q=Moscow&units=metric&appid=32879a100afc9b16435463591d9e99c9";
+                        city_current_weather_call="http://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=32879a100afc9b16435463591d9e99c9";
                         get_pref();
                         break;
                     default:
@@ -86,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
                 go_to_weather.putExtra("current_weather_call_extra",city_current_weather_call);
                 go_to_weather.putExtra("call_current_hourly",city_api_call_hourly);
-                go_to_weather.putExtra("name",city_name);
                 startActivity(go_to_weather);
 
 

@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.TimeZone;
 
 public class WeatherAct extends AppCompatActivity {
-    //main weather textviews
+    //main weather textview
     private TextView main_weather;
     private TextView city_name;
     private TextView main_humidity;
@@ -41,10 +41,10 @@ public class WeatherAct extends AppCompatActivity {
     private TextView main_clouds;
     private TextView main_air_pressure;
     private TextView main_date;
-    //refresh and back to cities vuttons
+    //refresh and back to cities buttons
     private Button back_to_cites;
     private Button refresh_weather;
-    ///hourly weather and time textviews
+    ///hourly weather and time textview
     private TextView hourly_time_1;
     private TextView hourly_time_2;
     private TextView hourly_time_3;
@@ -111,14 +111,18 @@ public class WeatherAct extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    JSONObject weather = response.getJSONObject("main");
+                    JSONObject main = response.getJSONObject("main");
                     JSONObject wind = response.getJSONObject("wind");
-                    main_weather.setText((int)weather.getDouble("temp")+" °C");
-                    main_air_pressure.setText(weather.getInt("pressure")+" mm");
-                    main_humidity.setText(weather.getInt("humidity")+" %");
+                    JSONArray weather = response.getJSONArray("weather");
+                    JSONObject object_for_clouds = weather.getJSONObject(0);
+                    String clouds_lower=object_for_clouds.getString("description");
+                    main_clouds.setText(clouds_lower.substring(0,1).toUpperCase()+clouds_lower.substring(1));
+                    main_weather.setText((int)main.getDouble("temp")+" °C");
+                    main_air_pressure.setText(main.getInt("pressure")+" mm");
+                    main_humidity.setText(main.getInt("humidity")+" %");
                     main_wind_speed.setText(wind.getDouble("speed")+" m/s");
+                    city_name.setText(response.getString("name"));
                     Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Moscow"));
-                    Date currentDate = calendar.getTime();
                     main_date.setText(dayOfWeekString+" "+date_day);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -270,17 +274,28 @@ public class WeatherAct extends AppCompatActivity {
         mRequestQueue.add(request);
     }
 
-
-
-
-
-
-
-
-
-
-
-
+//    private void get_week_day_weather(String url) {
+//        final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, //GET - API-запрос для получение данных
+//                url, null, new Response.Listener<JSONObject>() {
+//
+//            @Override
+//            public void onResponse(JSONObject response,Integer ident) {
+//                try {
+//
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, new Response.ErrorListener() { // в случае возникновеня ошибки
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                error.printStackTrace();
+//            }
+//        });
+//
+//        mRequestQueue.add(request);
+//    }
 
 
 
@@ -344,8 +359,7 @@ public class WeatherAct extends AppCompatActivity {
         Intent start_this_activity = getIntent();
         String my_api_call_hourly = start_this_activity.getStringExtra("call_current_hourly");
         String my_api_call_current = start_this_activity.getStringExtra("current_weather_call_extra");
-        String my_city_name=start_this_activity.getStringExtra("name");
-        String testUrl = my_api_call_current;
+
 
         mRequestQueue= Volley.newRequestQueue(this);
 
@@ -371,8 +385,9 @@ public class WeatherAct extends AppCompatActivity {
         });
 
 
+
+
         getWeather(my_api_call_current);
-        city_name.setText(my_city_name);
         getWeather_hourly_first_day(my_api_call_hourly);
 
 
