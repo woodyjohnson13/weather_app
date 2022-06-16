@@ -78,7 +78,7 @@ public class WeatherAct extends AppCompatActivity {
     private TextView day_of_the_week_2;
     private TextView day_of_the_week_3;
     private TextView day_of_the_week_4;
-
+    public int certain_day_trigger;
 
 
 
@@ -88,6 +88,7 @@ public class WeatherAct extends AppCompatActivity {
     SimpleDateFormat time = new SimpleDateFormat("HH:mm");
     SimpleDateFormat day_of_the_week = new SimpleDateFormat("EEEE");
 
+    //request queue object for volley
     RequestQueue mRequestQueue;
 
 
@@ -101,7 +102,7 @@ public class WeatherAct extends AppCompatActivity {
         prefs.edit().putBoolean("choice", false).apply();
     }
 
-
+    //assign Json data to main,top weather varibales
     private void getWeather(String url) {
         final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, //GET - API-запрос для получение данных
                 url, null, new Response.Listener<JSONObject>() {
@@ -142,8 +143,8 @@ public class WeatherAct extends AppCompatActivity {
 
 
 
-
-    private void getWeather_hourly_first_day(String url) {
+    //assign Json data to hourly weather and weekly weather
+    private void getWeather_hourly_and_weekly(String url) {
         final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, //GET - API-запрос для получение данных
                 url, null, new Response.Listener<JSONObject>() {
             List<Integer> hourly_temp_list = new ArrayList<>();
@@ -152,7 +153,6 @@ public class WeatherAct extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 try {
                     int i;
-
                     JSONArray days_array = response.getJSONArray("list");
                     for(i=0;i<=8;i++){
                         JSONObject object_0=days_array.getJSONObject(i);
@@ -274,28 +274,95 @@ public class WeatherAct extends AppCompatActivity {
         mRequestQueue.add(request);
     }
 
-//    private void get_week_day_weather(String url) {
-//        final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, //GET - API-запрос для получение данных
-//                url, null, new Response.Listener<JSONObject>() {
-//
-//            @Override
-//            public void onResponse(JSONObject response,Integer ident) {
-//                try {
-//
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() { // в случае возникновеня ошибки
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                error.printStackTrace();
-//            }
-//        });
-//
-//        mRequestQueue.add(request);
-//    }
+    private void getWeather_on_certain_day(String url) {
+        final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, //GET - API-запрос для получение данных
+                url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                try {
+                    List<Double> daily_max = new ArrayList<>();
+                    List<Double> daily_min = new ArrayList<>();
+                    List<Integer> max_day_temperatures = new ArrayList<>();
+                    List<Integer> min_day_temperatures = new ArrayList<>();
+                    List<String> days_of_the_week = new ArrayList<>();
+
+                    JSONArray days_array = response.getJSONArray("list");
+                    JSONObject city=response.getJSONObject("city");
+                    JSONObject first_object=days_array.getJSONObject(0);
+                    String  date_1=first_object.getString("dt_txt");
+                    Date full_date=full.parse(date_1);
+                    String first_day_in_forecast_final=day_of_the_week.format(full_date);
+                    days_of_the_week.add(first_day_in_forecast_final);
+                    String reference_date=date_without_time.format(full_date);
+
+                    int z;
+                    for(z=0;z<=39;z++){
+                        JSONObject current_object=days_array.getJSONObject(z);
+                        String date_2=current_object.getString("dt_txt");
+                        JSONObject main=current_object.getJSONObject("main");
+                        Date full_date_to_check=full.parse(date_2);
+                        String need_to_chek_date=date_without_time.format(full_date_to_check);
+                        if(need_to_chek_date.equals(reference_date)) {
+                            daily_max.add(main.getDouble("temp_max"));
+                            daily_min.add(main.getDouble("temp_min"));
+                        } else if (!need_to_chek_date.equals(reference_date)){
+
+                            String day_of_the_week_json=current_object.getString("dt_txt");
+                            Date day_of_the_week_full=full.parse(day_of_the_week_json);
+                            String day_of_the_week_final=day_of_the_week.format(day_of_the_week_full);
+                            days_of_the_week.add(day_of_the_week_final);
+
+
+                            reference_date=need_to_chek_date;
+
+                            double sum_max = 0;
+                            double sum_min = 0;
+                            for (int x=0;x<daily_max.size();x++){
+                                sum_max+=daily_max.get(x);
+                            }
+                            for (int x=0;x<daily_min.size();x++){
+                                sum_min+=daily_min.get(x);
+                            }
+                            max_day_temperatures.add((int)(sum_max/daily_max.size()));
+                            min_day_temperatures.add((int)(sum_min/daily_min.size()));
+                            daily_max.clear();
+                            daily_min.clear();
+                            daily_max.add(main.getDouble("temp_max"));
+                            daily_min.add(main.getDouble("temp_min"));
+
+
+                        }
+
+                    }
+                    city_name.setText(city.getString("name"));
+                    // assingmetn statement, dont like it at all, wont be good for bigger
+                    //data input,will try to change later
+                    if (certain_day_trigger==0) {
+                        main_weather.setText(max_day_temperatures.get(0).toString());
+                    } else if (certain_day_trigger==1){
+                        main_weather.setText(max_day_temperatures.get(1).toString());
+                    }else if(certain_day_trigger==2){
+                        main_weather.setText(max_day_temperatures.get(2).toString());
+                    }else if(certain_day_trigger==3){
+                        main_weather.setText(max_day_temperatures.get(3).toString());
+                    }else if(certain_day_trigger==4){
+                        main_weather.setText(max_day_temperatures.get(4).toString());
+                    }
+                } catch (JSONException | ParseException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() { // в случае возникновеня ошибки
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        mRequestQueue.add(request);
+    }
 
 
 
@@ -353,9 +420,8 @@ public class WeatherAct extends AppCompatActivity {
         refresh_weather=findViewById(R.id.refresh_button);
 
 
-
+        //Intents and extra data from previous activity
         Intent back_to_city_list=new Intent(WeatherAct.this,MainActivity.class);
-
         Intent start_this_activity = getIntent();
         String my_api_call_hourly = start_this_activity.getStringExtra("call_current_hourly");
         String my_api_call_current = start_this_activity.getStringExtra("current_weather_call_extra");
@@ -364,7 +430,7 @@ public class WeatherAct extends AppCompatActivity {
         mRequestQueue= Volley.newRequestQueue(this);
 
 
-        //back to cities list button and it works
+        //back to cities list button
         back_to_cites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -379,16 +445,45 @@ public class WeatherAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getWeather(my_api_call_current);
-                getWeather_hourly_first_day(my_api_call_hourly);
+                getWeather_hourly_and_weekly(my_api_call_hourly);
                 Toast.makeText(WeatherAct.this,"Weather refreshed",Toast.LENGTH_LONG).show();
             }
         });
 
+        View.OnClickListener certain_day_weather_listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                switch (v.getId()) {
+                    case R.id.day_of_the_week_0:
+                        certain_day_trigger = 0;;
+                        break;
+                    case R.id.day_of_the_week_1:
+                        certain_day_trigger = 1;
+                        break;
+                    case R.id.day_of_the_week_2:
+                        certain_day_trigger = 2;;
+                        break;
+                    case R.id.day_of_the_week_3:
+                        certain_day_trigger = 3;
 
-
+                        break;
+                    case R.id.day_of_the_week_4:
+                        certain_day_trigger = 4;
+                        break;
+                    default:
+                        break;
+                }
+                getWeather_on_certain_day(my_api_call_hourly);
+            }
+        };
+        day_of_the_week_0.setOnClickListener(certain_day_weather_listener);
+        day_of_the_week_1.setOnClickListener(certain_day_weather_listener);
+        day_of_the_week_2.setOnClickListener(certain_day_weather_listener);
+        day_of_the_week_3.setOnClickListener(certain_day_weather_listener);
+        day_of_the_week_4.setOnClickListener(certain_day_weather_listener);
         getWeather(my_api_call_current);
-        getWeather_hourly_first_day(my_api_call_hourly);
+        getWeather_hourly_and_weekly(my_api_call_hourly);
 
 
 
