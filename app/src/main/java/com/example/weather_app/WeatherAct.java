@@ -139,10 +139,6 @@ public class WeatherAct extends AppCompatActivity {
         mRequestQueue.add(request);
     }
 
-
-
-
-
     //assign Json data to hourly weather and weekly weather
     private void getWeather_hourly_and_weekly(String url) {
         final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, //GET - API-запрос для получение данных
@@ -229,10 +225,9 @@ public class WeatherAct extends AppCompatActivity {
                             double sum_min = 0;
                             for (int x=0;x<daily_max.size();x++){
                                 sum_max+=daily_max.get(x);
-                            }
-                            for (int x=0;x<daily_min.size();x++){
                                 sum_min+=daily_min.get(x);
                             }
+
                             max_day_temperatures.add((int)(sum_max/daily_max.size()));
                             min_day_temperatures.add((int)(sum_min/daily_min.size()));
                             daily_max.clear();

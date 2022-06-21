@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     String city_api_call_hourly="";
     String city_current_weather_call="";
     String city_name="";
+    EditText search_for_city;
     public Boolean weather_activity_trigger ;
 
 
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         get_info_rnd=findViewById(R.id.getBtRnd);
         get_info_msc=findViewById(R.id.getBtMoscow);
+        search_for_city=findViewById(R.id.search_city);
         Intent go_to_weather=new Intent(MainActivity.this,WeatherAct.class);
         loadData();
 
@@ -78,6 +81,11 @@ public class MainActivity extends AppCompatActivity {
                         city_current_weather_call="http://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=32879a100afc9b16435463591d9e99c9";
                         get_pref();
                         break;
+                    case R.id.search_city:
+                        city_api_call_hourly="https://api.openweathermap.org/data/2.5/forecast?q="+search_for_city.getText().toString()+"&units=metric&appid=32879a100afc9b16435463591d9e99c9";
+                        city_current_weather_call="http://api.openweathermap.org/data/2.5/weather?q="+search_for_city.getText().toString()+"&units=metric&appid=32879a100afc9b16435463591d9e99c9";
+                        get_pref();
+                        break;
                     default:
                         break;
                 }
@@ -92,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
         get_info_rnd.setOnClickListener(my_listener);
         get_info_msc.setOnClickListener(my_listener);
+        search_for_city.setOnClickListener(my_listener);
 
 
 

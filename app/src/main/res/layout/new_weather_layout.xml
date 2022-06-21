@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/weekly_1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -426,7 +428,7 @@
             android:layout_marginBottom="10dp"
             android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -438,35 +440,39 @@
                     android:id="@+id/day_of_the_week_0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="left"
                     android:text="Monday 14"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/weekly_weahter_max_0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="72dp"
                     android:fontFamily="@font/roboto_regular"
                     android:text="12°"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/weekly_weahter_min_0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="44dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="right"
                     android:text="12°"
-                    android:textColor="@color/white" />
-            </LinearLayout>
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/weekly_weahter_max_0"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -478,35 +484,39 @@
                     android:id="@+id/day_of_the_week_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="left"
                     android:text="Tuesday 15"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/weekly_weahter_max_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="46dp"
                     android:fontFamily="@font/roboto_regular"
                     android:text="12°"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/weekly_weahter_min_1"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/weekly_weahter_min_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="72dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="right"
                     android:text="12°"
-                    android:textColor="@color/white" />
-            </LinearLayout>
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/weekly_12"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
@@ -519,35 +529,41 @@
                     android:id="@+id/day_of_the_week_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="1dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="left"
                     android:text="Wednesday 16 "
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/weekly_weahter_max_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="46dp"
                     android:fontFamily="@font/roboto_regular"
                     android:text="12°"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/weekly_weahter_min_2"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/weekly_weahter_min_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="72dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="right"
                     android:text="12°"
-                    android:textColor="@color/white" />
-            </LinearLayout>
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -559,35 +575,41 @@
                     android:id="@+id/day_of_the_week_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="1dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="left"
                     android:text="Thursday 17"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/weekly_weahter_max_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="12°"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/weekly_weahter_min_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="72dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="right"
                     android:text="12°"
-                    android:textColor="@color/white" />
-            </LinearLayout>
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
+                <TextView
+                    android:id="@+id/weekly_weahter_max_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="46dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="12°"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/weekly_weahter_min_3"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/weekly_weather_5"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
@@ -600,33 +622,38 @@
                     android:id="@+id/day_of_the_week_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="left"
                     android:text="Friday 17"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/weekly_weahter_max_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="46dp"
                     android:fontFamily="@font/roboto_regular"
                     android:text="12°"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/weekly_weahter_min_4"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/weekly_weahter_min_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="72dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="right"
                     android:text="12°"
-                    android:textColor="@color/white" />
-            </LinearLayout>
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </LinearLayout>
