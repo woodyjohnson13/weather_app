@@ -65,7 +65,7 @@ public class WeatherAct extends AppCompatActivity {
     private TextView hourly_weather_9;
     SimpleDateFormat full = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     SimpleDateFormat day = new SimpleDateFormat("dd");
-    SimpleDateFormat time = new SimpleDateFormat("HH:mm");
+    SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
     SimpleDateFormat day_of_the_week = new SimpleDateFormat("EEEE");
 
     RequestQueue mRequestQueue;
@@ -90,6 +90,7 @@ public class WeatherAct extends AppCompatActivity {
             Calendar cal = Calendar.getInstance();
             String dayOfWeekString = day_of_the_week.format(cal.getTime());
             String date_day = day.format((cal.getTime()));
+            String date_time = time.format((cal.getTime()));
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -101,7 +102,7 @@ public class WeatherAct extends AppCompatActivity {
                     main_wind_speed.setText(wind.getDouble("speed")+" m/s");
                     Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Moscow"));
                     Date currentDate = calendar.getTime();
-                    main_date.setText(dayOfWeekString+" "+date_day);
+                    main_date.setText(dayOfWeekString+" "+date_day + " "+date_time);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
