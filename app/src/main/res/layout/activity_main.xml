@@ -13,11 +13,11 @@
         android:id="@+id/current_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/creme"
+        android:fontFamily="@font/roboto_regular"
         android:text="@string/weather_update"
         android:textAlignment="center"
-        android:textColor="#3F51B5"
-        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +30,7 @@
             android:id="@+id/getBtMoscow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="172dp"
             android:background="#0070c7"
             android:backgroundTint="@null"
             android:fontFamily="@font/creme"
@@ -44,7 +44,7 @@
             android:id="@+id/getBtRnd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="112dp"
             android:background="#0070c7"
             android:backgroundTint="@null"
             android:fontFamily="@font/creme"
@@ -53,6 +53,32 @@
             app:layout_constraintTop_toBottomOf="@+id/getBtMoscow"
             tools:ignore="TextContrastCheck"
             tools:layout_editor_absoluteX="0dp" />
+
+        <EditText
+            android:id="@+id/search_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#DDDDDD"
+            android:ems="10"
+            android:hint="@string/type_city_name"
+            android:inputType="textPersonName"
+            android:shadowColor="#EADADA"
+            android:textColor="@color/white"
+            android:textColorHint="#B6AEAE"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/search_city_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_city" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

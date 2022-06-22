@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">weather_app</string>
-    <string name="weather_update">Choose your city:</string>
+    <string name="weather_update">Choose city from a list or search for one:</string>
     <string name="enter_country_code_optional">Enter Country Code (optional)</string>
     <string name="enter_city_name">Enter City Name</string>
     <string name="get">Get weather in Rostov</string>
     <string name="get_2">Get weather in Moscow</string>
     <string name="back_to_cites">Cities list</string>
     <string name="refresh">Refresh weather</string>
+    <string name="type_city_name">Type city name</string>
+    <string name="search">Search</string>
 
 </resources>
