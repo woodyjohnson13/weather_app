@@ -9,50 +9,11 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/current_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/weather_update"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
-
-        <Button
-            android:id="@+id/getBtMoscow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="172dp"
-            android:background="#0070c7"
-            android:backgroundTint="@null"
-            android:fontFamily="@font/creme"
-            android:text="@string/get_2"
-            android:textColor="#F3E5F5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TextContrastCheck" />
-
-        <Button
-            android:id="@+id/getBtRnd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="112dp"
-            android:background="#0070c7"
-            android:backgroundTint="@null"
-            android:fontFamily="@font/creme"
-            android:text="@string/get"
-            android:textColor="#F3E5F5"
-            app:layout_constraintTop_toBottomOf="@+id/getBtMoscow"
-            tools:ignore="TextContrastCheck"
-            tools:layout_editor_absoluteX="0dp" />
 
         <EditText
             android:id="@+id/search_city"
@@ -63,22 +24,69 @@
             android:ems="10"
             android:hint="@string/type_city_name"
             android:inputType="textPersonName"
+            android:minHeight="48dp"
             android:shadowColor="#EADADA"
             android:textColor="@color/white"
-            android:textColorHint="#B6AEAE"
+            android:textColorHint="#E0E0E0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/search_city_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:background="@drawable/rounded"
+            android:textColor="@color/white"
             android:text="@string/search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/search_city" />
+
+        <LinearLayout
+            android:layout_width="377dp"
+            android:layout_height="578dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_city_button">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/rosotv_find"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/rostov_on_don"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/moscow_find"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/moscow"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

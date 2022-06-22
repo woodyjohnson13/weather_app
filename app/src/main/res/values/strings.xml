@@ -9,5 +9,7 @@
     <string name="refresh">Refresh weather</string>
     <string name="type_city_name">Type city name</string>
     <string name="search">Search</string>
+    <string name="rostov_on_don">Rostov-on-Don</string>
+    <string name="moscow">Moscow</string>
 
 </resources>

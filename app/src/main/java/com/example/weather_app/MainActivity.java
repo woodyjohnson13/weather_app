@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
-    Button get_info_rnd;
-    Button get_info_msc;
+    TextView get_info_rnd;
+    TextView get_info_msc;
     String city_api_call_hourly="";
     String city_current_weather_call="";
     String city_name="";
@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        get_info_rnd=findViewById(R.id.getBtRnd);
-        get_info_msc=findViewById(R.id.getBtMoscow);
+        get_info_rnd=findViewById(R.id.rosotv_find);
+        get_info_msc=findViewById(R.id.moscow_find);
         search_for_city=findViewById(R.id.search_city);
         Intent go_to_weather=new Intent(MainActivity.this,WeatherAct.class);
         loadData();
@@ -71,12 +71,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 switch (v.getId()) {
-                    case R.id.getBtRnd:
+                    case R.id.rosotv_find:
                         city_api_call_hourly="https://api.openweathermap.org/data/2.5/forecast?q=Rostov-on-Don&units=metric&appid=32879a100afc9b16435463591d9e99c9";
                         city_current_weather_call="http://api.openweathermap.org/data/2.5/weather?q=Rostov-on-Don&units=metric&appid=32879a100afc9b16435463591d9e99c9";
                         get_pref();
                         break;
-                    case R.id.getBtMoscow:
+                    case R.id.moscow_find:
                         city_api_call_hourly="https://api.openweathermap.org/data/2.5/forecast?q=Moscow&units=metric&appid=32879a100afc9b16435463591d9e99c9";
                         city_current_weather_call="http://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=32879a100afc9b16435463591d9e99c9";
                         get_pref();

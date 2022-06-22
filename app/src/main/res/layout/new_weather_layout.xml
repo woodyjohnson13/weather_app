@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/nice_back"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <LinearLayout
@@ -18,17 +19,23 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/back_to_cities"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                android:background="@drawable/rounded"
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/back_to_cites"
-                android:textSize="11sp" />
+                android:textSize="11sp"
+                app:rippleColor="#FBFBFB" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/refresh_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,7 +43,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
+                android:textColor="@color/white"
                 android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded"
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/refresh"
                 android:textSize="11sp" />
@@ -102,6 +111,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:background="@drawable/rounded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -124,10 +134,12 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
+                        android:paddingBottom="10dp"
                         android:textColor="@color/white"></TextView>
                 </LinearLayout>
 
                 <LinearLayout
+                    android:background="@drawable/rounded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -150,10 +162,12 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
+                        android:paddingBottom="10dp"
                         android:textColor="@color/white"></TextView>
                 </LinearLayout>
 
                 <LinearLayout
+                    android:background="@drawable/rounded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -176,10 +190,12 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
+                        android:paddingBottom="10dp"
                         android:textColor="@color/white"></TextView>
                 </LinearLayout>
 
                 <LinearLayout
+                    android:background="@drawable/rounded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -202,10 +218,13 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
+                        android:paddingBottom="10dp"
                         android:textColor="@color/white"></TextView>
                 </LinearLayout>
 
                 <LinearLayout
+                    android:background="@drawable/rounded"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -228,10 +247,12 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
+                        android:paddingBottom="10dp"
                         android:textColor="@color/white"></TextView>
                 </LinearLayout>
 
                 <LinearLayout
+                    android:background="@drawable/rounded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -254,13 +275,14 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
+                        android:paddingBottom="10dp"
                         android:textColor="@color/white"></TextView>
                 </LinearLayout>
 
                 <LinearLayout
+                    android:background="@drawable/rounded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -281,10 +303,12 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
+                        android:paddingBottom="10dp"
                         android:textColor="@color/white"></TextView>
                 </LinearLayout>
 
                 <LinearLayout
+                    android:background="@drawable/rounded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -307,10 +331,12 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
+                        android:paddingBottom="10dp"
                         android:textColor="@color/white"></TextView>
                 </LinearLayout>
 
                 <LinearLayout
+                    android:background="@drawable/rounded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -333,6 +359,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:text="+19°"
+                        android:paddingBottom="10dp"
                         android:textColor="@color/white"></TextView>
                 </LinearLayout>
             </LinearLayout>
@@ -356,8 +383,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
                     android:text="Humidity"
                     android:textColor="@color/white"></TextView>
 
@@ -431,15 +460,18 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:background="@drawable/rounded"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/day_of_the_week_0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="left"
                     android:text="Monday 14"
@@ -478,12 +510,15 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:background="@drawable/rounded"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/day_of_the_week_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="left"
                     android:text="Tuesday 15"
@@ -523,19 +558,22 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:background="@drawable/rounded"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/day_of_the_week_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="1dp"
+                    android:layout_marginStart="16dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="left"
                     android:text="Wednesday 16 "
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
 
                 <TextView
                     android:id="@+id/weekly_weahter_max_2"
@@ -569,13 +607,15 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:background="@drawable/rounded"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/day_of_the_week_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="1dp"
+                    android:layout_marginStart="16dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="left"
                     android:text="Thursday 17"
@@ -616,12 +656,15 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:background="@drawable/rounded"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/day_of_the_week_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="left"
                     android:text="Friday 17"
