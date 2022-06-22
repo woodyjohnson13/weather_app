@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     String city_current_weather_call="";
     String city_name="";
     EditText search_for_city;
+    Button search_city_button;
     public Boolean weather_activity_trigger ;
 
 
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         get_info_rnd=findViewById(R.id.rosotv_find);
         get_info_msc=findViewById(R.id.moscow_find);
         search_for_city=findViewById(R.id.search_city);
+        search_city_button=findViewById(R.id.search_city_button);
         Intent go_to_weather=new Intent(MainActivity.this,WeatherAct.class);
         loadData();
 
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                         city_current_weather_call="http://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=32879a100afc9b16435463591d9e99c9";
                         get_pref();
                         break;
-                    case R.id.search_city:
+                    case R.id.search_city_button:
                         city_api_call_hourly="https://api.openweathermap.org/data/2.5/forecast?q="+search_for_city.getText().toString()+"&units=metric&appid=32879a100afc9b16435463591d9e99c9";
                         city_current_weather_call="http://api.openweathermap.org/data/2.5/weather?q="+search_for_city.getText().toString()+"&units=metric&appid=32879a100afc9b16435463591d9e99c9";
                         get_pref();
@@ -100,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
         get_info_rnd.setOnClickListener(my_listener);
         get_info_msc.setOnClickListener(my_listener);
-        search_for_city.setOnClickListener(my_listener);
+        search_city_button.setOnClickListener(my_listener);
 
 
 

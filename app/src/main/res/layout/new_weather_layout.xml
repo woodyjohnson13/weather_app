@@ -28,26 +28,26 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:textColor="@color/white"
                 android:background="@drawable/rounded"
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/back_to_cites"
+                android:textColor="@color/white"
                 android:textSize="11sp"
                 app:rippleColor="#FBFBFB" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/refresh_button"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                android:textColor="@color/white"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded"
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/refresh"
+                android:textColor="@color/white"
                 android:textSize="11sp" />
 
         </RelativeLayout>
