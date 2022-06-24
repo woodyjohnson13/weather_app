@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
     TextView get_info_msc;
     String city_hourly_weather_call ="";
     String city_current_weather_call="";
-    String city_name="";
     EditText search_for_city_et;
     Button search_city_button;
     public Boolean weather_activity_trigger ;
@@ -40,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences my_shared_prefs=getSharedPreferences("SHARED_PREFS",MODE_PRIVATE);
         city_current_weather_call=my_shared_prefs.getString("city_current_weather_pref","");
         city_hourly_weather_call =my_shared_prefs.getString("city_hourly_weather_pref","");
-        city_name=my_shared_prefs.getString("city_name","");
         weather_activity_trigger= my_shared_prefs.getBoolean("choice", false);
     }
 
@@ -59,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         //
         if(weather_activity_trigger) {
             //go_to_weather.putExtra("call",city_api_call);
-            go_to_weather.putExtra("name",city_name);
             go_to_weather.putExtra("current_weather_call_extra",city_current_weather_call);
             go_to_weather.putExtra("call_current_hourly", city_hourly_weather_call);
             startActivity(go_to_weather);

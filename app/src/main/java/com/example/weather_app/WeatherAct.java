@@ -63,16 +63,16 @@ public class WeatherAct extends AppCompatActivity {
     private TextView hourly_weather_7;
     private TextView hourly_weather_8;
     private TextView hourly_weather_9;
-    private TextView weekly_weahter_max_0;
-    private TextView weekly_weahter_max_1;
-    private TextView weekly_weahter_max_2;
-    private TextView weekly_weahter_max_3;
-    private TextView weekly_weahter_max_4;
-    private TextView weekly_weahter_min_0;
-    private TextView weekly_weahter_min_1;
-    private TextView weekly_weahter_min_2;
-    private TextView weekly_weahter_min_3;
-    private TextView weekly_weahter_min_4;
+    private TextView weekly_weather_max_0;
+    private TextView weekly_weather_max_1;
+    private TextView weekly_weather_max_2;
+    private TextView weekly_weather_max_3;
+    private TextView weekly_weather_max_4;
+    private TextView weekly_weather_min_0;
+    private TextView weekly_weather_min_1;
+    private TextView weekly_weather_min_2;
+    private TextView weekly_weather_min_3;
+    private TextView weekly_weather_min_4;
     private TextView day_of_the_week_0;
     private TextView day_of_the_week_1;
     private TextView day_of_the_week_2;
@@ -106,9 +106,9 @@ public class WeatherAct extends AppCompatActivity {
     private void getWeather(String url) {
         final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, //GET - API-запрос для получение данных
                 url, null, new Response.Listener<JSONObject>() {
-            Calendar cal = Calendar.getInstance();
-            String dayOfWeekString = day_of_the_week.format(cal.getTime());
-            String date_day = day.format((cal.getTime()));
+            final Calendar cal = Calendar.getInstance();
+            final String dayOfWeekString = day_of_the_week.format(cal.getTime());
+            final String date_day = day.format((cal.getTime()));
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -145,7 +145,8 @@ public class WeatherAct extends AppCompatActivity {
                 url, null, new Response.Listener<JSONObject>() {
             List<Integer> hourly_temp_list = new ArrayList<>();
             List<String> hourly_time = new ArrayList<>();
-            List<TextView> view_hourly;
+            List<TextView> view_hourly=new ArrayList<>();
+
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -240,16 +241,16 @@ public class WeatherAct extends AppCompatActivity {
                         }
 
                     }
-                    weekly_weahter_max_0.setText(max_day_temperatures.get(0).toString()+"°C");
-                    weekly_weahter_max_1.setText(max_day_temperatures.get(1).toString()+"°C");
-                    weekly_weahter_max_2.setText(max_day_temperatures.get(2).toString()+"°C");
-                    weekly_weahter_max_3.setText(max_day_temperatures.get(3).toString()+"°C");
-                    weekly_weahter_max_4.setText(max_day_temperatures.get(4).toString()+"°C");
-                    weekly_weahter_min_0.setText(min_day_temperatures.get(0).toString()+"°C");
-                    weekly_weahter_min_1.setText(min_day_temperatures.get(1).toString()+"°C");
-                    weekly_weahter_min_2.setText(min_day_temperatures.get(2).toString()+"°C");
-                    weekly_weahter_min_3.setText(min_day_temperatures.get(3).toString()+"°C");
-                    weekly_weahter_min_4.setText(min_day_temperatures.get(4).toString()+"°C");
+                    weekly_weather_max_0.setText(max_day_temperatures.get(0).toString()+"°C");
+                    weekly_weather_max_1.setText(max_day_temperatures.get(1).toString()+"°C");
+                    weekly_weather_max_2.setText(max_day_temperatures.get(2).toString()+"°C");
+                    weekly_weather_max_3.setText(max_day_temperatures.get(3).toString()+"°C");
+                    weekly_weather_max_4.setText(max_day_temperatures.get(4).toString()+"°C");
+                    weekly_weather_min_0.setText(min_day_temperatures.get(0).toString()+"°C");
+                    weekly_weather_min_1.setText(min_day_temperatures.get(1).toString()+"°C");
+                    weekly_weather_min_2.setText(min_day_temperatures.get(2).toString()+"°C");
+                    weekly_weather_min_3.setText(min_day_temperatures.get(3).toString()+"°C");
+                    weekly_weather_min_4.setText(min_day_temperatures.get(4).toString()+"°C");
                     day_of_the_week_0.setText(days_of_the_week.get(0));
                     day_of_the_week_1.setText(days_of_the_week.get(1));
                     day_of_the_week_2.setText(days_of_the_week.get(2));
@@ -395,16 +396,16 @@ public class WeatherAct extends AppCompatActivity {
         hourly_time_8=findViewById(R.id.hourly_time_8);
         hourly_time_9=findViewById(R.id.hourly_time_9);
         //weekly max/min temp connecting
-        weekly_weahter_max_0=findViewById(R.id.weekly_weahter_max_0);
-        weekly_weahter_max_1=findViewById(R.id.weekly_weahter_max_1);
-        weekly_weahter_max_2=findViewById(R.id.weekly_weahter_max_2);
-        weekly_weahter_max_3=findViewById(R.id.weekly_weahter_max_3);
-        weekly_weahter_max_4=findViewById(R.id.weekly_weahter_max_4);
-        weekly_weahter_min_0=findViewById(R.id.weekly_weahter_min_0);
-        weekly_weahter_min_1=findViewById(R.id.weekly_weahter_min_1);
-        weekly_weahter_min_2=findViewById(R.id.weekly_weahter_min_2);
-        weekly_weahter_min_3=findViewById(R.id.weekly_weahter_min_3);
-        weekly_weahter_min_4=findViewById(R.id.weekly_weahter_min_4);
+        weekly_weather_max_0 =findViewById(R.id.weekly_weahter_max_0);
+        weekly_weather_max_1 =findViewById(R.id.weekly_weahter_max_1);
+        weekly_weather_max_2=findViewById(R.id.weekly_weahter_max_2);
+        weekly_weather_max_3 =findViewById(R.id.weekly_weahter_max_3);
+        weekly_weather_max_4 =findViewById(R.id.weekly_weahter_max_4);
+        weekly_weather_min_0 =findViewById(R.id.weekly_weahter_min_0);
+        weekly_weather_min_1 =findViewById(R.id.weekly_weahter_min_1);
+        weekly_weather_min_2 =findViewById(R.id.weekly_weahter_min_2);
+        weekly_weather_min_3 =findViewById(R.id.weekly_weahter_min_3);
+        weekly_weather_min_4 =findViewById(R.id.weekly_weahter_min_4);
         //days of the week connecting
         day_of_the_week_0=findViewById(R.id.day_of_the_week_0);
         day_of_the_week_1=findViewById(R.id.day_of_the_week_1);
