@@ -3,6 +3,7 @@ package com.example.weather_app;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,40 +11,37 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
     TextView get_info_rnd;
     TextView get_info_msc;
-    String city_api_call_hourly="";
+    String city_hourly_weather_call ="";
     String city_current_weather_call="";
     String city_name="";
-    EditText search_for_city;
+    EditText search_for_city_et;
     Button search_city_button;
     public Boolean weather_activity_trigger ;
 
 
-
+    //saving API call in shared preference to access it right in app start
     public void get_pref () {
-        SharedPreferences weather_cativity_shared=getSharedPreferences("SHARED_PREFS",MODE_PRIVATE);
-        SharedPreferences.Editor editor = weather_cativity_shared.edit();
+        SharedPreferences weather_activity_shared=getSharedPreferences("SHARED_PREFS",MODE_PRIVATE);
+        SharedPreferences.Editor editor = weather_activity_shared.edit();
         editor.putString("city_current_weather_pref",city_current_weather_call);
-        editor.putString("city_hourly_weather_pref",city_api_call_hourly);
+        editor.putString("city_hourly_weather_pref", city_hourly_weather_call);
+        //trigger will be used in statement which defines if app need to intent to weather activity using preferred city
         weather_activity_trigger=true;
         editor.putBoolean("choice",weather_activity_trigger);
         editor.apply();
-        Toast.makeText(this,"Data saved",Toast.LENGTH_LONG).show();
     }
 
     public void loadData () {
         SharedPreferences my_shared_prefs=getSharedPreferences("SHARED_PREFS",MODE_PRIVATE);
         city_current_weather_call=my_shared_prefs.getString("city_current_weather_pref","");
-        city_api_call_hourly=my_shared_prefs.getString("city_hourly_weather_pref","");
+        city_hourly_weather_call =my_shared_prefs.getString("city_hourly_weather_pref","");
         city_name=my_shared_prefs.getString("city_name","");
         weather_activity_trigger= my_shared_prefs.getBoolean("choice", false);
-        Toast.makeText(this,"Data loaded " + weather_activity_trigger.toString(),Toast.LENGTH_LONG).show();
-
     }
 
 
@@ -52,52 +50,49 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         get_info_rnd=findViewById(R.id.rosotv_find);
         get_info_msc=findViewById(R.id.moscow_find);
-        search_for_city=findViewById(R.id.search_city);
+        search_for_city_et=findViewById(R.id.search_city);
         search_city_button=findViewById(R.id.search_city_button);
         Intent go_to_weather=new Intent(MainActivity.this,WeatherAct.class);
         loadData();
 
-
+        //statement defines if we need to intent to weather activity right on app launch and passes
+        //
         if(weather_activity_trigger) {
             //go_to_weather.putExtra("call",city_api_call);
             go_to_weather.putExtra("name",city_name);
             go_to_weather.putExtra("current_weather_call_extra",city_current_weather_call);
-            go_to_weather.putExtra("call_current_hourly",city_api_call_hourly);
-
+            go_to_weather.putExtra("call_current_hourly", city_hourly_weather_call);
             startActivity(go_to_weather);
            }
 
 
-        View.OnClickListener my_listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        @SuppressLint("NonConstantResourceId") View.OnClickListener my_listener = v -> {
 
-                switch (v.getId()) {
-                    case R.id.rosotv_find:
-                        city_api_call_hourly="https://api.openweathermap.org/data/2.5/forecast?q=Rostov-on-Don&units=metric&appid=32879a100afc9b16435463591d9e99c9";
-                        city_current_weather_call="http://api.openweathermap.org/data/2.5/weather?q=Rostov-on-Don&units=metric&appid=32879a100afc9b16435463591d9e99c9";
-                        get_pref();
-                        break;
-                    case R.id.moscow_find:
-                        city_api_call_hourly="https://api.openweathermap.org/data/2.5/forecast?q=Moscow&units=metric&appid=32879a100afc9b16435463591d9e99c9";
-                        city_current_weather_call="http://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=32879a100afc9b16435463591d9e99c9";
-                        get_pref();
-                        break;
-                    case R.id.search_city_button:
-                        city_api_call_hourly="https://api.openweathermap.org/data/2.5/forecast?q="+search_for_city.getText().toString()+"&units=metric&appid=32879a100afc9b16435463591d9e99c9";
-                        city_current_weather_call="http://api.openweathermap.org/data/2.5/weather?q="+search_for_city.getText().toString()+"&units=metric&appid=32879a100afc9b16435463591d9e99c9";
-                        get_pref();
-                        break;
-                    default:
-                        break;
-                }
-
-                go_to_weather.putExtra("current_weather_call_extra",city_current_weather_call);
-                go_to_weather.putExtra("call_current_hourly",city_api_call_hourly);
-                startActivity(go_to_weather);
-
-
+            switch (v.getId()) {
+                case R.id.rosotv_find:
+                    city_hourly_weather_call ="https://api.openweathermap.org/data/2.5/forecast?q=Rostov-on-Don&units=metric&appid=32879a100afc9b16435463591d9e99c9";
+                    city_current_weather_call="http://api.openweathermap.org/data/2.5/weather?q=Rostov-on-Don&units=metric&appid=32879a100afc9b16435463591d9e99c9";
+                    get_pref();
+                    break;
+                case R.id.moscow_find:
+                    city_hourly_weather_call ="https://api.openweathermap.org/data/2.5/forecast?q=Moscow&units=metric&appid=32879a100afc9b16435463591d9e99c9";
+                    city_current_weather_call="http://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=32879a100afc9b16435463591d9e99c9";
+                    get_pref();
+                    break;
+                case R.id.search_city_button:
+                    city_hourly_weather_call ="https://api.openweathermap.org/data/2.5/forecast?q="+ search_for_city_et.getText().toString()+"&units=metric&appid=32879a100afc9b16435463591d9e99c9";
+                    city_current_weather_call="http://api.openweathermap.org/data/2.5/weather?q="+ search_for_city_et.getText().toString()+"&units=metric&appid=32879a100afc9b16435463591d9e99c9";
+                    get_pref();
+                    break;
+                default:
+                    break;
             }
+
+            go_to_weather.putExtra("current_weather_call_extra",city_current_weather_call);
+            go_to_weather.putExtra("call_current_hourly", city_hourly_weather_call);
+            startActivity(go_to_weather);
+
+
         };
 
         get_info_rnd.setOnClickListener(my_listener);
