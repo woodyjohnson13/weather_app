@@ -145,6 +145,7 @@ public class WeatherAct extends AppCompatActivity {
                 url, null, new Response.Listener<JSONObject>() {
             List<Integer> hourly_temp_list = new ArrayList<>();
             List<String> hourly_time = new ArrayList<>();
+            List<TextView> view_hourly;
             @Override
             public void onResponse(JSONObject response) {
                 try {
