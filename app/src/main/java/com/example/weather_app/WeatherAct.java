@@ -28,6 +28,7 @@ import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -45,6 +46,7 @@ public class WeatherAct extends AppCompatActivity {
     private Button back_to_cites;
     private Button refresh_weather;
     ///hourly weather and time textview
+    private TextView hourly_time_0;
     private TextView hourly_time_1;
     private TextView hourly_time_2;
     private TextView hourly_time_3;
@@ -53,7 +55,7 @@ public class WeatherAct extends AppCompatActivity {
     private TextView hourly_time_6;
     private TextView hourly_time_7;
     private TextView hourly_time_8;
-    private TextView hourly_time_9;
+    private TextView hourly_weather_0;
     private TextView hourly_weather_1;
     private TextView hourly_weather_2;
     private TextView hourly_weather_3;
@@ -62,7 +64,6 @@ public class WeatherAct extends AppCompatActivity {
     private TextView hourly_weather_6;
     private TextView hourly_weather_7;
     private TextView hourly_weather_8;
-    private TextView hourly_weather_9;
     private TextView weekly_weather_max_0;
     private TextView weekly_weather_max_1;
     private TextView weekly_weather_max_2;
@@ -143,9 +144,10 @@ public class WeatherAct extends AppCompatActivity {
     private void getWeather_hourly_and_weekly(String url) {
         final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, //GET - API-запрос для получение данных
                 url, null, new Response.Listener<JSONObject>() {
-            List<Integer> hourly_temp_list = new ArrayList<>();
-            List<String> hourly_time = new ArrayList<>();
-            List<TextView> view_hourly=new ArrayList<>();
+            final List<Integer> hourly_temperature_list = new ArrayList<>();
+            final List<String> hourly_time_list = new ArrayList<>();
+            final List<TextView> hourly_time_textview_list = new ArrayList<>();
+            final List<TextView> hourly_temperature_textview_list = new ArrayList<>();
 
             @Override
             public void onResponse(JSONObject response) {
@@ -155,35 +157,30 @@ public class WeatherAct extends AppCompatActivity {
                     for(i=0;i<=8;i++){
                         JSONObject object_0=days_array.getJSONObject(i);
                         JSONObject main_0=object_0.getJSONObject("main");
-                        hourly_temp_list.add((int)main_0.getDouble("temp"));
+                        hourly_temperature_list.add((int)main_0.getDouble("temp"));
                     }
 
 
                     for(i=0;i<=8;i++){
                         JSONObject day_object=days_array.getJSONObject(i);
                         Date time_date= full.parse(day_object.getString("dt_txt"));
-                        hourly_time.add(time.format(time_date));
+                        hourly_time_list.add(time.format(time_date));
                     }
 
-                    hourly_time_1.setText(hourly_time.get(0));
-                    hourly_time_2.setText(hourly_time.get(1));
-                    hourly_time_3.setText(hourly_time.get(2));
-                    hourly_time_4.setText(hourly_time.get(3));
-                    hourly_time_5.setText(hourly_time.get(4));
-                    hourly_time_6.setText(hourly_time.get(5));
-                    hourly_time_7.setText(hourly_time.get(6));
-                    hourly_time_8.setText(hourly_time.get(7));
-                    hourly_time_9.setText(hourly_time.get(8));
+                    Collections.addAll(hourly_time_textview_list,hourly_time_0,hourly_time_1,hourly_time_2,
+                            hourly_time_3,hourly_time_4,hourly_time_5,hourly_time_6,hourly_time_7,
+                            hourly_time_8);
 
-                    hourly_weather_1.setText(hourly_temp_list.get(0) +"°C");
-                    hourly_weather_2.setText(hourly_temp_list.get(1) +"°C");
-                    hourly_weather_3.setText(hourly_temp_list.get(2) +"°C");
-                    hourly_weather_4.setText(hourly_temp_list.get(3) +"°C");
-                    hourly_weather_5.setText(hourly_temp_list.get(4) +"°C");
-                    hourly_weather_6.setText(hourly_temp_list.get(5) +"°C");
-                    hourly_weather_7.setText(hourly_temp_list.get(6) +"°C");
-                    hourly_weather_8.setText(hourly_temp_list.get(7) +"°C");
-                    hourly_weather_9.setText(hourly_temp_list.get(8) +"°C");
+                    Collections.addAll(hourly_temperature_textview_list,hourly_weather_0,hourly_weather_1,
+                            hourly_weather_2,hourly_weather_3,hourly_weather_4,hourly_weather_5,
+                            hourly_weather_6,hourly_weather_7,hourly_weather_8);
+
+                    for (i=0; i< hourly_time_textview_list.toArray().length; i++){
+                        hourly_time_textview_list.get(i).setText(hourly_time_list.get(i));
+                        hourly_temperature_textview_list.get(i).setText(hourly_temperature_list.get(i)+"°C");
+                    }
+
+
                 } catch (JSONException | ParseException e) {
                     e.printStackTrace();
                 }
@@ -377,24 +374,24 @@ public class WeatherAct extends AppCompatActivity {
         main_date=findViewById(R.id.main_date);
         main_air_pressure=findViewById(R.id.air_pressure);
         //hourly textviews connecting
-        hourly_weather_1=findViewById(R.id.hourly_weather_1);
-        hourly_weather_2=findViewById(R.id.hourly_weather_2);
-        hourly_weather_3=findViewById(R.id.hourly_weather_3);
-        hourly_weather_4=findViewById(R.id.hourly_weather_4);
-        hourly_weather_5=findViewById(R.id.hourly_weather_5);
-        hourly_weather_6=findViewById(R.id.hourly_weather_6);
-        hourly_weather_7=findViewById(R.id.hourly_weather_7);
-        hourly_weather_8=findViewById(R.id.hourly_weather_8);
-        hourly_weather_9=findViewById(R.id.hourly_weather_9);
-        hourly_time_1=findViewById(R.id.hourly_time_1);
-        hourly_time_2=findViewById(R.id.hourly_time_2);
-        hourly_time_3=findViewById(R.id.hourly_time_3);
-        hourly_time_4=findViewById(R.id.hourly_time_4);
-        hourly_time_5=findViewById(R.id.hourly_time_5);
-        hourly_time_6=findViewById(R.id.hourly_time_6);
-        hourly_time_7=findViewById(R.id.hourly_time_7);
-        hourly_time_8=findViewById(R.id.hourly_time_8);
-        hourly_time_9=findViewById(R.id.hourly_time_9);
+        hourly_weather_0=findViewById(R.id.hourly_weather_1);
+        hourly_weather_1=findViewById(R.id.hourly_weather_2);
+        hourly_weather_2=findViewById(R.id.hourly_weather_3);
+        hourly_weather_3=findViewById(R.id.hourly_weather_4);
+        hourly_weather_4=findViewById(R.id.hourly_weather_5);
+        hourly_weather_5=findViewById(R.id.hourly_weather_6);
+        hourly_weather_6=findViewById(R.id.hourly_weather_7);
+        hourly_weather_7=findViewById(R.id.hourly_weather_8);
+        hourly_weather_8=findViewById(R.id.hourly_weather_9);
+        hourly_time_0=findViewById(R.id.hourly_time_1);
+        hourly_time_1=findViewById(R.id.hourly_time_2);
+        hourly_time_2=findViewById(R.id.hourly_time_3);
+        hourly_time_3=findViewById(R.id.hourly_time_4);
+        hourly_time_4=findViewById(R.id.hourly_time_5);
+        hourly_time_5=findViewById(R.id.hourly_time_6);
+        hourly_time_6=findViewById(R.id.hourly_time_7);
+        hourly_time_7=findViewById(R.id.hourly_time_8);
+        hourly_time_8=findViewById(R.id.hourly_time_9);
         //weekly max/min temp connecting
         weekly_weather_max_0 =findViewById(R.id.weekly_weahter_max_0);
         weekly_weather_max_1 =findViewById(R.id.weekly_weahter_max_1);
