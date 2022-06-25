@@ -114,7 +114,7 @@
                 android:layout_marginStart="61dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:src="@drawable/sun"
+                android:src="@drawable/clear_sky_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"></ImageView>
@@ -162,7 +162,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
-                        android:src="@drawable/sun">
+                        android:src="@drawable/clear_sky_icon">
 
                     </ImageView>
                 </LinearLayout>
@@ -197,7 +197,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
-                        android:src="@drawable/sun">
+                        android:src="@drawable/clear_sky_icon">
 
                     </ImageView>
                 </LinearLayout>
@@ -232,7 +232,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
-                        android:src="@drawable/sun">
+                        android:src="@drawable/clear_sky_icon">
 
                     </ImageView>
                 </LinearLayout>
@@ -267,7 +267,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
-                        android:src="@drawable/sun">
+                        android:src="@drawable/clear_sky_icon">
 
                     </ImageView>
                 </LinearLayout>
@@ -303,7 +303,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
-                        android:src="@drawable/sun">
+                        android:src="@drawable/clear_sky_icon">
 
                     </ImageView>
                 </LinearLayout>
@@ -338,7 +338,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
-                        android:src="@drawable/sun">
+                        android:src="@drawable/clear_sky_icon">
 
                     </ImageView>
                 </LinearLayout>
@@ -373,7 +373,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
-                        android:src="@drawable/sun">
+                        android:src="@drawable/clear_sky_icon">
 
                     </ImageView>
                 </LinearLayout>
@@ -408,7 +408,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
-                        android:src="@drawable/sun">
+                        android:src="@drawable/clear_sky_icon">
 
                     </ImageView>
                 </LinearLayout>
@@ -443,7 +443,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
-                        android:src="@drawable/sun">
+                        android:src="@drawable/clear_sky_icon">
 
                     </ImageView>
                 </LinearLayout>
