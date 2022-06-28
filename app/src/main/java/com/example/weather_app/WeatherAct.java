@@ -95,6 +95,9 @@ public class WeatherAct extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
+
+                    //getting Json data for temperature,wind,humidity,air pressure
+                    //and assign ut
                     JSONObject main = response.getJSONObject("main");
                     JSONObject wind = response.getJSONObject("wind");
                     JSONArray weather = response.getJSONArray("weather");
@@ -108,6 +111,45 @@ public class WeatherAct extends AppCompatActivity {
                     city_name.setText(response.getString("name"));
                     Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Moscow"));
                     main_date.setText(dayOfWeekString+" "+date_day);
+
+                    JSONArray weather_array=response.getJSONArray("weather");
+                    JSONObject weather_array_object=weather_array.getJSONObject(0);
+                    String description=weather_array_object.getString("description");
+
+                    switch (description) {
+                        case "clear sky":
+                            main_weather_icon.setImageResource(R.drawable.clear_sky_icon);
+                            break;
+                        case "few clouds":
+                            main_weather_icon.setImageResource(R.drawable.few_cloud_icon);
+                            break;
+                        case "scattered clouds":
+                            main_weather_icon.setImageResource(R.drawable.scatered_clouds_icon);
+                            break;
+                        case "broken clouds":
+                            main_weather_icon.setImageResource(R.drawable.broken_clouds_iocn);
+                            break;
+                        case "shower rain":
+                            main_weather_icon.setImageResource(R.drawable.shower_rain_icon);
+                            break;
+                        case "rain":
+                            main_weather_icon.setImageResource(R.drawable.rain_icon);
+                            break;
+                        case "thunderstorm":
+                            main_weather_icon.setImageResource(R.drawable.thunderstorm_icon);
+                            break;
+                        case "snow":
+                            main_weather_icon.setImageResource(R.drawable.snow_icon);
+                            break;
+                        case "mist":
+                            main_weather_icon.setImageResource(R.drawable.mist_icon);
+                            break;
+                        case "overcast clouds":
+                            main_weather_icon.setImageResource(R.drawable.overcast_clouds_icon);
+                            break;
+                    }
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
