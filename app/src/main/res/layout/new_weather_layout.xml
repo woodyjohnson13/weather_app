@@ -33,7 +33,7 @@
                 android:text="@string/back_to_cites"
                 android:textColor="@color/white"
                 android:textSize="11sp"
-                app:rippleColor="#FBFBFB" />
+                android:backgroundTint="#6BEAE1E1" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/refresh_button"
@@ -48,7 +48,8 @@
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/refresh"
                 android:textColor="@color/white"
-                android:textSize="11sp" />
+                android:textSize="11sp"
+                android:backgroundTint="#6BEAE1E1"/>
 
         </RelativeLayout>
 
@@ -73,7 +74,7 @@
             android:textColor="@color/white"
             android:textSize="25sp" />
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:orientation="vertical">
@@ -83,39 +84,60 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="168dp"
+                android:layout_marginBottom="32dp"
                 android:fontFamily="@font/roboto_regular"
                 android:text="+19"
                 android:textColor="@color/white"
-                android:textSize="45sp" />
+                android:textSize="45sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/main_clouds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="182dp"
                 android:fontFamily="@font/roboto_regular"
                 android:text="Clouds:"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/main_temp" />
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="61dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/clear_sky_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></ImageView>
 
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:background="@drawable/rounded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:background="@drawable/rounded"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -133,17 +155,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="+19°"
                         android:paddingBottom="10dp"
+                        android:text="+19°"
                         android:textColor="@color/white"></TextView>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:src="@drawable/clear_sky_icon">
+
+                    </ImageView>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="@drawable/rounded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:background="@drawable/rounded"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -161,17 +190,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="+19°"
                         android:paddingBottom="10dp"
+                        android:text="+19°"
                         android:textColor="@color/white"></TextView>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:src="@drawable/clear_sky_icon">
+
+                    </ImageView>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="@drawable/rounded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:background="@drawable/rounded"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -189,17 +225,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="+19°"
                         android:paddingBottom="10dp"
+                        android:text="+19°"
                         android:textColor="@color/white"></TextView>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:src="@drawable/clear_sky_icon">
+
+                    </ImageView>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="@drawable/rounded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:background="@drawable/rounded"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -217,18 +260,25 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="+19°"
                         android:paddingBottom="10dp"
+                        android:text="+19°"
                         android:textColor="@color/white"></TextView>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:src="@drawable/clear_sky_icon">
+
+                    </ImageView>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="@drawable/rounded"
-
                     android:layout_width="wrap_content"
+
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:background="@drawable/rounded"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -246,17 +296,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="+19°"
                         android:paddingBottom="10dp"
+                        android:text="+19°"
                         android:textColor="@color/white"></TextView>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:src="@drawable/clear_sky_icon">
+
+                    </ImageView>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="@drawable/rounded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:background="@drawable/rounded"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -274,17 +331,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="+19°"
                         android:paddingBottom="10dp"
+                        android:text="+19°"
                         android:textColor="@color/white"></TextView>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:src="@drawable/clear_sky_icon">
+
+                    </ImageView>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="@drawable/rounded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:background="@drawable/rounded"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -302,17 +366,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="+19°"
                         android:paddingBottom="10dp"
+                        android:text="+19°"
                         android:textColor="@color/white"></TextView>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:src="@drawable/clear_sky_icon">
+
+                    </ImageView>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="@drawable/rounded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:background="@drawable/rounded"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -330,17 +401,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="+19°"
                         android:paddingBottom="10dp"
+                        android:text="+19°"
                         android:textColor="@color/white"></TextView>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:src="@drawable/clear_sky_icon">
+
+                    </ImageView>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="@drawable/rounded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:background="@drawable/rounded"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -358,9 +436,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="+19°"
                         android:paddingBottom="10dp"
+                        android:text="+19°"
                         android:textColor="@color/white"></TextView>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:src="@drawable/clear_sky_icon">
+
+                    </ImageView>
                 </LinearLayout>
             </LinearLayout>
 
@@ -369,7 +454,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="25dp"
             android:layout_weight="4"
             android:orientation="horizontal">
 
@@ -453,7 +538,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="250dp"
             android:layout_marginBottom="10dp"
             android:orientation="vertical">
 

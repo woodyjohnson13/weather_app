@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         loadData();
 
         //statement defines if we need to intent to weather activity right on app launch and passes
-        //
+        //some variables with intent
         if(weather_activity_trigger) {
             //go_to_weather.putExtra("call",city_api_call);
             go_to_weather.putExtra("current_weather_call_extra",city_current_weather_call);
