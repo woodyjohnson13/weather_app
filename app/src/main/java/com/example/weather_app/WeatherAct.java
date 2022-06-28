@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,39 +47,20 @@ public class WeatherAct extends AppCompatActivity {
     private Button back_to_cites;
     private Button refresh_weather;
     ///hourly weather and time textview
-    private TextView hourly_time_0;
-    private TextView hourly_time_1;
-    private TextView hourly_time_2;
-    private TextView hourly_time_3;
-    private TextView hourly_time_4;
-    private TextView hourly_time_5;
-    private TextView hourly_time_6;
-    private TextView hourly_time_7;
-    private TextView hourly_time_8;
-    private TextView hourly_weather_0;
-    private TextView hourly_weather_1;
-    private TextView hourly_weather_2;
-    private TextView hourly_weather_3;
-    private TextView hourly_weather_4;
-    private TextView hourly_weather_5;
-    private TextView hourly_weather_6;
-    private TextView hourly_weather_7;
-    private TextView hourly_weather_8;
-    private TextView weekly_weather_max_0;
-    private TextView weekly_weather_max_1;
-    private TextView weekly_weather_max_2;
-    private TextView weekly_weather_max_3;
-    private TextView weekly_weather_max_4;
-    private TextView weekly_weather_min_0;
-    private TextView weekly_weather_min_1;
-    private TextView weekly_weather_min_2;
-    private TextView weekly_weather_min_3;
-    private TextView weekly_weather_min_4;
-    private TextView day_of_the_week_0;
-    private TextView day_of_the_week_1;
-    private TextView day_of_the_week_2;
-    private TextView day_of_the_week_3;
-    private TextView day_of_the_week_4;
+    private TextView hourly_time_0,hourly_time_1,hourly_time_2,hourly_time_3,hourly_time_4,
+            hourly_time_5,hourly_time_6,hourly_time_7,hourly_time_8;
+    private TextView hourly_weather_0,hourly_weather_1,hourly_weather_2,hourly_weather_3,
+            hourly_weather_4,hourly_weather_5,hourly_weather_6,hourly_weather_7,hourly_weather_8;
+    private TextView weekly_weather_max_0,weekly_weather_max_1,weekly_weather_max_2,weekly_weather_max_3,
+            weekly_weather_max_4;
+    private TextView weekly_weather_min_0,weekly_weather_min_1,weekly_weather_min_2,weekly_weather_min_3,
+            weekly_weather_min_4;
+    private TextView day_of_the_week_0,day_of_the_week_1,day_of_the_week_2,day_of_the_week_3,
+            day_of_the_week_4;
+    private ImageView scroll_weather_icon_0,scroll_weather_icon_1,scroll_weather_icon_2,
+            scroll_weather_icon_3,scroll_weather_icon_4,scroll_weather_icon_5,
+            scroll_weather_icon_6,scroll_weather_icon_7,scroll_weather_icon_8;
+    private  ImageView main_weather_icon;
     public int certain_day_trigger;
 
 
@@ -149,6 +131,7 @@ public class WeatherAct extends AppCompatActivity {
             final List<String> hourly_time_list = new ArrayList<>();
             final List<TextView> hourly_time_textview_list = new ArrayList<>();
             final List<TextView> hourly_temperature_textview_list = new ArrayList<>();
+            final List<ImageView> scroll_weather_icons_list=new ArrayList<>();
 
             @Override
             public void onResponse(JSONObject response) {
@@ -180,13 +163,59 @@ public class WeatherAct extends AppCompatActivity {
                             hourly_weather_2,hourly_weather_3,hourly_weather_4,hourly_weather_5,
                             hourly_weather_6,hourly_weather_7,hourly_weather_8);
 
+                    //weather icons for scroll view collection
+                    Collections.addAll(scroll_weather_icons_list,scroll_weather_icon_0,scroll_weather_icon_1,scroll_weather_icon_2,
+                            scroll_weather_icon_3,scroll_weather_icon_4,scroll_weather_icon_5,
+                            scroll_weather_icon_6,scroll_weather_icon_7,scroll_weather_icon_8);
+
+
                     //simultaneously setting text for time and temperature from corresponding lists
                     //to text views from corresponding lists
                     for (i=0; i< hourly_time_textview_list.toArray().length; i++){
                         hourly_time_textview_list.get(i).setText(hourly_time_list.get(i));
                         hourly_temperature_textview_list.get(i).setText(hourly_temperature_list.get(i)+"°C");
-                    }
+                        //getting weather description from json
+                        JSONObject main_object=days_array.getJSONObject(i);
+                        JSONArray weather_array=main_object.getJSONArray("weather");
+                        JSONObject condition_object=weather_array.getJSONObject(0);
+                        String description=condition_object.getString("description");
 
+                        //decides which icon to out on hourly weather
+                        switch (description) {
+                            case "clear sky":
+                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.clear_sky_icon);
+                                break;
+                            case "few clouds":
+                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.few_cloud_icon);
+                                break;
+                            case "scattered clouds":
+                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.scatered_clouds_icon);
+                                break;
+                            case "broken clouds":
+                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.broken_clouds_iocn);
+                                break;
+                            case "shower rain":
+                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.shower_rain_icon);
+                                break;
+                            case "rain":
+                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.rain_icon);
+                                break;
+                            case "thunderstorm":
+                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.thunderstorm_icon);
+                                break;
+                            case "snow":
+                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.snow_icon);
+                                break;
+                            case "mist":
+                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.mist_icon);
+                                break;
+                            case "overcast clouds":
+                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.overcast_clouds_icon);
+                                break;
+                        }
+
+
+                    }
 
                 } catch (JSONException | ParseException e) {
                     e.printStackTrace();
@@ -431,9 +460,20 @@ public class WeatherAct extends AppCompatActivity {
         day_of_the_week_2=findViewById(R.id.day_of_the_week_2);
         day_of_the_week_3=findViewById(R.id.day_of_the_week_3);
         day_of_the_week_4=findViewById(R.id.day_of_the_week_4);
-        //butons connecting
+        //buttons connecting
         back_to_cites=findViewById(R.id.back_to_cities);
         refresh_weather=findViewById(R.id.refresh_button);
+        //image views connection
+        main_weather_icon=findViewById(R.id.main_weather_icon);
+        scroll_weather_icon_0=findViewById(R.id.scroll_weather_icon_0);
+        scroll_weather_icon_1=findViewById(R.id.scroll_weather_icon_1);
+        scroll_weather_icon_2=findViewById(R.id.scroll_weather_icon_2);
+        scroll_weather_icon_3=findViewById(R.id.scroll_weather_icon_3);
+        scroll_weather_icon_4=findViewById(R.id.scroll_weather_icon_4);
+        scroll_weather_icon_5=findViewById(R.id.scroll_weather_icon_5);
+        scroll_weather_icon_6=findViewById(R.id.scroll_weather_icon_6);
+        scroll_weather_icon_7=findViewById(R.id.scroll_weather_icon_7);
+        scroll_weather_icon_8=findViewById(R.id.scroll_weather_icon_8);
 
 
         //Intents and extra data from previous activity
