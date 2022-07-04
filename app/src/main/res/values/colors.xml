@@ -9,5 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="less_white">#f1f1f1</color>
     <color name="city_names_black">#191820</color>
+    <color name="status_bar_color">#5d889e</color>
 
 </resources>
