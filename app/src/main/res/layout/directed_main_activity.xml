@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="133dp"
+        android:background="@drawable/blue_back"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="350dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="54dp"
+            android:layout_marginEnd="55dp"
+            android:background="@drawable/rounded_new"
+            android:hint="@string/city_search_hint"
+            android:paddingLeft="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck">
+
+        </EditText>
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="18dp"
+            android:src="@drawable/search_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/editText"
+            app:layout_constraintEnd_toEndOf="@+id/editText"
+            app:layout_constraintTop_toTopOf="@+id/editText" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:orientation="vertical"
+        android:background="@color/less_white">
+
+        <TextView
+            android:layout_width="370dp"
+            android:layout_height="20dp"
+            android:background="@drawable/rounded_boxes_for_city_names"
+            android:text="@string/rostov_on_don"
+            android:fontFamily="@font/roboto_bold"
+            android:paddingLeft="10dp"
+            android:layout_gravity="center_horizontal">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="370dp"
+            android:layout_height="20dp"
+            android:background="@drawable/rounded_boxes_for_city_names"
+            android:text="@string/moscow"
+            android:fontFamily="@font/roboto_bold"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_gravity="center_horizontal">
+
+        </TextView>
+    </LinearLayout>
+
+
+</LinearLayout>
