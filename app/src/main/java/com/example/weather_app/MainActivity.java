@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     String city_hourly_weather_call ="";
     String city_current_weather_call="";
     EditText search_for_city_et;
-    Button search_city_button;
+    ImageView search_city_button;
     public Boolean weather_activity_trigger ;
 
 
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.directed_main_activity);
         get_info_rnd=findViewById(R.id.rosotv_find);
         get_info_msc=findViewById(R.id.moscow_find);
         search_for_city_et=findViewById(R.id.search_city);

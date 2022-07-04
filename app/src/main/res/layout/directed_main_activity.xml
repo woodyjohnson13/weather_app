@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/less_white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,7 +14,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/search_city"
             android:layout_width="350dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
@@ -30,43 +31,52 @@
 
         </EditText>
 
+
         <ImageView
+            android:id="@+id/search_city_button"
             android:layout_width="25dp"
             android:layout_height="18dp"
             android:src="@drawable/search_icon"
-            app:layout_constraintBottom_toBottomOf="@+id/editText"
-            app:layout_constraintEnd_toEndOf="@+id/editText"
-            app:layout_constraintTop_toTopOf="@+id/editText" />
+            app:layout_constraintBottom_toBottomOf="@+id/search_city"
+            app:layout_constraintEnd_toEndOf="@+id/search_city"
+            app:layout_constraintTop_toTopOf="@+id/search_city" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:orientation="vertical"
-        android:background="@color/less_white">
+        android:layout_height="668dp"
+        android:background="@color/less_white"
+        android:orientation="vertical">
 
         <TextView
+            android:id="@+id/rosotv_find"
             android:layout_width="370dp"
-            android:layout_height="20dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="6dp"
             android:background="@drawable/rounded_boxes_for_city_names"
-            android:text="@string/rostov_on_don"
             android:fontFamily="@font/roboto_bold"
             android:paddingLeft="10dp"
-            android:layout_gravity="center_horizontal">
+            android:text="@string/rostov_on_don"
+            android:textColor="@color/city_names_black"
+            android:gravity="center_vertical">
 
         </TextView>
 
         <TextView
+            android:id="@+id/moscow_find"
             android:layout_width="370dp"
-            android:layout_height="20dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="6dp"
             android:background="@drawable/rounded_boxes_for_city_names"
-            android:text="@string/moscow"
             android:fontFamily="@font/roboto_bold"
             android:paddingLeft="10dp"
-            android:layout_marginTop="6dp"
-            android:layout_gravity="center_horizontal">
+            android:text="@string/moscow"
+            android:textColor="@color/city_names_black"
+            android:gravity="center_vertical">
 
         </TextView>
     </LinearLayout>
