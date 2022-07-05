@@ -20,7 +20,7 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/back_to_cities"
+                android:id="@+id/main_city_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -29,11 +29,11 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded"
+                android:backgroundTint="#6BEAE1E1"
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/back_to_cites"
                 android:textColor="@color/white"
-                android:textSize="11sp"
-                android:backgroundTint="#6BEAE1E1" />
+                android:textSize="11sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/refresh_button"

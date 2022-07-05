@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -46,25 +45,28 @@ public class WeatherAct extends AppCompatActivity {
     //refresh and back to cities buttons
     private Button back_to_cites;
     private Button refresh_weather;
-    ///hourly weather and time textview
+    ///hourly weather and time textview for horizontal scrollview
     private TextView hourly_time_0,hourly_time_1,hourly_time_2,hourly_time_3,hourly_time_4,
             hourly_time_5,hourly_time_6,hourly_time_7,hourly_time_8;
     private TextView hourly_weather_0,hourly_weather_1,hourly_weather_2,hourly_weather_3,
             hourly_weather_4,hourly_weather_5,hourly_weather_6,hourly_weather_7,hourly_weather_8;
+    //weekly max and min temperatures for vertica scrollview
     private TextView weekly_weather_max_0,weekly_weather_max_1,weekly_weather_max_2,weekly_weather_max_3,
             weekly_weather_max_4;
     private TextView weekly_weather_min_0,weekly_weather_min_1,weekly_weather_min_2,weekly_weather_min_3,
             weekly_weather_min_4;
+    //day of the weeks for vertical scrollview
     private TextView day_of_the_week_0,day_of_the_week_1,day_of_the_week_2,day_of_the_week_3,
             day_of_the_week_4;
+    //icons for horizontal scrollview
     private ImageView scroll_weather_icon_0,scroll_weather_icon_1,scroll_weather_icon_2,
             scroll_weather_icon_3,scroll_weather_icon_4,scroll_weather_icon_5,
             scroll_weather_icon_6,scroll_weather_icon_7,scroll_weather_icon_8;
+    //icon for main weather on top
     private  ImageView main_weather_icon;
-    public int certain_day_trigger;
 
 
-
+    //date formats that will be used
     SimpleDateFormat full = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     SimpleDateFormat date_without_time = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat day = new SimpleDateFormat("dd");
@@ -72,11 +74,11 @@ public class WeatherAct extends AppCompatActivity {
     SimpleDateFormat day_of_the_week = new SimpleDateFormat("EEEE");
 
     //request queue object for volley
-    RequestQueue mRequestQueue;
+    RequestQueue main_request;
 
 
 
-    //Cleared shared preference ot avoid looping back to weather activity,method for "back to cities"
+    //Cleared shared preference to avoid looping back to weather activity,method for "back to cities"
     //button
     public void clear_preferences() {
         SharedPreferences prefs;
@@ -119,7 +121,7 @@ public class WeatherAct extends AppCompatActivity {
             }
         });
 
-        mRequestQueue.add(request);
+        main_request.add(request);
     }
 
     //assign Json data to hourly weather and weekly weather
@@ -315,7 +317,7 @@ public class WeatherAct extends AppCompatActivity {
             }
         });
 
-        mRequestQueue.add(request);
+        main_request.add(request);
     }
 
     //not sure if i need this method,it is pointless on current api,maybe will delete later
@@ -381,32 +383,19 @@ public class WeatherAct extends AppCompatActivity {
 
                     }
                     city_name.setText(city.getString("name"));
-                    // assingmetn statement, dont like it at all, wont be good for bigger
-                    //data input,will try to change later
-                    if (certain_day_trigger==0) {
-                        main_weather.setText(max_day_temperatures.get(0).toString());
-                    } else if (certain_day_trigger==1){
-                        main_weather.setText(max_day_temperatures.get(1).toString());
-                    }else if(certain_day_trigger==2){
-                        main_weather.setText(max_day_temperatures.get(2).toString());
-                    }else if(certain_day_trigger==3){
-                        main_weather.setText(max_day_temperatures.get(3).toString());
-                    }else if(certain_day_trigger==4){
-                        main_weather.setText(max_day_temperatures.get(4).toString());
-                    }
                 } catch (JSONException | ParseException e) {
                     e.printStackTrace();
                 }
 
             }
-        }, new Response.ErrorListener() { // в случае возникновеня ошибки
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
             }
         });
 
-        mRequestQueue.add(request);
+        main_request.add(request);
     }
 
 
@@ -461,7 +450,7 @@ public class WeatherAct extends AppCompatActivity {
         day_of_the_week_3=findViewById(R.id.day_of_the_week_3);
         day_of_the_week_4=findViewById(R.id.day_of_the_week_4);
         //buttons connecting
-        back_to_cites=findViewById(R.id.back_to_cities);
+        back_to_cites=findViewById(R.id.main_city_name);
         refresh_weather=findViewById(R.id.refresh_button);
         //image views connection
         main_weather_icon=findViewById(R.id.main_weather_icon);
@@ -476,14 +465,14 @@ public class WeatherAct extends AppCompatActivity {
         scroll_weather_icon_8=findViewById(R.id.scroll_weather_icon_8);
 
 
-        //Intents and extra data from previous activity
+        //Intents and api calls data data from previous activity
         Intent back_to_city_list=new Intent(WeatherAct.this,MainActivity.class);
         Intent start_this_activity = getIntent();
         String my_api_call_hourly = start_this_activity.getStringExtra("call_current_hourly");
         String my_api_call_current = start_this_activity.getStringExtra("current_weather_call_extra");
 
-
-        mRequestQueue= Volley.newRequestQueue(this);
+        // volley request
+        main_request = Volley.newRequestQueue(this);
 
 
         //back to cities list button
@@ -502,45 +491,9 @@ public class WeatherAct extends AppCompatActivity {
             public void onClick(View v) {
                 getWeather(my_api_call_current);
                 getWeather_hourly_and_weekly(my_api_call_hourly);
-                Toast.makeText(WeatherAct.this,"Weather refreshed",Toast.LENGTH_LONG).show();
             }
         });
 
-        //part of get_weather_on_certain_day,may delete later
-//        View.OnClickListener certain_day_weather_listener = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                switch (v.getId()) {
-//                    case R.id.day_of_the_week_0:
-//                        certain_day_trigger = 0;;
-//                        break;
-//                    case R.id.day_of_the_week_1:
-//                        certain_day_trigger = 1;
-//                        break;
-//                    case R.id.day_of_the_week_2:
-//                        certain_day_trigger = 2;;
-//                        break;
-//                    case R.id.day_of_the_week_3:
-//                        certain_day_trigger = 3;
-//
-//                        break;
-//                    case R.id.day_of_the_week_4:
-//                        certain_day_trigger = 4;
-//                        break;
-//                    default:
-//                        break;
-//                }
-//                getWeather_on_certain_day(my_api_call_hourly);
-//            }
-//        };
-
-        //also part of get_weather_on_certain_day,may delete later
-//        day_of_the_week_0.setOnClickListener(certain_day_weather_listener);
-//        day_of_the_week_1.setOnClickListener(certain_day_weather_listener);
-//        day_of_the_week_2.setOnClickListener(certain_day_weather_listener);
-//        day_of_the_week_3.setOnClickListener(certain_day_weather_listener);
-//        day_of_the_week_4.setOnClickListener(certain_day_weather_listener);
 
         getWeather(my_api_call_current);
         getWeather_hourly_and_weekly(my_api_call_hourly);
