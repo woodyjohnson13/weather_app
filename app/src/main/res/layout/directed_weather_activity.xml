@@ -2,10 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/weekly_weather_icon_2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/less_white">
+    android:background="@color/less_white"
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -123,8 +124,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="160dp"
             android:layout_marginBottom="16dp"
-            android:text="Scattered clouds"
             android:fontFamily="@font/roboto_regular"
+            android:text="Scattered clouds"
             android:textColor="@color/main_clouds_text_color"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/main_date"
@@ -136,8 +137,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="112dp"
             android:layout_marginBottom="32dp"
-            android:text="Monday,Jun 29,2022"
             android:fontFamily="@font/roboto_regular"
+            android:text="Monday,Jun 29,2022"
             android:textColor="@color/main_date_color"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -147,29 +148,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/less_white">
+        android:background="@color/less_white"
+        android:orientation="vertical">
 
         <TextView
+            android:id="@+id/hourly_static"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hourly"
-            android:fontFamily="@font/roboto_regular"
-            android:textColor="@color/directed_black"
-            android:textSize="20sp"
             android:layout_marginLeft="10dp"
-            >
-        </TextView>
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/hourly"
+            android:textColor="@color/directed_black"
+            android:textSize="20sp"></TextView>
 
         <HorizontalScrollView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="75dp"
@@ -179,6 +180,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/scroll_weather_icon_0"
                         android:layout_width="46dp"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
@@ -186,23 +188,25 @@
                         android:src="@drawable/clear_sky"></ImageView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:text="25°C"
                         android:fontFamily="@font/roboto_bold"
+                        android:text="25°C"
                         android:textColor="@color/black">
 
                     </TextView>
 
                     <TextView
+                        android:id="@+id/hourly_time_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:text="09:00 am"
-                        android:fontFamily="@font/roboto_bold">
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="09:00 am">
 
                     </TextView>
                 </LinearLayout>
@@ -215,6 +219,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/scroll_weather_icon_1"
                         android:layout_width="46dp"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
@@ -222,23 +227,25 @@
                         android:src="@drawable/clear_sky"></ImageView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:text="25°C"
                         android:fontFamily="@font/roboto_bold"
+                        android:text="25°C"
                         android:textColor="@color/black">
 
                     </TextView>
 
                     <TextView
+                        android:id="@+id/hourly_time_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:text="09:00 am"
-                        android:fontFamily="@font/roboto_bold">
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="09:00 am">
 
                     </TextView>
                 </LinearLayout>
@@ -251,6 +258,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/scroll_weather_icon_2"
                         android:layout_width="46dp"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
@@ -258,23 +266,25 @@
                         android:src="@drawable/clear_sky"></ImageView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:text="25°C"
                         android:fontFamily="@font/roboto_bold"
+                        android:text="25°C"
                         android:textColor="@color/black">
 
                     </TextView>
 
                     <TextView
+                        android:id="@+id/hourly_time_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:text="09:00 am"
-                        android:fontFamily="@font/roboto_bold">
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="09:00 am">
 
                     </TextView>
                 </LinearLayout>
@@ -287,6 +297,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/scroll_weather_icon_3"
                         android:layout_width="46dp"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
@@ -294,23 +305,25 @@
                         android:src="@drawable/clear_sky"></ImageView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:text="25°C"
                         android:fontFamily="@font/roboto_bold"
+                        android:text="25°C"
                         android:textColor="@color/black">
 
                     </TextView>
 
                     <TextView
+                        android:id="@+id/hourly_time_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:text="09:00 am"
-                        android:fontFamily="@font/roboto_bold">
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="09:00 am">
 
                     </TextView>
                 </LinearLayout>
@@ -323,6 +336,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/scroll_weather_icon_4"
                         android:layout_width="46dp"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
@@ -330,23 +344,25 @@
                         android:src="@drawable/clear_sky"></ImageView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:text="25°C"
                         android:fontFamily="@font/roboto_bold"
+                        android:text="25°C"
                         android:textColor="@color/black">
 
                     </TextView>
 
                     <TextView
+                        android:id="@+id/hourly_time_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:text="09:00 am"
-                        android:fontFamily="@font/roboto_bold">
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="09:00 am">
 
                     </TextView>
                 </LinearLayout>
@@ -359,6 +375,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/scroll_weather_icon_5"
                         android:layout_width="46dp"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
@@ -366,23 +383,25 @@
                         android:src="@drawable/clear_sky"></ImageView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:text="25°C"
                         android:fontFamily="@font/roboto_bold"
+                        android:text="25°C"
                         android:textColor="@color/black">
 
                     </TextView>
 
                     <TextView
+                        android:id="@+id/hourly_time_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:text="09:00 am"
-                        android:fontFamily="@font/roboto_bold">
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="09:00 am">
 
                     </TextView>
                 </LinearLayout>
@@ -395,6 +414,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/scroll_weather_icon_6"
                         android:layout_width="46dp"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
@@ -402,23 +422,25 @@
                         android:src="@drawable/clear_sky"></ImageView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:text="25°C"
                         android:fontFamily="@font/roboto_bold"
+                        android:text="25°C"
                         android:textColor="@color/black">
 
                     </TextView>
 
                     <TextView
+                        android:id="@+id/hourly_time_7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:text="09:00 am"
-                        android:fontFamily="@font/roboto_bold">
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="09:00 am">
 
                     </TextView>
                 </LinearLayout>
@@ -427,10 +449,12 @@
                     android:layout_width="75dp"
                     android:layout_height="110dp"
                     android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
                     android:background="@drawable/hourly_placehoulder_icon"
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/scroll_weather_icon_7"
                         android:layout_width="46dp"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
@@ -438,28 +462,498 @@
                         android:src="@drawable/clear_sky"></ImageView>
 
                     <TextView
+                        android:id="@+id/hourly_weather_8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:text="25°C"
                         android:fontFamily="@font/roboto_bold"
+                        android:text="25°C"
                         android:textColor="@color/black">
 
                     </TextView>
 
                     <TextView
+                        android:id="@+id/hourly_time_8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:text="09:00 am"
-                        android:fontFamily="@font/roboto_bold">
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="09:00 am">
 
                     </TextView>
                 </LinearLayout>
             </LinearLayout>
         </HorizontalScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/daily"
+            android:textColor="@color/directed_black"
+            android:textSize="20sp"></TextView>
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="377dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/daily_placehoulder_icon"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:id="@+id/weekly_weather_icon_0"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/clear_sky"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/day_of_the_week_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="Monday"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toTopOf="@+id/weekly_weather_condition_0"
+                        tools:layout_editor_absoluteX="87dp">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/weekly_weather_condition_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Little cloudy"
+                        android:textSize="10dp"
+                        tools:layout_editor_absoluteX="87dp"
+                        tools:layout_editor_absoluteY="38dp">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/weekly_weahter_min_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="27°"
+                        android:textSize="18dp"
+                        app:layout_constraintEnd_toStartOf="@+id/slash_0"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/slash_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="44dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="/ "
+                        android:textSize="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/weekly_weahter_max_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="31°"
+                        android:textColor="@color/black_for_weekly_weather"
+                        android:textSize="18dp"
+                        app:layout_constraintStart_toEndOf="@+id/slash_0"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="377dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="15dp"
+
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/daily_placehoulder_icon"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:id="@+id/weekly_weather_icon_1"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/clear_sky"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/day_of_the_week_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="Monday"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toTopOf="@+id/weekly_weather_condition_1"
+                        tools:layout_editor_absoluteX="87dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/weekly_weather_condition_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Little cloudy"
+                        android:textSize="10dp"
+                        tools:layout_editor_absoluteX="87dp"
+                        tools:layout_editor_absoluteY="38dp">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/weekly_weahter_min_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="27°"
+                        android:textSize="18dp"
+                        app:layout_constraintEnd_toStartOf="@+id/slash_1"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="DuplicateIds">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/slash_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="44dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="/ "
+                        android:textSize="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/weekly_weahter_max_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="31°"
+                        android:textColor="@color/black_for_weekly_weather"
+                        android:textSize="18dp"
+                        app:layout_constraintStart_toEndOf="@+id/slash_1"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="377dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="15dp"
+
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/daily_placehoulder_icon"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/clear_sky"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/day_of_the_week_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="Monday"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toTopOf="@+id/weekly_weather_condition_2"
+                        tools:layout_editor_absoluteX="87dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/weekly_weather_condition_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Little cloudy"
+                        android:textSize="10dp"
+                        tools:layout_editor_absoluteX="87dp"
+                        tools:layout_editor_absoluteY="38dp">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/weekly_weahter_min_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="27°"
+                        android:textSize="18dp"
+                        app:layout_constraintEnd_toStartOf="@+id/slash_2"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/slash_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="44dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="/ "
+                        android:textSize="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/weekly_weahter_max_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="31°"
+                        android:textColor="@color/black_for_weekly_weather"
+                        android:textSize="18dp"
+                        app:layout_constraintStart_toEndOf="@+id/slash_2"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="377dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/daily_placehoulder_icon"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:id="@+id/weekly_weather_icon_3"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/clear_sky"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/day_of_the_week_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="Monday"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toTopOf="@+id/weekly_weather_condition_3"
+                        tools:layout_editor_absoluteX="87dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/weekly_weather_condition_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Little cloudy"
+                        android:textSize="10dp"
+                        tools:layout_editor_absoluteX="87dp"
+                        tools:layout_editor_absoluteY="38dp">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/weekly_weahter_min_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="27°"
+                        android:textSize="18dp"
+                        app:layout_constraintEnd_toStartOf="@+id/textView2"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="44dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="/ "
+                        android:textSize="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/weekly_weahter_max_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="31°"
+                        android:textColor="@color/black_for_weekly_weather"
+                        android:textSize="18dp"
+                        app:layout_constraintStart_toEndOf="@+id/textView2"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="377dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="15dp"
+
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/daily_placehoulder_icon"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:id="@+id/weekly_weather_icon_4"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/clear_sky"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/day_of_the_week_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="Monday"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toTopOf="@+id/weekly_weather_condition_4"
+                        tools:layout_editor_absoluteX="87dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/weekly_weather_condition_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Little cloudy"
+                        android:textSize="10dp"
+                        tools:layout_editor_absoluteX="87dp"
+                        tools:layout_editor_absoluteY="38dp">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/weekly_weahter_min_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="27°"
+                        android:textSize="18dp"
+                        app:layout_constraintEnd_toStartOf="@+id/textView2"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="44dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="/ "
+                        android:textSize="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/weekly_weahter_max_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="31°"
+                        android:textColor="@color/black_for_weekly_weather"
+                        android:textSize="18dp"
+                        app:layout_constraintStart_toEndOf="@+id/textView2"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 

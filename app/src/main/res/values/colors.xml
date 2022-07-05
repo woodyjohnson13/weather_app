@@ -13,6 +13,7 @@
     <color name="main_clouds_text_color">#e0e7e8</color>
     <color name="main_date_color">#fffeff</color>
     <color name="directed_black">#3d404c</color>
+    <color name="black_for_weekly_weather">#5a5e68</color>
 
 
 </resources>

@@ -444,9 +444,9 @@ public class WeatherAct extends AppCompatActivity {
         weekly_weather_min_3 =findViewById(R.id.weekly_weahter_min_3);
         weekly_weather_min_4 =findViewById(R.id.weekly_weahter_min_4);
         //days of the week connecting
-        day_of_the_week_0=findViewById(R.id.day_of_the_week_0);
+        day_of_the_week_0=findViewById(R.id.day_of_the_week_1);
         day_of_the_week_1=findViewById(R.id.day_of_the_week_1);
-        day_of_the_week_2=findViewById(R.id.day_of_the_week_2);
+        day_of_the_week_2=findViewById(R.id.weekly_weather_condtition_2);
         day_of_the_week_3=findViewById(R.id.day_of_the_week_3);
         day_of_the_week_4=findViewById(R.id.day_of_the_week_4);
         //buttons connecting
@@ -458,7 +458,7 @@ public class WeatherAct extends AppCompatActivity {
         scroll_weather_icon_1=findViewById(R.id.scroll_weather_icon_1);
         scroll_weather_icon_2=findViewById(R.id.scroll_weather_icon_2);
         scroll_weather_icon_3=findViewById(R.id.scroll_weather_icon_3);
-        scroll_weather_icon_4=findViewById(R.id.scroll_weather_icon_4);
+        scroll_weather_icon_4=findViewById(R.id.scroll_weather_icon_5);
         scroll_weather_icon_5=findViewById(R.id.scroll_weather_icon_5);
         scroll_weather_icon_6=findViewById(R.id.scroll_weather_icon_6);
         scroll_weather_icon_7=findViewById(R.id.scroll_weather_icon_7);
