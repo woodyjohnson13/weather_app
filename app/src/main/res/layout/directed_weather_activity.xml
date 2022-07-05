@@ -81,7 +81,16 @@
             app:layout_constraintStart_toEndOf="@+id/main_country_name"
             app:layout_constraintTop_toTopOf="parent" />
 
-        S
+
+        <ImageView
+            android:id="@+id/refresh_button"
+            android:layout_width="26dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/refresh_icon"
+            app:layout_constraintStart_toEndOf="@+id/main_country_name"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/main_weather_icon"
@@ -99,8 +108,8 @@
             android:id="@+id/main_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="140dp"
-            android:layout_marginBottom="108dp"
+            android:layout_marginEnd="128dp"
+            android:layout_marginBottom="112dp"
             android:fontFamily="@font/roboto_bold"
             android:text="27°C"
             android:textColor="@color/white"
@@ -112,18 +121,347 @@
             android:id="@+id/main_clouds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="160dp"
+            android:layout_marginBottom="16dp"
             android:text="Scattered clouds"
-            tools:layout_editor_absoluteX="132dp"
-            tools:layout_editor_absoluteY="152dp" />
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/main_clouds_text_color"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/main_date"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/main_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="112dp"
+            android:layout_marginBottom="32dp"
             android:text="Monday,Jun 29,2022"
-            tools:layout_editor_absoluteX="125dp"
-            tools:layout_editor_absoluteY="187dp" />
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/main_date_color"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/less_white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hourly"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/directed_black"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
+            >
+        </TextView>
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/hourly_placehoulder_icon"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="46dp"
+                        android:layout_height="41dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/clear_sky"></ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="25°C"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="09:00 am"
+                        android:fontFamily="@font/roboto_bold">
+
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/hourly_placehoulder_icon"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="46dp"
+                        android:layout_height="41dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/clear_sky"></ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="25°C"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="09:00 am"
+                        android:fontFamily="@font/roboto_bold">
+
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/hourly_placehoulder_icon"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="46dp"
+                        android:layout_height="41dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/clear_sky"></ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="25°C"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="09:00 am"
+                        android:fontFamily="@font/roboto_bold">
+
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/hourly_placehoulder_icon"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="46dp"
+                        android:layout_height="41dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/clear_sky"></ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="25°C"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="09:00 am"
+                        android:fontFamily="@font/roboto_bold">
+
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/hourly_placehoulder_icon"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="46dp"
+                        android:layout_height="41dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/clear_sky"></ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="25°C"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="09:00 am"
+                        android:fontFamily="@font/roboto_bold">
+
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/hourly_placehoulder_icon"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="46dp"
+                        android:layout_height="41dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/clear_sky"></ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="25°C"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="09:00 am"
+                        android:fontFamily="@font/roboto_bold">
+
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/hourly_placehoulder_icon"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="46dp"
+                        android:layout_height="41dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/clear_sky"></ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="25°C"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="09:00 am"
+                        android:fontFamily="@font/roboto_bold">
+
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/hourly_placehoulder_icon"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="46dp"
+                        android:layout_height="41dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/clear_sky"></ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="25°C"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="09:00 am"
+                        android:fontFamily="@font/roboto_bold">
+
+                    </TextView>
+                </LinearLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    </LinearLayout>
 
 
 </LinearLayout>

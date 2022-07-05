@@ -10,5 +10,9 @@
     <color name="less_white">#f1f1f1</color>
     <color name="city_names_black">#191820</color>
     <color name="status_bar_color">#5d889e</color>
+    <color name="main_clouds_text_color">#e0e7e8</color>
+    <color name="main_date_color">#fffeff</color>
+    <color name="directed_black">#3d404c</color>
+
 
 </resources>

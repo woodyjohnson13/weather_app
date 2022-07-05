@@ -11,6 +11,7 @@
     <string name="search">Search</string>
     <string name="rostov_on_don">Rostov-on-Don</string>
     <string name="moscow">Moscow</string>
+    <string name="hourly">Hourly</string>
     <string name="city_search_hint"><font size="15">Type city name</font></string>
 
 </resources>
