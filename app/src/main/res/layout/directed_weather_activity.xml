@@ -38,7 +38,7 @@
             android:id="@+id/main_city_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="140dp"
+            android:layout_marginStart="156dp"
             android:layout_marginTop="28dp"
             android:fontFamily="@font/roboto_bold"
             android:text="Rostov-on-don"
@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
-            android:text="Russia"
+            android:text="RU"
             android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@+id/coma_main"
             app:layout_constraintTop_toTopOf="@+id/main_city_name">

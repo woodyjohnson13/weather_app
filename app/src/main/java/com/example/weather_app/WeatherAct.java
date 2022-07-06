@@ -34,17 +34,13 @@ import java.util.List;
 import java.util.TimeZone;
 
 public class WeatherAct extends AppCompatActivity {
-    //main weather textview
-    private TextView main_weather;
-    private TextView city_name;
-    private TextView main_humidity;
-    private TextView main_wind_speed;
-    private TextView main_clouds;
-    private TextView main_air_pressure;
-    private TextView main_date;
+    //main weather textview and main weather icon
+    private TextView main_weather,city_name,country_name,main_humidity,main_wind_speed,main_clouds,
+            main_air_pressure,main_date;
+    private  ImageView main_weather_icon;
     //refresh and back to cities buttons
-    private Button back_to_cites;
-    private Button refresh_weather;
+    private ImageView back_to_cites;
+    private ImageView refresh_weather;
     ///hourly weather and time textview for horizontal scrollview
     private TextView hourly_time_0,hourly_time_1,hourly_time_2,hourly_time_3,hourly_time_4,
             hourly_time_5,hourly_time_6,hourly_time_7,hourly_time_8;
@@ -63,7 +59,7 @@ public class WeatherAct extends AppCompatActivity {
             scroll_weather_icon_3,scroll_weather_icon_4,scroll_weather_icon_5,
             scroll_weather_icon_6,scroll_weather_icon_7,scroll_weather_icon_8;
     //icon for main weather on top
-    private  ImageView main_weather_icon;
+
 
 
     //date formats that will be used
@@ -97,11 +93,13 @@ public class WeatherAct extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
+                    //getting strings and ints from json response
                     JSONObject main = response.getJSONObject("main");
                     JSONObject wind = response.getJSONObject("wind");
                     JSONArray weather = response.getJSONArray("weather");
-                    JSONObject object_for_clouds = weather.getJSONObject(0);
-                    String clouds_lower=object_for_clouds.getString("description");
+                    JSONObject clouds = weather.getJSONObject(0);
+                    String clouds_lower=clouds.getString("description");
+                    //assign retrieved json data to variables
                     main_clouds.setText(clouds_lower.substring(0,1).toUpperCase()+clouds_lower.substring(1));
                     main_weather.setText((int)main.getDouble("temp")+" °C");
                     main_air_pressure.setText(main.getInt("pressure")+" mm");
@@ -403,10 +401,11 @@ public class WeatherAct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.new_weather_layout);
+        setContentView(R.layout.directed_weather_activity);
 
         //main weather textviews info connecting
         city_name=findViewById(R.id.main_city_name);
+        country_name=findViewById(R.id.main_country_name);
         main_weather=findViewById(R.id.main_temp);
         main_humidity=findViewById(R.id.humidity_level);
         main_wind_speed=findViewById(R.id.wind_speed);
@@ -450,7 +449,7 @@ public class WeatherAct extends AppCompatActivity {
         day_of_the_week_3=findViewById(R.id.day_of_the_week_3);
         day_of_the_week_4=findViewById(R.id.day_of_the_week_4);
         //buttons connecting
-        back_to_cites=findViewById(R.id.main_city_name);
+        back_to_cites=findViewById(R.id.back_to_cites);
         refresh_weather=findViewById(R.id.refresh_button);
         //image views connection
         main_weather_icon=findViewById(R.id.main_weather_icon);
