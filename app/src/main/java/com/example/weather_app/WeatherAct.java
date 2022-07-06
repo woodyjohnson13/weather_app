@@ -110,9 +110,9 @@ public class WeatherAct extends AppCompatActivity {
                     JSONObject system = response.getJSONObject("sys");
                     JSONArray weather = response.getJSONArray("weather");
                     JSONObject clouds = weather.getJSONObject(0);
-                    String clouds_lower=clouds.getString("description");
+                    String main_weather_conditions=clouds.getString("main");
                     //assign retrieved json data to variables
-                    main_clouds.setText(clouds_lower.substring(0,1).toUpperCase()+clouds_lower.substring(1));
+                    main_clouds.setText(main_weather_conditions);
                     main_weather.setText((int)main.getDouble("temp")+" °C");
                     main_air_pressure.setText(main.getInt("pressure")+"mm");
                     main_humidity.setText(main.getInt("humidity")+" %");
@@ -123,11 +123,11 @@ public class WeatherAct extends AppCompatActivity {
                     + "," + year_string);
                     //assign weekly weather conditions and weekly weather icon here, because
                     //first element in weekly weather will use conditions and icon for current weather
-                    weekly_weather_condition_0.setText(clouds_lower.substring(0,1).toUpperCase()+clouds_lower.substring(1));
+                    weekly_weather_condition_0.setText(main_weather_conditions.substring(0,1).toUpperCase()+main_weather_conditions.substring(1));
 
 
                     //decides which icon to set on main weather icon and first object in the weekly weather
-                    switch (clouds_lower) {
+                    switch (main_weather_conditions) {
                         case "Clear":
                             main_weather_icon.setImageResource(R.drawable.clear_sky);
                             weekly_weather_icon_0.setImageResource(R.drawable.clear_sky);
@@ -231,7 +231,7 @@ public class WeatherAct extends AppCompatActivity {
                         JSONObject main_object=days_array.getJSONObject(i);
                         JSONArray weather_array=main_object.getJSONArray("weather");
                         JSONObject condition_object=weather_array.getJSONObject(0);
-                        String weather_conditions_for_hourly_forecast=condition_object.getString("description");
+                        String weather_conditions_for_hourly_forecast=condition_object.getString("main");
 
                         //decides which icon to out on hourly weather
                         switch (weather_conditions_for_hourly_forecast) {
@@ -347,7 +347,7 @@ public class WeatherAct extends AppCompatActivity {
 
                         }
                         if (!formatted_date_to_chek.equals(reference_date_for_week) && time_to_check.equals("12:00")){
-                            weather_description.add(zero.getString("description"));
+                            weather_description.add(zero.getString("main"));
                         }
 
                     }
