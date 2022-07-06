@@ -319,7 +319,11 @@ public class WeatherAct extends AppCompatActivity {
                     String first_day_in_forecast_final=day_of_the_week.format(full_date);
                     days_of_the_week.add(first_day_in_forecast_final);
                     String reference_date=date_without_time.format(full_date);
+                    //need to refactor
+                    String weekly_check_date=date_without_time.format(full_date);
                     String reference_date_for_week=date_without_time.format(full_date);
+                    //------------------------------------------------------
+
 
                     int z;
                     for(z=0;z<=39;z++){
@@ -332,7 +336,9 @@ public class WeatherAct extends AppCompatActivity {
                         JSONObject current_main=current_object.getJSONObject("main");
                         Date full_date_to_check=full.parse(current_unformed_date);
                         String formatted_date_to_chek=date_without_time.format(full_date_to_check);
+                        //need to refactor
                         String time_to_check=time.format(full_date_to_check);
+                        //--------------------------------
                         if(formatted_date_to_chek.equals(reference_date)) {
                             //if current date equals reference date adding min and max temps
                             //to the corresponding list
@@ -367,51 +373,18 @@ public class WeatherAct extends AppCompatActivity {
                             one_day_min_temperatures.add(current_main.getDouble("temp_min"));
 
 
-                        } else if (!formatted_date_to_chek.equals(reference_date_for_week) && time_to_check.equals("12:00")){
-                                String weekly_description=zero.getString("description");
-                                weather_description.add(weekly_description);
+                        } else if (true) {
+                            String new_day_of_the_week_unformatted=current_object.getString("dt_txt");
+                            Date day_of_the_week_full=full.parse(new_day_of_the_week_unformatted);
                         }
-
                     }
 
-                    for (z=0;z<weekly_weather_conditions_list.toArray().length;z++){
-                        weekly_weather_conditions_list.get(z).setText(weather_description.get(z));
+//                    for (int y=0;y<=4;y++){
+//                        weekly_weather_conditions_list.get(z).setText(weather_description.get(z));
 //
-//                        switch (weather_description.get(z)) {
-//                            case "clear sky":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.clear_sky);
-//                                break;
-//                            case "few clouds":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.few_clouds);
-//                                break;
-//                            case "scattered clouds":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.scattered_clouds);
-//                                break;
-//                            case "broken clouds":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.broken_clouds);
-//                                break;
-//                            case "shower rain":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.shower_rain);
-//                                break;
-//                            case "rain":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.rain);
-//                                break;
-//                            case "thunderstorm":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.thunderstorm);
-//                                break;
-//                            case "snow":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.snow);
-//                                break;
-//                            case "mist":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.mist);
-//                                break;
-//                            case "overcast clouds":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.overcast_clouds_icon);
-//                                break;
-//                        }
-//
-//
-                    }
+//                    }
+
+
                     //assign max/min temperature and days of the week values to corresponding views
                     for (z=0;z<weekly_temperature_textview_max_list.toArray().length;z++){
                         weekly_temperature_textview_max_list.get(z).setText(max_day_temperatures.get(z).toString()+"°");
