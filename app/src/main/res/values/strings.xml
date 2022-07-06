@@ -13,6 +13,10 @@
     <string name="moscow">Moscow</string>
     <string name="hourly">Hourly</string>
     <string name="daily">Daily</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind">Wind</string>
+    <string name="conditions">Conditions</string>
+    <string name="air_pressure">Air pressure</string>
     <string name="city_search_hint"><font size="15">Type city name</font></string>
 
 </resources>

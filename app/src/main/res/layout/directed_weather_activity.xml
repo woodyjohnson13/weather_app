@@ -144,6 +144,100 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/conditions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/conditions"
+        android:textColor="@color/directed_black"
+        android:textSize="20sp">
+
+    </TextView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/daily_placehoulder_icon"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/humidity"
+            android:textColor="@color/directed_black"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+        <TextView
+            android:id="@+id/humidity_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="69%"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/air_pressure"
+            android:textColor="@color/directed_black"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+        <TextView
+            android:id="@+id/wind_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="10m/s"
+            app:layout_constraintStart_toEndOf="@+id/humidity_level"
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/wind"
+            android:textColor="@color/directed_black"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+        <TextView
+            android:id="@+id/air_pressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="740mm"
+            app:layout_constraintStart_toEndOf="@+id/wind_speed"
+            app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+        </TextView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -155,6 +249,7 @@
             android:id="@+id/hourly_static"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/roboto_regular"
             android:text="@string/hourly"
@@ -534,23 +629,25 @@
                         android:id="@+id/day_of_the_week_0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
                         android:layout_marginBottom="4dp"
                         android:fontFamily="@font/roboto_bold"
                         android:text="Monday"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toTopOf="@+id/weekly_weather_condition_0"
-                        tools:layout_editor_absoluteX="87dp">
-                    </TextView>
+                        app:layout_constraintStart_toEndOf="@+id/weekly_weather_icon_0"></TextView>
 
                     <TextView
                         android:id="@+id/weekly_weather_condition_0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginBottom="8dp"
                         android:fontFamily="@font/roboto_regular"
                         android:text="Little cloudy"
                         android:textSize="10dp"
-                        tools:layout_editor_absoluteX="87dp"
-                        tools:layout_editor_absoluteY="38dp">
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/weekly_weather_icon_0">
 
                     </TextView>
 
@@ -624,22 +721,25 @@
                         android:id="@+id/day_of_the_week_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
                         android:layout_marginBottom="4dp"
                         android:fontFamily="@font/roboto_bold"
                         android:text="Monday"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toTopOf="@+id/weekly_weather_condition_1"
-                        tools:layout_editor_absoluteX="87dp"></TextView>
+                        app:layout_constraintStart_toEndOf="@+id/weekly_weather_icon_1"></TextView>
 
                     <TextView
                         android:id="@+id/weekly_weather_condition_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginBottom="8dp"
                         android:fontFamily="@font/roboto_regular"
                         android:text="Little cloudy"
                         android:textSize="10dp"
-                        tools:layout_editor_absoluteX="87dp"
-                        tools:layout_editor_absoluteY="38dp">
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/weekly_weather_icon_1">
 
                     </TextView>
 
@@ -699,6 +799,7 @@
 
 
                     <ImageView
+                        android:id="@+id/imageView"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
                         android:layout_marginStart="4dp"
@@ -713,22 +814,25 @@
                         android:id="@+id/day_of_the_week_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
                         android:layout_marginBottom="4dp"
                         android:fontFamily="@font/roboto_bold"
                         android:text="Monday"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toTopOf="@+id/weekly_weather_condition_2"
-                        tools:layout_editor_absoluteX="87dp"></TextView>
+                        app:layout_constraintStart_toEndOf="@+id/imageView"></TextView>
 
                     <TextView
                         android:id="@+id/weekly_weather_condition_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginBottom="8dp"
                         android:fontFamily="@font/roboto_regular"
                         android:text="Little cloudy"
                         android:textSize="10dp"
-                        tools:layout_editor_absoluteX="87dp"
-                        tools:layout_editor_absoluteY="38dp">
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView">
 
                     </TextView>
 
@@ -801,22 +905,25 @@
                         android:id="@+id/day_of_the_week_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
                         android:layout_marginBottom="4dp"
                         android:fontFamily="@font/roboto_bold"
                         android:text="Monday"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toTopOf="@+id/weekly_weather_condition_3"
-                        tools:layout_editor_absoluteX="87dp"></TextView>
+                        app:layout_constraintStart_toEndOf="@+id/weekly_weather_icon_3"></TextView>
 
                     <TextView
                         android:id="@+id/weekly_weather_condition_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginBottom="8dp"
                         android:fontFamily="@font/roboto_regular"
                         android:text="Little cloudy"
                         android:textSize="10dp"
-                        tools:layout_editor_absoluteX="87dp"
-                        tools:layout_editor_absoluteY="38dp">
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/weekly_weather_icon_3">
 
                     </TextView>
 
@@ -828,13 +935,13 @@
                         android:fontFamily="@font/roboto_regular"
                         android:text="27°"
                         android:textSize="18dp"
-                        app:layout_constraintEnd_toStartOf="@+id/textView2"
+                        app:layout_constraintEnd_toStartOf="@+id/slash_3"
                         app:layout_constraintTop_toTopOf="parent">
 
                     </TextView>
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/slash_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
@@ -856,7 +963,7 @@
                         android:text="31°"
                         android:textColor="@color/black_for_weekly_weather"
                         android:textSize="18dp"
-                        app:layout_constraintStart_toEndOf="@+id/textView2"
+                        app:layout_constraintStart_toEndOf="@+id/slash_3"
                         app:layout_constraintTop_toTopOf="parent">
 
                     </TextView>
@@ -890,22 +997,25 @@
                         android:id="@+id/day_of_the_week_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
                         android:layout_marginBottom="4dp"
                         android:fontFamily="@font/roboto_bold"
                         android:text="Monday"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toTopOf="@+id/weekly_weather_condition_4"
-                        tools:layout_editor_absoluteX="87dp"></TextView>
+                        app:layout_constraintStart_toEndOf="@+id/weekly_weather_icon_4"></TextView>
 
                     <TextView
                         android:id="@+id/weekly_weather_condition_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginBottom="8dp"
                         android:fontFamily="@font/roboto_regular"
                         android:text="Little cloudy"
                         android:textSize="10dp"
-                        tools:layout_editor_absoluteX="87dp"
-                        tools:layout_editor_absoluteY="38dp">
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/weekly_weather_icon_4">
 
                     </TextView>
 
