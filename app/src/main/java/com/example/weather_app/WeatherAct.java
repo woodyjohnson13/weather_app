@@ -194,8 +194,7 @@ public class WeatherAct extends AppCompatActivity {
             final List<TextView> hourly_time_textview_list = new ArrayList<>();
             final List<TextView> hourly_temperature_textview_list = new ArrayList<>();
             final List<ImageView> scroll_weather_icons_list=new ArrayList<>();
-            final List<ImageView> weekly_weather_icons_list=new ArrayList<>();
-            final List<TextView> weekly_weather_conditions_list=new ArrayList<>();
+
 
             @Override
             public void onResponse(JSONObject response) {
@@ -227,9 +226,7 @@ public class WeatherAct extends AppCompatActivity {
                             scroll_weather_icon_3,scroll_weather_icon_4,scroll_weather_icon_5,
                             scroll_weather_icon_6,scroll_weather_icon_7);
 
-                    //weather conditions for vertical layout
-                    Collections.addAll(weekly_weather_conditions_list,weekly_weather_condition_1,
-                            weekly_weather_condition_2,weekly_weather_condition_3,weekly_weather_condition_4);
+
 
 
                     //simultaneously setting text for time and temperature from corresponding lists
@@ -293,6 +290,8 @@ public class WeatherAct extends AppCompatActivity {
                     List<Integer> min_day_temperatures = new ArrayList<>();
                     List<String> days_of_the_week = new ArrayList<>();
                     List<String> weather_description = new ArrayList<>();
+                    final List<ImageView> weekly_weather_icons_list=new ArrayList<>();
+                    final List<TextView> weekly_weather_conditions_list=new ArrayList<>();
                     final List<TextView> weekly_temperature_textview_max_list = new ArrayList<>();
                     final List<TextView> weekly_temperature_textview_min_list = new ArrayList<>();
                     final List<TextView> days_of_the_week_textview_list = new ArrayList<>();
@@ -307,6 +306,9 @@ public class WeatherAct extends AppCompatActivity {
                             day_of_the_week_1,day_of_the_week_2,day_of_the_week_3,day_of_the_week_4);
                     Collections.addAll(weekly_weather_icons_list,weekly_weather_icon_1,
                             weekly_weather_icon_2,weekly_weather_icon_3,weekly_weather_icon_4);
+                    //weather conditions for vertical scrollview
+                    Collections.addAll(weekly_weather_conditions_list,weekly_weather_condition_1,
+                            weekly_weather_condition_2,weekly_weather_condition_3,weekly_weather_condition_4);
 
                     //Sets current day as fist day in the weekly forecast
                     //creates reference date for looping through json
@@ -372,8 +374,8 @@ public class WeatherAct extends AppCompatActivity {
 
                     }
 
-//                    for (z=0;z<weekly_weather_conditions_list.toArray().length;z++){
-//                        weekly_weather_conditions_list.get(z).setText(weather_description.get(z));
+                    for (z=0;z<weekly_weather_conditions_list.toArray().length;z++){
+                        weekly_weather_conditions_list.get(z).setText(weather_description.get(z));
 //
 //                        switch (weather_description.get(z)) {
 //                            case "clear sky":
@@ -409,7 +411,7 @@ public class WeatherAct extends AppCompatActivity {
 //                        }
 //
 //
-//                    }
+                    }
                     //assign max/min temperature and days of the week values to corresponding views
                     for (z=0;z<weekly_temperature_textview_max_list.toArray().length;z++){
                         weekly_temperature_textview_max_list.get(z).setText(max_day_temperatures.get(z).toString()+"°");
