@@ -34,7 +34,7 @@ import java.util.List;
 
 public class WeatherAct extends AppCompatActivity {
     //main weather textview and main weather icon
-    private TextView main_weather,city_name,country_name,main_humidity,main_wind_speed,main_clouds,
+    private TextView main_weather,city_name,main_humidity,main_wind_speed,main_clouds,
             main_air_pressure,main_date;
     private  ImageView main_weather_icon;
     //refresh and back to cities buttons
@@ -118,7 +118,7 @@ public class WeatherAct extends AppCompatActivity {
                     main_humidity.setText(main.getInt("humidity")+" %");
                     main_wind_speed.setText(wind.getDouble("speed")+"m/s");
                     city_name.setText(response.getString("name"));
-                    country_name.setText(system.getString("country"));
+                    //country_name.setText(system.getString("country"));
                     main_date.setText(day_of_the_week_string + ","+ month_string + " " + day_of_the_month_string
                     + "," + year_string);
                     //assign weekly weather conditions and weekly weather icon here, because
@@ -128,46 +128,35 @@ public class WeatherAct extends AppCompatActivity {
 
                     //decides which icon to set on main weather icon and first object in the weekly weather
                     switch (clouds_lower) {
-                        case "clear sky":
+                        case "Clear":
                             main_weather_icon.setImageResource(R.drawable.clear_sky);
                             weekly_weather_icon_0.setImageResource(R.drawable.clear_sky);
                             break;
-                        case "few clouds":
+                        case "Clouds":
                             main_weather_icon.setImageResource(R.drawable.few_clouds);
                             weekly_weather_icon_0.setImageResource(R.drawable.few_clouds);
                             break;
-                        case "scattered clouds":
-                            main_weather_icon.setImageResource(R.drawable.scattered_clouds);
-                            weekly_weather_icon_0.setImageResource(R.drawable.scattered_clouds);
-                            break;
-                        case "broken clouds":
-                            main_weather_icon.setImageResource(R.drawable.broken_clouds);
-                            weekly_weather_icon_0.setImageResource(R.drawable.broken_clouds);
-                            break;
-                        case "shower rain":
+                        case "Rain":
                             main_weather_icon.setImageResource(R.drawable.shower_rain);
                             weekly_weather_icon_0.setImageResource(R.drawable.shower_rain);
                             break;
-                        case "rain":
+                        case "Drizzle":
                             main_weather_icon.setImageResource(R.drawable.rain);
                             weekly_weather_icon_0.setImageResource(R.drawable.rain);
                             break;
-                        case "thunderstorm":
+                        case "Thunderstorm":
                             main_weather_icon.setImageResource(R.drawable.thunderstorm);
                             weekly_weather_icon_0.setImageResource(R.drawable.thunderstorm);
                             break;
-                        case "snow":
+                        case "Snow":
                             main_weather_icon.setImageResource(R.drawable.snow);
                             weekly_weather_icon_0.setImageResource(R.drawable.snow);
                             break;
-                        case "mist":
+                        case "Atmosphere":
                             main_weather_icon.setImageResource(R.drawable.mist);
                             weekly_weather_icon_0.setImageResource(R.drawable.mist);
                             break;
-                        case "overcast clouds":
-                            main_weather_icon.setImageResource(R.drawable.overcast_clouds_icon);
-                            weekly_weather_icon_0.setImageResource(R.drawable.overcast_clouds_icon);
-                            break;
+
                     }
 
                 } catch (JSONException e) {
@@ -246,35 +235,26 @@ public class WeatherAct extends AppCompatActivity {
 
                         //decides which icon to out on hourly weather
                         switch (weather_conditions_for_hourly_forecast) {
-                            case "clear sky":
+                            case "Clear":
                                 scroll_weather_icons_list.get(i).setImageResource(R.drawable.clear_sky);
                                 break;
-                            case "few clouds":
+                            case "Clouds":
                                 scroll_weather_icons_list.get(i).setImageResource(R.drawable.few_clouds);
                                 break;
-                            case "scattered clouds":
-                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.scattered_clouds);
-                                break;
-                            case "broken clouds":
-                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.broken_clouds);
-                                break;
-                            case "shower rain":
+                            case "Rain":
                                 scroll_weather_icons_list.get(i).setImageResource(R.drawable.shower_rain);
                                 break;
-                            case "rain":
+                            case "Drizzle":
                                 scroll_weather_icons_list.get(i).setImageResource(R.drawable.rain);
                                 break;
-                            case "thunderstorm":
+                            case "Thunderstorm":
                                 scroll_weather_icons_list.get(i).setImageResource(R.drawable.thunderstorm);
                                 break;
-                            case "snow":
+                            case "Snow` ":
                                 scroll_weather_icons_list.get(i).setImageResource(R.drawable.snow);
                                 break;
-                            case "mist":
+                            case "Atmosphere":
                                 scroll_weather_icons_list.get(i).setImageResource(R.drawable.mist);
-                                break;
-                            case "overcast clouds":
-                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.overcast_clouds_icon);
                                 break;
                         }
 
@@ -365,51 +345,43 @@ public class WeatherAct extends AppCompatActivity {
                             one_day_min_temperatures.add(current_main.getDouble("temp_min"));
 
 
-                        } else if (!formatted_date_to_chek.equals(reference_date_for_week) && time_to_check.equals("12:00")){
-                                String weekly_description=zero.getString("description");
-                                weather_description.add(weekly_description);
+                        }
+                        if (!formatted_date_to_chek.equals(reference_date_for_week) && time_to_check.equals("12:00")){
+                            weather_description.add(zero.getString("description"));
                         }
 
                     }
 
-//                    for (z=0;z<weekly_weather_conditions_list.toArray().length;z++){
-//                        weekly_weather_conditions_list.get(z).setText(weather_description.get(z));
-//
-//                        switch (weather_description.get(z)) {
-//                            case "clear sky":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.clear_sky);
-//                                break;
-//                            case "few clouds":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.few_clouds);
-//                                break;
-//                            case "scattered clouds":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.scattered_clouds);
-//                                break;
-//                            case "broken clouds":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.broken_clouds);
-//                                break;
-//                            case "shower rain":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.shower_rain);
-//                                break;
-//                            case "rain":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.rain);
-//                                break;
-//                            case "thunderstorm":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.thunderstorm);
-//                                break;
-//                            case "snow":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.snow);
-//                                break;
-//                            case "mist":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.mist);
-//                                break;
-//                            case "overcast clouds":
-//                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.overcast_clouds_icon);
-//                                break;
-//                        }
-//
-//
-//                    }
+                    for (z=0;z<weekly_weather_conditions_list.toArray().length;z++){
+                        weekly_weather_conditions_list.get(z).setText(weather_description.get(z));
+
+                        switch (weather_description.get(z)) {
+                            case "Clear":
+                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.clear_sky);
+                                break;
+                            case "Clouds":
+                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.few_clouds);
+                                break;
+                            case "Rain":
+                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.shower_rain);
+                                break;
+                            case "Drizzle":
+                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.rain);
+                                break;
+                            case "Thunderstorm":
+                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.thunderstorm);
+                                break;
+                            case "Snow":
+                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.snow);
+                                break;
+                            case "Atmosphere":
+                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.mist);
+                                break;
+
+                        }
+
+
+                    }
                     //assign max/min temperature and days of the week values to corresponding views
                     for (z=0;z<weekly_temperature_textview_max_list.toArray().length;z++){
                         weekly_temperature_textview_max_list.get(z).setText(max_day_temperatures.get(z).toString()+"°");
@@ -441,7 +413,7 @@ public class WeatherAct extends AppCompatActivity {
 
         //main weather textviews info connecting
         city_name=findViewById(R.id.main_city_name);
-        country_name=findViewById(R.id.main_country_name);
+        //country_name=findViewById(R.id.main_country_name);
         main_weather=findViewById(R.id.main_temp);
         main_humidity=findViewById(R.id.humidity_level);
         main_wind_speed=findViewById(R.id.wind_speed);
