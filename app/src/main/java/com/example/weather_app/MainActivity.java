@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    //loading shared preference on app start
     public void loadData () {
         SharedPreferences my_shared_prefs=getSharedPreferences("SHARED_PREFS",MODE_PRIVATE);
         city_current_weather_call=my_shared_prefs.getString("city_current_weather_pref","");
@@ -52,18 +53,19 @@ public class MainActivity extends AppCompatActivity {
         search_for_city_et=findViewById(R.id.search_city);
         search_city_button=findViewById(R.id.search_city_button);
         Intent go_to_weather=new Intent(MainActivity.this,WeatherAct.class);
+        //getting shared preference data to define if need to go right to weather activity
         loadData();
 
         //statement defines if we need to intent to weather activity right on app launch and passes
         //some variables with intent
         if(weather_activity_trigger) {
-            //go_to_weather.putExtra("call",city_api_call);
             go_to_weather.putExtra("current_weather_call_extra",city_current_weather_call);
             go_to_weather.putExtra("call_current_hourly", city_hourly_weather_call);
             startActivity(go_to_weather);
            }
 
 
+        //main on click listener,api differs for each button
         @SuppressLint("NonConstantResourceId") View.OnClickListener my_listener = v -> {
 
             switch (v.getId()) {
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
 
+            //passes extra data to weather activity to make corresponding api call
             go_to_weather.putExtra("current_weather_call_extra",city_current_weather_call);
             go_to_weather.putExtra("call_current_hourly", city_hourly_weather_call);
             startActivity(go_to_weather);
