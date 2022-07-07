@@ -34,7 +34,7 @@ import java.util.List;
 
 public class WeatherAct extends AppCompatActivity {
     //main weather textview and main weather icon
-    private TextView main_weather,city_name,main_humidity,main_wind_speed,main_clouds,
+    private TextView main_weather, city_and_country_name,main_humidity,main_wind_speed, main_condtions,
             main_air_pressure,main_date;
     private  ImageView main_weather_icon;
     //refresh and back to cities buttons
@@ -45,17 +45,16 @@ public class WeatherAct extends AppCompatActivity {
             hourly_time_5,hourly_time_6,hourly_time_7;
     private TextView hourly_weather_0,hourly_weather_1,hourly_weather_2,hourly_weather_3,
             hourly_weather_4,hourly_weather_5,hourly_weather_6,hourly_weather_7;
+    //icons for horizontal scrollview
+    private ImageView scroll_weather_icon_0,scroll_weather_icon_1,scroll_weather_icon_2,
+            scroll_weather_icon_3,scroll_weather_icon_4,scroll_weather_icon_5,
+            scroll_weather_icon_6,scroll_weather_icon_7;
     //weekly max and min temperatures for vertica scrollview
     private TextView weekly_weather_max_0,weekly_weather_max_1,weekly_weather_max_2,weekly_weather_max_3,
             weekly_weather_max_4;
     private TextView weekly_weather_min_0,weekly_weather_min_1,weekly_weather_min_2,weekly_weather_min_3,
             weekly_weather_min_4;
-    //icons for horizontal scrollview
-    private ImageView scroll_weather_icon_0,scroll_weather_icon_1,scroll_weather_icon_2,
-            scroll_weather_icon_3,scroll_weather_icon_4,scroll_weather_icon_5,
-            scroll_weather_icon_6,scroll_weather_icon_7;
-
-    //day of the weeks for vertical scrollview
+    //days of the weeks for vertical scrollview
     private TextView day_of_the_week_0,day_of_the_week_1,day_of_the_week_2,day_of_the_week_3,
             day_of_the_week_4;
     //weekly weather conditions for vertical scrollview
@@ -107,26 +106,25 @@ public class WeatherAct extends AppCompatActivity {
                     //getting strings and ints from json response
                     JSONObject main = response.getJSONObject("main");
                     JSONObject wind = response.getJSONObject("wind");
-                    JSONObject system = response.getJSONObject("sys");
                     JSONArray weather = response.getJSONArray("weather");
                     JSONObject clouds = weather.getJSONObject(0);
                     String main_weather_conditions=clouds.getString("main");
                     //assign retrieved json data to variables
-                    main_clouds.setText(main_weather_conditions);
+                    main_condtions.setText(main_weather_conditions);
                     main_weather.setText((int)main.getDouble("temp")+" °C");
                     main_air_pressure.setText(main.getInt("pressure")+"mm");
                     main_humidity.setText(main.getInt("humidity")+" %");
                     main_wind_speed.setText(wind.getDouble("speed")+"m/s");
-                    city_name.setText(response.getString("name"));
-                    //country_name.setText(system.getString("country"));
+                    city_and_country_name.setText(response.getString("name"));
                     main_date.setText(day_of_the_week_string + ","+ month_string + " " + day_of_the_month_string
                     + "," + year_string);
+
                     //assign weekly weather conditions and weekly weather icon here, because
                     //first element in weekly weather will use conditions and icon for current weather
-                    weekly_weather_condition_0.setText(main_weather_conditions.substring(0,1).toUpperCase()+main_weather_conditions.substring(1));
+                    weekly_weather_condition_0.setText(main_weather_conditions);
 
 
-                    //decides which icon to set on main weather icon and first object in the weekly weather
+                    //assign corresponding weather icon to main weather icon
                     switch (main_weather_conditions) {
                         case "Clear":
                             main_weather_icon.setImageResource(R.drawable.clear_sky);
@@ -182,17 +180,18 @@ public class WeatherAct extends AppCompatActivity {
             final List<String> hourly_time_list = new ArrayList<>();
             final List<TextView> hourly_time_textview_list = new ArrayList<>();
             final List<TextView> hourly_temperature_textview_list = new ArrayList<>();
-            final List<ImageView> scroll_weather_icons_list=new ArrayList<>();
-            final List<ImageView> weekly_weather_icons_list=new ArrayList<>();
+            final List<ImageView> scroll_weather_imageviews_list =new ArrayList<>();
+            final List<ImageView> weekly_weather_imageviews_list=new ArrayList<>();
             final List<TextView> weekly_weather_conditions_list=new ArrayList<>();
 
             @Override
+
             public void onResponse(JSONObject response) {
-                //whole try block sets time and temperature values to scroll bar
+                //whole try block sets time and temperature values to horizontal scroll bar
                 try {
-                    int i;
                     //adding all daily temperatures to list
                     JSONArray days_array = response.getJSONArray("list");
+                    int i;
                     for(i=0;i<8;i++){
                         JSONObject current_object=days_array.getJSONObject(i);
                         Date time_date= full.parse(current_object.getString("dt_txt"));
@@ -211,8 +210,8 @@ public class WeatherAct extends AppCompatActivity {
                             hourly_weather_2,hourly_weather_3,hourly_weather_4,hourly_weather_5,
                             hourly_weather_6,hourly_weather_7);
 
-                    //weather icons for scroll view collection
-                    Collections.addAll(scroll_weather_icons_list,scroll_weather_icon_0,scroll_weather_icon_1,scroll_weather_icon_2,
+                    //weather imageviews for  more comfortable assignment
+                    Collections.addAll(scroll_weather_imageviews_list,scroll_weather_icon_0,scroll_weather_icon_1,scroll_weather_icon_2,
                             scroll_weather_icon_3,scroll_weather_icon_4,scroll_weather_icon_5,
                             scroll_weather_icon_6,scroll_weather_icon_7);
 
@@ -228,33 +227,33 @@ public class WeatherAct extends AppCompatActivity {
                         hourly_time_textview_list.get(i).setText(hourly_time_list.get(i));
                         hourly_temperature_textview_list.get(i).setText(hourly_temperature_list.get(i)+"°C");
                         //getting weather description from json
-                        JSONObject main_object=days_array.getJSONObject(i);
-                        JSONArray weather_array=main_object.getJSONArray("weather");
+                        JSONObject main_array=days_array.getJSONObject(i);
+                        JSONArray weather_array=main_array.getJSONArray("weather");
                         JSONObject condition_object=weather_array.getJSONObject(0);
                         String weather_conditions_for_hourly_forecast=condition_object.getString("main");
 
-                        //decides which icon to out on hourly weather
+                        //assign corresponding weather icon to weekly horizontal scrollview
                         switch (weather_conditions_for_hourly_forecast) {
                             case "Clear":
-                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.clear_sky);
+                                scroll_weather_imageviews_list.get(i).setImageResource(R.drawable.clear_sky);
                                 break;
                             case "Clouds":
-                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.few_clouds);
+                                scroll_weather_imageviews_list.get(i).setImageResource(R.drawable.few_clouds);
                                 break;
                             case "Rain":
-                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.shower_rain);
+                                scroll_weather_imageviews_list.get(i).setImageResource(R.drawable.shower_rain);
                                 break;
                             case "Drizzle":
-                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.rain);
+                                scroll_weather_imageviews_list.get(i).setImageResource(R.drawable.rain);
                                 break;
                             case "Thunderstorm":
-                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.thunderstorm);
+                                scroll_weather_imageviews_list.get(i).setImageResource(R.drawable.thunderstorm);
                                 break;
                             case "Snow` ":
-                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.snow);
+                                scroll_weather_imageviews_list.get(i).setImageResource(R.drawable.snow);
                                 break;
                             case "Atmosphere":
-                                scroll_weather_icons_list.get(i).setImageResource(R.drawable.mist);
+                                scroll_weather_imageviews_list.get(i).setImageResource(R.drawable.mist);
                                 break;
                         }
 
@@ -265,51 +264,74 @@ public class WeatherAct extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                //whole try block sets values for weekly temperature block
+                //whole try block sets values for weekly temperature vertical scrollview
                 try {
+                    //array for one day max and min temperatures
+                    //median temperature will be calculated using data inside this arrays
+                    //and then it will be cleared for next day
                     List<Double> one_day_max_temperatures = new ArrayList<>();
                     List<Double> one_day_min_temperatures = new ArrayList<>();
+                    //arrays for median temperatures,that will be calculated from one day arrays
                     List<Integer> max_day_temperatures = new ArrayList<>();
                     List<Integer> min_day_temperatures = new ArrayList<>();
+                    //arrays for gathered days of the week names and weather descriptions
                     List<String> days_of_the_week = new ArrayList<>();
                     List<String> weather_description = new ArrayList<>();
-                    final List<TextView> weekly_temperature_textview_max_list = new ArrayList<>();
-                    final List<TextView> weekly_temperature_textview_min_list = new ArrayList<>();
-                    final List<TextView> days_of_the_week_textview_list = new ArrayList<>();
+                    //arrays for corresponding textviews for vertical scrollview
+                    List<TextView> weekly_temperature_textview_max_list = new ArrayList<>();
+                    List<TextView> weekly_temperature_textview_min_list = new ArrayList<>();
+                    List<TextView> days_of_the_week_textview_list = new ArrayList<>();
 
+                    //adding weekly max temperatures textviews to array for comfortable assingment
                     Collections.addAll(weekly_temperature_textview_max_list,weekly_weather_max_0,
                             weekly_weather_max_1,weekly_weather_max_2,weekly_weather_max_3,
                             weekly_weather_max_4);
+                    //adding weekly min temperatures textviews to array for comfortable assingment
                     Collections.addAll(weekly_temperature_textview_min_list,weekly_weather_min_0,
                             weekly_weather_min_1,weekly_weather_min_2,weekly_weather_min_3,
                             weekly_weather_min_4);
+                    //adding day of the weeks textviews to array for comfortable assingment
                     Collections.addAll(days_of_the_week_textview_list,day_of_the_week_0,
                             day_of_the_week_1,day_of_the_week_2,day_of_the_week_3,day_of_the_week_4);
-                    Collections.addAll(weekly_weather_icons_list,weekly_weather_icon_1,
+                    //adding weekly image views to array for comfortable assingment
+                    Collections.addAll(weekly_weather_imageviews_list,weekly_weather_icon_1,
                             weekly_weather_icon_2,weekly_weather_icon_3,weekly_weather_icon_4);
 
                     //Sets current day as fist day in the weekly forecast
-                    //creates reference date for looping through json
+                    //for getting reference dates and first day in the weekly forecast
                     JSONArray days_array = response.getJSONArray("list");
                     JSONObject first_object=days_array.getJSONObject(0);
                     String  first_unformed_date=first_object.getString("dt_txt");
                     Date full_date=full.parse(first_unformed_date);
                     String first_day_in_forecast_final=day_of_the_week.format(full_date);
                     days_of_the_week.add(first_day_in_forecast_final);
+                    //reference date will be dynamically changed at the start of each new day
+                    //to gather data for one day and wont take data from next day
                     String reference_date=date_without_time.format(full_date);
+                    //reference date for week will stay static to avoid getting day name and conditions
+                    //for the first day in the forecast,we did gather this info in get weather method
+                    //no point to to do it here
                     String reference_date_for_week=date_without_time.format(full_date);
 
+                    //this block will loop through all objects in Json main list
+                    //using date as reference,collect data,calculate and assign
+                    //to corresponding lists
                     int z;
                     for(z=0;z<=39;z++){
                         //gets date from current object of list and compare it to reference date
                         //doing this to get all temperature values on certain data
                         JSONObject current_object=days_array.getJSONObject(z);
                         JSONArray weather_array=current_object.getJSONArray("weather");
+                        //this object iz always "0" in weather array
                         JSONObject zero=weather_array.getJSONObject(0);
                         String current_unformed_date=current_object.getString("dt_txt");
                         JSONObject current_main=current_object.getJSONObject("main");
                         Date full_date_to_check=full.parse(current_unformed_date);
+                        //formatted date is dynamic and will be compare to reference date
                         String formatted_date_to_chek=date_without_time.format(full_date_to_check);
+                        //time to check will be used to get mid day weather conditions
+                        //for each day,excluding first day (condtitions for the first day
+                        //was gathered at get weather method
                         String time_to_check=time.format(full_date_to_check);
                         if(formatted_date_to_chek.equals(reference_date)) {
                             //if current date equals reference date adding min and max temps
@@ -324,7 +346,6 @@ public class WeatherAct extends AppCompatActivity {
                             Date day_of_the_week_full=full.parse(new_day_of_the_week_unformatted);
                             String day_of_the_week_final=day_of_the_week.format(day_of_the_week_full);
                             days_of_the_week.add(day_of_the_week_final);
-
                             reference_date=formatted_date_to_chek;
 
                             //when new day starts code calculates median value of max and min
@@ -336,9 +357,8 @@ public class WeatherAct extends AppCompatActivity {
                                 sum_max+=one_day_max_temperatures.get(x);
                                 sum_min+=one_day_min_temperatures.get(x);
                             }
-
-                            max_day_temperatures.add((int)(sum_max/one_day_max_temperatures.size()));
-                            min_day_temperatures.add((int)(sum_min/one_day_min_temperatures.size()));
+                            max_day_temperatures.add((int)(Math.ceil(sum_max/one_day_max_temperatures.size())));
+                            min_day_temperatures.add((int)(Math.floor(sum_min/one_day_min_temperatures.size())));
                             one_day_max_temperatures.clear();
                             one_day_min_temperatures.clear();
                             one_day_max_temperatures.add(current_main.getDouble("temp_max"));
@@ -346,36 +366,39 @@ public class WeatherAct extends AppCompatActivity {
 
 
                         }
+                        //this statement gather mid day weather condition information for mid day
+                        //except first day using reference day and time decision point
                         if (!formatted_date_to_chek.equals(reference_date_for_week) && time_to_check.equals("12:00")){
                             weather_description.add(zero.getString("main"));
                         }
 
                     }
 
+                    //assign corresponding weather icon to weekly vertical scrollview
                     for (z=0;z<weekly_weather_conditions_list.toArray().length;z++){
                         weekly_weather_conditions_list.get(z).setText(weather_description.get(z));
 
                         switch (weather_description.get(z)) {
                             case "Clear":
-                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.clear_sky);
+                                weekly_weather_imageviews_list.get(z).setImageResource(R.drawable.clear_sky);
                                 break;
                             case "Clouds":
-                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.few_clouds);
+                                weekly_weather_imageviews_list.get(z).setImageResource(R.drawable.few_clouds);
                                 break;
                             case "Rain":
-                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.shower_rain);
+                                weekly_weather_imageviews_list.get(z).setImageResource(R.drawable.shower_rain);
                                 break;
                             case "Drizzle":
-                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.rain);
+                                weekly_weather_imageviews_list.get(z).setImageResource(R.drawable.rain);
                                 break;
                             case "Thunderstorm":
-                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.thunderstorm);
+                                weekly_weather_imageviews_list.get(z).setImageResource(R.drawable.thunderstorm);
                                 break;
                             case "Snow":
-                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.snow);
+                                weekly_weather_imageviews_list.get(z).setImageResource(R.drawable.snow);
                                 break;
                             case "Atmosphere":
-                                weekly_weather_icons_list.get(z).setImageResource(R.drawable.mist);
+                                weekly_weather_imageviews_list.get(z).setImageResource(R.drawable.mist);
                                 break;
 
                         }
@@ -404,20 +427,18 @@ public class WeatherAct extends AppCompatActivity {
         main_request.add(request);
     }
 
-
-    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.directed_weather_activity);
 
         //main weather textviews info connecting
-        city_name=findViewById(R.id.main_city_name);
+        city_and_country_name =findViewById(R.id.main_city_name);
         //country_name=findViewById(R.id.main_country_name);
         main_weather=findViewById(R.id.main_temp);
         main_humidity=findViewById(R.id.humidity_level);
         main_wind_speed=findViewById(R.id.wind_speed);
-        main_clouds=findViewById(R.id.main_clouds);
+        main_condtions =findViewById(R.id.main_clouds);
         main_date=findViewById(R.id.main_date);
         main_air_pressure=findViewById(R.id.air_pressure);
         //hourly textviews connecting
@@ -510,7 +531,7 @@ public class WeatherAct extends AppCompatActivity {
             }
         });
 
-
+        //main methods call using chosen api
         getWeather(my_api_call_current);
         getWeather_hourly_and_weekly(my_api_call_hourly);
 

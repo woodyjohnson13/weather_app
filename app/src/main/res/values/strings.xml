@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">weather_app</string>
+    <string name="app_name">Cloudy</string>
     <string name="weather_update">Choose city from a list or search for one:</string>
     <string name="enter_country_code_optional">Enter Country Code (optional)</string>
     <string name="enter_city_name">Enter City Name</string>
