@@ -267,11 +267,11 @@ public class WeatherAct extends AppCompatActivity {
                 //whole try block sets values for weekly temperature vertical scrollview
                 try {
                     //array for one day max and min temperatures
-                    //median temperature will be calculated using data inside this arrays
+                    //average temperature will be calculated using data inside this arrays
                     //and then it will be cleared for next day
                     List<Double> one_day_max_temperatures = new ArrayList<>();
                     List<Double> one_day_min_temperatures = new ArrayList<>();
-                    //arrays for median temperatures,that will be calculated from one day arrays
+                    //arrays for average temperatures,that will be calculated from one day arrays
                     List<Integer> max_day_temperatures = new ArrayList<>();
                     List<Integer> min_day_temperatures = new ArrayList<>();
                     //arrays for gathered days of the week names and weather descriptions
@@ -348,7 +348,7 @@ public class WeatherAct extends AppCompatActivity {
                             days_of_the_week.add(day_of_the_week_final);
                             reference_date=formatted_date_to_chek;
 
-                            //when new day starts code calculates median value of max and min
+                            //when new day starts code calculates average value of max and min
                             //temperatures for previous day and add it to corresponding list
                             //also clears list so we can add values for new day
                             double sum_max = 0;
