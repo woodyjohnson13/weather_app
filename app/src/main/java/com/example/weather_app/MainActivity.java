@@ -21,11 +21,11 @@ public class MainActivity extends AppCompatActivity {
     String city_current_weather_call="";
     EditText search_for_city_et;
     ImageView search_city_button;
-    public Boolean weather_activity_trigger ;
+    Boolean weather_activity_trigger ;
 
 
     //saving API call in shared preference to access it right in app start
-    public void get_pref () {
+    private void get_pref () {
         SharedPreferences weather_activity_shared=getSharedPreferences("SHARED_PREFS",MODE_PRIVATE);
         SharedPreferences.Editor editor = weather_activity_shared.edit();
         editor.putString("city_current_weather_pref",city_current_weather_call);
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //loading shared preference on app start
-    public void loadData () {
+    private void loadData () {
         SharedPreferences my_shared_prefs=getSharedPreferences("SHARED_PREFS",MODE_PRIVATE);
         city_current_weather_call=my_shared_prefs.getString("city_current_weather_pref","");
         city_hourly_weather_call =my_shared_prefs.getString("city_hourly_weather_pref","");

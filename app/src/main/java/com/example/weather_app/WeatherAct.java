@@ -82,7 +82,7 @@ public class WeatherAct extends AppCompatActivity {
 
     //Cleared shared preference to avoid looping back to weather activity,method for "back to cities"
     //button
-    public void clear_preferences() {
+    private void clear_preferences() {
         SharedPreferences prefs;
         prefs = getSharedPreferences("SHARED_PREFS", this.MODE_PRIVATE);
         prefs.getBoolean("choice", false);
@@ -91,7 +91,7 @@ public class WeatherAct extends AppCompatActivity {
 
     //assign Json data to main,top weather variables
     private void getWeather(String url) {
-        final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, //GET - API-запрос для получение данных
+        final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
                 url, null, new Response.Listener<JSONObject>() {
             //Calendar instance for getting time and date divided into various string
             //for usage flexibility
